@@ -1,0 +1,14 @@
+- id: 8034424dac8f44cb997db6b6ddc62147
+  tableName: en_sahih
+  languageCode: en
+  language: English
+  name: Saheeh International
+  translator: Saheeh International
+  type: builtIn
+- id: 3622b2a1a74740c7bff5cf44c69d271v
+  tableName: kan_india
+  languageCode: kan
+  language: Kannada
+  name: Divya Quran
+  translator: Divya Quran
+  type: builtIn

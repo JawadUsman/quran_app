@@ -1,0 +1,2283 @@
+{
+    "chapters": [{
+            "id": 1,
+            "chapter_number": 1,
+            "bismillah_pre": false,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/001.AL-FATHIHA.mp3",
+            "revelation_order": 5,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಫಾತಿಹಾ",
+            "name_arabic": "الفاتحة",
+            "name_simple": "ಅಲ್ ಫಾತಿಹಾ",
+            "verses_count": 7,
+            "pages": [
+                1,
+                1
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಆರಂಭ"
+            }
+        },
+        {
+            "id": 2,
+            "chapter_number": 2,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/002.AL-BAQARAH-1.mp3,https://ia800501.us.archive.org/8/items/quraninkannada/002.AL-BAQARAH-2.mp3",
+            "revelation_order": 87,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಬಕರ",
+            "name_arabic": "البقرة",
+            "name_simple": "ಅಲ್ ಬಕರ",
+            "verses_count": 286,
+            "pages": [
+                2,
+                49
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ದನ"
+            }
+        },
+        {
+            "id": 3,
+            "chapter_number": 3,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/003.ALI-IMRAN.mp3",
+            "revelation_order": 89,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಆಲಿ ಇಮ್ರಾನ್",
+            "name_arabic": "آل عمران",
+            "name_simple": "ಆಲಿ ಇಮ್ರಾನ್",
+            "verses_count": 200,
+            "pages": [
+                50,
+                76
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಇಮ್ರಾನರ ಸಂತತಿ"
+            }
+        },
+        {
+            "id": 4,
+            "chapter_number": 4,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/004.ANNISA.mp3",
+            "revelation_order": 92,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅನ್ನಿಸಾ",
+            "name_arabic": "النساء",
+            "name_simple": "ಅನ್ನಿಸಾ",
+            "verses_count": 176,
+            "pages": [
+                77,
+                106
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮಹಿಳೆಯರು"
+            }
+        },
+        {
+            "id": 5,
+            "chapter_number": 5,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/005.AL-MAIDAH.mp3",
+            "revelation_order": 112,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಮಾಇದ",
+            "name_arabic": "المائدة",
+            "name_simple": "ಅಲ್ ಮಾಇದ",
+            "verses_count": 120,
+            "pages": [
+                106,
+                127
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಹರಿವಾಣ"
+            }
+        },
+        {
+            "id": 6,
+            "chapter_number": 6,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/006.AL-ENAM.mp3",
+            "revelation_order": 55,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಅನ್ಆಮ್",
+            "name_arabic": "الأنعام",
+            "name_simple": "ಅಲ್ ಅನ್ಆಮ್",
+            "verses_count": 165,
+            "pages": [
+                128,
+                150
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಜಾನುವಾರುಗಳು"
+            }
+        },
+        {
+            "id": 7,
+            "chapter_number": 7,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/007.AL-ARAF.mp3",
+            "revelation_order": 39,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಅಅರಾಫ್",
+            "name_arabic": "الأعراف",
+            "name_simple": "ಅಲ್ ಅಅರಾಫ್",
+            "verses_count": 206,
+            "pages": [
+                151,
+                176
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಔನತ್ಯಗಳು"
+            }
+        },
+        {
+            "id": 8,
+            "chapter_number": 8,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/008.AL-ANFAL.mp3",
+            "revelation_order": 88,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಆನ್ ಫಾಲ್",
+            "name_arabic": "الأنفال",
+            "name_simple": "ಅಲ್ ಆನ್ ಫಾಲ್",
+            "verses_count": 75,
+            "pages": [
+                177,
+                186
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಮಾರಾರ್ಜಿತ ಸೊತ್ತು"
+            }
+        },
+        {
+            "id": 9,
+            "chapter_number": 9,
+            "bismillah_pre": false,
+			 "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/009.ATTAWBA.mp3",
+            "revelation_order": 113,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅತ್ತೌಬಃ",
+            "name_arabic": "التوبة",
+            "name_simple": "ಅತ್ತೌಬಃ",
+            "verses_count": 129,
+            "pages": [
+                187,
+                207
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಪಶ್ಚಾತಾಪ"
+            }
+        },
+        {
+            "id": 10,
+            "chapter_number": 10,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/010.YUNUS.mp3",
+            "revelation_order": 51,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಯೂನುಸ್",
+            "name_arabic": "يونس",
+            "name_simple": "ಯೂನುಸ್",
+            "verses_count": 109,
+            "pages": [
+                208,
+                221
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಯೂನುಸ್"
+            }
+        },
+        {
+            "id": 11,
+            "chapter_number": 11,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/011.HOOD.mp3",
+            "revelation_order": 52,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಹೂದ್",
+            "name_arabic": "هود",
+            "name_simple": "ಹೂದ್",
+            "verses_count": 123,
+            "pages": [
+                221,
+                235
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಹೂದ್"
+            }
+        },
+        {
+            "id": 12,
+            "chapter_number": 12,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/012.YUSUF.mp3",
+            "revelation_order": 53,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಯೂಸುಫ್",
+            "name_arabic": "يوسف",
+            "name_simple": "ಯೂಸುಫ್",
+            "verses_count": 111,
+            "pages": [
+                235,
+                248
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಯೂಸುಫ್"
+            }
+        },
+        {
+            "id": 13,
+            "chapter_number": 13,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/013.ARRAD.mp3",
+            "revelation_order": 96,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅರ್ರಅದ್",
+            "name_arabic": "الرعد",
+            "name_simple": "ಅರ್ರಅದ್",
+            "verses_count": 43,
+            "pages": [
+                249,
+                255
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಗುಡುಗು"
+            }
+        },
+        {
+            "id": 14,
+            "chapter_number": 14,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/014.IBRAHIM.mp3",
+            "revelation_order": 72,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಇಬ್ರಾಹೀಮ್",
+            "name_arabic": "ابراهيم",
+            "name_simple": "ಇಬ್ರಾಹೀಮ್",
+            "verses_count": 52,
+            "pages": [
+                255,
+                261
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಇಬ್ರಾಹೀಮ್"
+            }
+        },
+        {
+            "id": 15,
+            "chapter_number": 15,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/015.ALHIJR.mp3",
+            "revelation_order": 54,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಹಿಜ್ರ್",
+            "name_arabic": "الحجر",
+            "name_simple": "ಅಲ್ ಹಿಜ್ರ್",
+            "verses_count": 99,
+            "pages": [
+                262,
+                267
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಲ್ಲಿನ ಪ್ರದೇಶ"
+            }
+        },
+        {
+            "id": 16,
+            "chapter_number": 16,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/016.ANNAHL.mp3",
+            "revelation_order": 70,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅನ್ನಹ್ಲ್",
+            "name_arabic": "النحل",
+            "name_simple": "ಅನ್ನಹ್ಲ್",
+            "verses_count": 128,
+            "pages": [
+                267,
+                281
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಜೇನು"
+            }
+        },
+        {
+            "id": 17,
+            "chapter_number": 17,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/017.BANI-ISRAEL.mp3",
+            "revelation_order": 50,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಬನೀ ಇಸ್ರಾಈಲ್",
+            "name_arabic": "الإسراء",
+            "name_simple": "ಬನೀ ಇಸ್ರಾಈಲ್",
+            "verses_count": 111,
+            "pages": [
+                282,
+                293
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಇಸ್ರಾಈಲ್ ಸಮುದಾಯ"
+            }
+        },
+        {
+            "id": 18,
+            "chapter_number": 18,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/018.AL-KAHF.mp3",
+            "revelation_order": 69,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಕಹ್ಫ್",
+            "name_arabic": "الكهف",
+            "name_simple": "ಅಲ್ ಕಹ್ಫ್",
+            "verses_count": 110,
+            "pages": [
+                293,
+                304
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಗುಹೆ"
+            }
+        },
+        {
+            "id": 19,
+            "chapter_number": 19,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/019.MARYAM.mp3",
+            "revelation_order": 44,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಮರ್ಯಮ್",
+            "name_arabic": "مريم",
+            "name_simple": "ಮರ್ಯಮ್",
+            "verses_count": 98,
+            "pages": [
+                305,
+                312
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮರ್ಯಮ್"
+            }
+        },
+        {
+            "id": 20,
+            "chapter_number": 20,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/020.TAHA.mp3",
+            "revelation_order": 45,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ತಾಹಾ",
+            "name_arabic": "طه",
+            "name_simple": "ತಾಹಾ",
+            "verses_count": 135,
+            "pages": [
+                312,
+                321
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ತಾಹಾ"
+            }
+        },
+        {
+            "id": 21,
+            "chapter_number": 21,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/021.ALAMBIYA.mp3",
+            "revelation_order": 73,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಅಂಬಿಯ",
+            "name_arabic": "الأنبياء",
+            "name_simple": "ಅಲ್ ಅಂಬಿಯ",
+            "verses_count": 112,
+            "pages": [
+                322,
+                331
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಪ್ರವಾದಿಗಳು"
+            }
+        },
+        {
+            "id": 22,
+            "chapter_number": 22,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/022.ALHAJJ.mp3",
+            "revelation_order": 103,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಹಜ್ಜ್",
+            "name_arabic": "الحج",
+            "name_simple": "ಅಲ್ ಹಜ್ಜ್",
+            "verses_count": 78,
+            "pages": [
+                332,
+                341
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಹಜ್ಜ್"
+            }
+        },
+        {
+            "id": 23,
+            "chapter_number": 23,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/023-AL-MUMINOON.mp3",
+            "revelation_order": 74,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಮೂಮಿನೂನ್",
+            "name_arabic": "المؤمنون",
+            "name_simple": "ಮೂಮಿನೂನ್",
+            "verses_count": 118,
+            "pages": [
+                342,
+                349
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ವಿಶ್ವಾಸಿಗಳು"
+            }
+        },
+        {
+            "id": 24,
+            "chapter_number": 24,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/024-AN-NOOR.mp3",
+            "revelation_order": 102,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅನ್ನೂರ್",
+            "name_arabic": "النور",
+            "name_simple": "ಅನ್ನೂರ್",
+            "verses_count": 64,
+            "pages": [
+                350,
+                359
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಪ್ರಕಾಶ"
+            }
+        },
+        {
+            "id": 25,
+            "chapter_number": 25,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/025-AL-FURQAAN.mp3",
+            "revelation_order": 42,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್-ಫುರ್ಕಾನ್",
+            "name_arabic": "الفرقان",
+            "name_simple": "ಅಲ್-ಫುರ್ಕಾನ್",
+            "verses_count": 77,
+            "pages": [
+                359,
+                366
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಒರೆಗಲ್ಲು"
+            }
+        },
+        {
+            "id": 26,
+            "chapter_number": 26,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/026-AS-SUARA.mp3",
+            "revelation_order": 47,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಶ್ಷುಅರಾ",
+            "name_arabic": "الشعراء",
+            "name_simple": "ಅಶ್ಷುಅರಾ",
+            "verses_count": 227,
+            "pages": [
+                367,
+                376
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕವಿಗಳು"
+            }
+        },
+        {
+            "id": 27,
+            "chapter_number": 27,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/027.ANNAML.mp3",
+            "revelation_order": 48,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅನ್ನಮ್ಲ್",
+            "name_arabic": "النمل",
+            "name_simple": "ಅನ್ನಮ್ಲ್",
+            "verses_count": 93,
+            "pages": [
+                377,
+                385
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಇರುವೆ"
+            }
+        },
+        {
+            "id": 28,
+            "chapter_number": 28,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/028.ALKASAS.mp3",
+            "revelation_order": 49,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಕಸಸ್",
+            "name_arabic": "القصص",
+            "name_simple": "ಅಲ್ ಕಸಸ್",
+            "verses_count": 88,
+            "pages": [
+                385,
+                396
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಥೆಗಳು"
+            }
+        },
+        {
+            "id": 29,
+            "chapter_number": 29,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/029-AL-ANKABOOT.mp3",
+            "revelation_order": 85,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "Al-`ಅಲ್ ಅಂಕಬೂತ್",
+            "name_arabic": "العنكبوت",
+            "name_simple": "ಅಲ್ ಅಂಕಬೂತ್",
+            "verses_count": 69,
+            "pages": [
+                396,
+                404
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಜೇಡ"
+            }
+        },
+        {
+            "id": 30,
+            "chapter_number": 30,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/030.ARROOM.mp3",
+            "revelation_order": 84,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅರ್ರೂಮ್",
+            "name_arabic": "الروم",
+            "name_simple": "ಅರ್ರೂಮ್",
+            "verses_count": 60,
+            "pages": [
+                404,
+                410
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ರೋಮನರು"
+            }
+        },
+        {
+            "id": 31,
+            "chapter_number": 31,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/031.LUQMAAN.mp3",
+            "revelation_order": 57,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಲುಕ್ಮಾನ್",
+            "name_arabic": "لقمان",
+            "name_simple": "ಲುಕ್ಮಾನ್",
+            "verses_count": 34,
+            "pages": [
+                411,
+                414
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಲುಕ್ಮಾನ್"
+            }
+        },
+        {
+            "id": 32,
+            "chapter_number": 32,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/032-AS-SAJDA.mp3",
+            "revelation_order": 75,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಸ್ಸಜ್ದ",
+            "name_arabic": "السجدة",
+            "name_simple": "ಅಸ್ಸಜ್ದ",
+            "verses_count": 30,
+            "pages": [
+                415,
+                417
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಾಷ್ಟಾಂಗ"
+            }
+        },
+        {
+            "id": 33,
+            "chapter_number": 33,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/033.AL-AHZAAB.mp3",
+            "revelation_order": 90,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಅಹ್‍ಝಾಬ್",
+            "name_arabic": "الأحزاب",
+            "name_simple": "ಅಲ್ ಅಹ್‍ಝಾಬ್",
+            "verses_count": 73,
+            "pages": [
+                418,
+                427
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಂಯೋಜಿತ ಪಡೆಗಳು"
+            }
+        },
+        {
+            "id": 34,
+            "chapter_number": 34,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/034.SABA.mp3",
+            "revelation_order": 58,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಸಬಾ",
+            "name_arabic": "سبإ",
+            "name_simple": "ಸಬಾ",
+            "verses_count": 54,
+            "pages": [
+                428,
+                434
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಬಯನರು"
+            }
+        },
+        {
+            "id": 35,
+            "chapter_number": 35,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/035.FATHIR.mp3",
+            "revelation_order": 43,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಫಾತಿರ್",
+            "name_arabic": "فاطر",
+            "name_simple": "ಫಾತಿರ್",
+            "verses_count": 45,
+            "pages": [
+                434,
+                440
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ನಿರ್ಮಾಪಕ"
+            }
+        },
+        {
+            "id": 36,
+            "chapter_number": 36,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/036.YASEEN.mp3",
+            "revelation_order": 41,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಯಾಸೀನ್",
+            "name_arabic": "يس",
+            "name_simple": "ಯಾಸೀನ್",
+            "verses_count": 83,
+            "pages": [
+                440,
+                445
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಯಾಸೀನ್"
+            }
+        },
+        {
+            "id": 37,
+            "chapter_number": 37,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/037.ASSAFFATH.mp3",
+            "revelation_order": 56,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಸ್ಸಫ್ಫಾತ್",
+            "name_arabic": "الصافات",
+            "name_simple": "ಅಸ್ಸಫ್ಫಾತ್",
+            "verses_count": 182,
+            "pages": [
+                446,
+                452
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಾಲುಗಟ್ಟಿರುವವರು"
+            }
+        },
+        {
+            "id": 38,
+            "chapter_number": 38,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/038.SWADH.mp3",
+            "revelation_order": 38,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಸ್ವಾದ್",
+            "name_arabic": "ص",
+            "name_simple": "ಸ್ವಾದ್",
+            "verses_count": 88,
+            "pages": [
+                453,
+                458
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸ್ವಾದ್"
+            }
+        },
+        {
+            "id": 39,
+            "chapter_number": 39,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/039.AZZUMAR.mp3",
+            "revelation_order": 59,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಝ್ಝುಮರ್",
+            "name_arabic": "الزمر",
+            "name_simple": "ಅಝ್ಝುಮರ್",
+            "verses_count": 75,
+            "pages": [
+                458,
+                467
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಪಡೆಗಳು"
+            }
+        },
+        {
+            "id": 40,
+            "chapter_number": 40,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/040.AL-MUMIN.mp3",
+            "revelation_order": 60,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಗಾಫಿರ್",
+            "name_arabic": "غافر",
+            "name_simple": "ಗಾಫಿರ್",
+            "verses_count": 85,
+            "pages": [
+                467,
+                476
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕ್ಷಮಿಸುವವನು"
+            }
+        },
+        {
+            "id": 41,
+            "chapter_number": 41,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/041.HAMEEM-ASSAJDAH.mp3",
+            "revelation_order": 61,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಫುಸ್ಸಿಲತ್",
+            "name_arabic": "فصلت",
+            "name_simple": "ಫುಸ್ಸಿಲತ್",
+            "verses_count": 54,
+            "pages": [
+                477,
+                482
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸವಿಸ್ತಾರ"
+            }
+        },
+        {
+            "id": 42,
+            "chapter_number": 42,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/042.ASHOORA.mp3",
+            "revelation_order": 62,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಶ್ಶೂರ",
+            "name_arabic": "الشورى",
+            "name_simple": "ಅಶ್ಶೂರ",
+            "verses_count": 53,
+            "pages": [
+                483,
+                489
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಮಾಲೋಚನೆ"
+            }
+        },
+        {
+            "id": 43,
+            "chapter_number": 43,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/043.AZZUQRUF.mp3",
+            "revelation_order": 63,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಝ್ಝುಖ್‍ರುಫ್",
+            "name_arabic": "الزخرف",
+            "name_simple": "ಅಝ್ಝುಖ್‍ರುಫ್",
+            "verses_count": 89,
+            "pages": [
+                489,
+                495
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಆಭರಣ"
+            }
+        },
+        {
+            "id": 44,
+            "chapter_number": 44,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/044.ADDUKHAN.mp3",
+            "revelation_order": 64,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅದ್ದುಖಾನ್",
+            "name_arabic": "الدخان",
+            "name_simple": "ಅದ್ದುಖಾನ್",
+            "verses_count": 59,
+            "pages": [
+                496,
+                498
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಹೊಗೆ"
+            }
+        },
+        {
+            "id": 45,
+            "chapter_number": 45,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/045.AL-JASIYA.mp3",
+            "revelation_order": 65,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಜಾಸಿಯ",
+            "name_arabic": "الجاثية",
+            "name_simple": "ಅಲ್ ಜಾಸಿಯ",
+            "verses_count": 37,
+            "pages": [
+                499,
+                502
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮೊಣಕಾಲೂರಿದವರು"
+            }
+        },
+        {
+            "id": 46,
+            "chapter_number": 46,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/046.AL-AHKHAF.mp3",
+            "revelation_order": 66,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಅಹ್-ಕಾಫ್",
+            "name_arabic": "الأحقاف",
+            "name_simple": "ಅಲ್ ಅಹ್ ಕಾಫ್",
+            "verses_count": 35,
+            "pages": [
+                502,
+                506
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮರದ ದಿಣ್ಣೆಗಳು"
+            }
+        },
+        {
+            "id": 47,
+            "chapter_number": 47,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/047.MUHAMMAD.mp3",
+            "revelation_order": 95,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಮುಹಮ್ಮದ್",
+            "name_arabic": "محمد",
+            "name_simple": "ಮುಹಮ್ಮದ್",
+            "verses_count": 38,
+            "pages": [
+                507,
+                510
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮುಹಮ್ಮದ್"
+            }
+        },
+        {
+            "id": 48,
+            "chapter_number": 48,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/048.AL-FATHAH.mp3",
+            "revelation_order": 111,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಫತಹ್",
+            "name_arabic": "الفتح",
+            "name_simple": "ಅಲ್ ಫತಹ್",
+            "verses_count": 29,
+            "pages": [
+                511,
+                515
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ವಿಜಯ"
+            }
+        },
+        {
+            "id": 49,
+            "chapter_number": 49,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/049.AL-HUJURATH.mp3",
+            "revelation_order": 106,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಹುಜರಾತ್",
+            "name_arabic": "الحجرات",
+            "name_simple": "ಅಲ್ ಹುಜರಾತ್",
+            "verses_count": 18,
+            "pages": [
+                515,
+                517
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕೊಠಡಿಗಳು"
+            }
+        },
+        {
+            "id": 50,
+            "chapter_number": 50,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/050.KHAF.mp3",
+            "revelation_order": 34,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಕಾಫ್",
+            "name_arabic": "ق",
+            "name_simple": "ಕಾಫ್",
+            "verses_count": 45,
+            "pages": [
+                518,
+                520
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಾಫ್"
+            }
+        },
+        {
+            "id": 51,
+            "chapter_number": 51,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/051-ADDARIYATH.mp3",
+            "revelation_order": 67,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅದ್ದಾರಿಯಾತ್",
+            "name_arabic": "الذاريات",
+            "name_simple": "ಅದ್ದಾರಿಯಾತ್",
+            "verses_count": 60,
+            "pages": [
+                520,
+                523
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮಾರುತಗಳು"
+            }
+        },
+        {
+            "id": 52,
+            "chapter_number": 52,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/052.ATTOOR.mp3",
+            "revelation_order": 76,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅತ್ತೂರ್",
+            "name_arabic": "الطور",
+            "name_simple": "ಅತ್ತೂರ್",
+            "verses_count": 49,
+            "pages": [
+                523,
+                525
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಪರ್ವತ"
+            }
+        },
+        {
+            "id": 53,
+            "chapter_number": 53,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/053.ANNAJM.mp3",
+            "revelation_order": 23,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅನ್ನಜ್ಮ್",
+            "name_arabic": "النجم",
+            "name_simple": "ಅನ್ನಜ್ಮ್",
+            "verses_count": 62,
+            "pages": [
+                526,
+                528
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ನಕ್ಷತ್ರ"
+            }
+        },
+        {
+            "id": 54,
+            "chapter_number": 54,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/054-AL-QAMAR.mp3",
+            "revelation_order": 37,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಕಮರ್",
+            "name_arabic": "القمر",
+            "name_simple": "ಅಲ್ ಕಮರ್",
+            "verses_count": 55,
+            "pages": [
+                528,
+                531
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಚಂದ್ರ"
+            }
+        },
+        {
+            "id": 55,
+            "chapter_number": 55,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/055.ARRAHMAN.mp3",
+            "revelation_order": 97,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅರ್ರಹ್ಮಾನ್",
+            "name_arabic": "الرحمن",
+            "name_simple": "ಅರ್ರಹ್ಮಾನ್",
+            "verses_count": 78,
+            "pages": [
+                531,
+                534
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಅಪಾರ ದಯಾಳು"
+            }
+        },
+        {
+            "id": 56,
+            "chapter_number": 56,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/056.AL-WAQIYA.mp3",
+            "revelation_order": 46,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ವಾಕಿಯ",
+            "name_arabic": "الواقعة",
+            "name_simple": "ಅಲ್ ವಾಕಿಯ",
+            "verses_count": 96,
+            "pages": [
+                534,
+                537
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಂಭವ"
+            }
+        },
+        {
+            "id": 57,
+            "chapter_number": 57,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/057.AL-HADEED.mp3",
+            "revelation_order": 94,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಹದೀದ್",
+            "name_arabic": "الحديد",
+            "name_simple": "ಅಲ್ ಹದೀದ್",
+            "verses_count": 29,
+            "pages": [
+                537,
+                541
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಬ್ಬಿಣ"
+            }
+        },
+        {
+            "id": 58,
+            "chapter_number": 58,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/058.AL-MUJADALAH.mp3",
+            "revelation_order": 105,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಮುಜಾದಿಲ",
+            "name_arabic": "المجادلة",
+            "name_simple": "ಅಲ್ ಮುಜಾದಿಲ",
+            "verses_count": 22,
+            "pages": [
+                542,
+                545
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ವಾದಿಸಿದ ಮಹಿಳೆ"
+            }
+        },
+        {
+            "id": 59,
+            "chapter_number": 59,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/059.AL-HASHR.mp3",
+            "revelation_order": 101,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಹಶ್ರ್",
+            "name_arabic": "الحشر",
+            "name_simple": "ಅಲ್ ಹಶ್ರ್",
+            "verses_count": 24,
+            "pages": [
+                545,
+                548
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಜಮಾವಣೆ"
+            }
+        },
+        {
+            "id": 60,
+            "chapter_number": 60,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/060-AL-MUMTHAHINA.mp3",
+            "revelation_order": 91,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಮುಮ್‍ತಹಿನ",
+            "name_arabic": "الممتحنة",
+            "name_simple": "ಅಲ್ ಮುಮ್‍ತಹಿನ",
+            "verses_count": 13,
+            "pages": [
+                549,
+                551
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಪರೀಕ್ಷಿತ ಮಹಿಳೆ"
+            }
+        },
+        {
+            "id": 61,
+            "chapter_number": 61,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/061.ASSAFF.mp3",
+            "revelation_order": 109,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಸ್ಸಫ್",
+            "name_arabic": "الصف",
+            "name_simple": "ಅಸ್ಸಫ್",
+            "verses_count": 14,
+            "pages": [
+                551,
+                552
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಶ್ರೇಯಾಂಕಗಳು"
+            }
+        },
+        {
+            "id": 62,
+            "chapter_number": 62,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/062.AL-JUMUAH.mp3",
+            "revelation_order": 110,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಜುಮ್ಆ",
+            "name_arabic": "الجمعة",
+            "name_simple": "ಅಲ್ ಜುಮ್ಆ",
+            "verses_count": 11,
+            "pages": [
+                553,
+                554
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಶುಕ್ರವಾರ"
+            }
+        },
+        {
+            "id": 63,
+            "chapter_number": 63,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/063.AL-MUNAFIKOON.mp3",
+            "revelation_order": 104,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಮುನಾಫಿಕೂನ್",
+            "name_arabic": "المنافقون",
+            "name_simple": "ಅಲ್ ಮುನಾಫಿಕೂನ್",
+            "verses_count": 11,
+            "pages": [
+                554,
+                555
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಪಟವಿಶ್ವಾಸಿಗಳು"
+            }
+        },
+        {
+            "id": 64,
+            "chapter_number": 64,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/064.ATTAGABUN.mp3",
+            "revelation_order": 108,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅತ್ತಗಾಬುನ್  ",
+            "name_arabic": "التغابن",
+            "name_simple": "ಅತ್ತಗಾಬುನ್",
+            "verses_count": 18,
+            "pages": [
+                556,
+                557
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಎಳೆದಾಟ"
+            }
+        },
+        {
+            "id": 65,
+            "chapter_number": 65,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/065.ATTALAQ.mp3",
+            "revelation_order": 99,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅತ್ತಲಾಕ್",
+            "name_arabic": "الطلاق",
+            "name_simple": "ಅತ್ತಲಾಕ್",
+            "verses_count": 12,
+            "pages": [
+                558,
+                559
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ವಿಚ್ಛೇದನ"
+            }
+        },
+        {
+            "id": 66,
+            "chapter_number": 66,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/066.ATTAHREEM.mp3",
+            "revelation_order": 107,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅತ್ತಹರೀಮ್",
+            "name_arabic": "التحريم",
+            "name_simple": "ಅತ್ತಹರೀಮ್",
+            "verses_count": 12,
+            "pages": [
+                560,
+                561
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ನಿಷೇಧ"
+            }
+        },
+        {
+            "id": 67,
+            "chapter_number": 67,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/067.AL-MULK.mp3",
+            "revelation_order": 77,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಮುಲ್ಕ್",
+            "name_arabic": "الملك",
+            "name_simple": "ಅಲ್ ಮುಲ್ಕ್",
+            "verses_count": 30,
+            "pages": [
+                562,
+                564
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಆಧಿಪತ್ಯ"
+            }
+        },
+        {
+            "id": 68,
+            "chapter_number": 68,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/068.AL-QALAM.mp3",
+            "revelation_order": 2,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಖಲಮ್",
+            "name_arabic": "القلم",
+            "name_simple": "ಅಲ್ ಖಲಮ್",
+            "verses_count": 52,
+            "pages": [
+                564,
+                566
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಲೇಖನಿ"
+            }
+        },
+        {
+            "id": 69,
+            "chapter_number": 69,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/069.AL-HAAQQAH.mp3",
+            "revelation_order": 78,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಹಾಕ್ಕ",
+            "name_arabic": "الحاقة",
+            "name_simple": "ಅಲ್ ಹಾಕ್ಕ",
+            "verses_count": 52,
+            "pages": [
+                566,
+                568
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ನೈಜ ಸಂಭವ"
+            }
+        },
+        {
+            "id": 70,
+            "chapter_number": 70,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/070.AL-MAARIJ.mp3",
+            "revelation_order": 79,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಮಆರಿಜ್",
+            "name_arabic": "المعارج",
+            "name_simple": "ಅಲ್ ಮಆರಿಜ್",
+            "verses_count": 44,
+            "pages": [
+                568,
+                570
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಔನ್ನತ್ಯಗಳು"
+            }
+        },
+        {
+            "id": 71,
+            "chapter_number": 71,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/071.NOOH.mp3",
+            "revelation_order": 71,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ನೂಹ್",
+            "name_arabic": "نوح",
+            "name_simple": "ನೂಹ್",
+            "verses_count": 28,
+            "pages": [
+                570,
+                571
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ನೂಹ್"
+            }
+        },
+        {
+            "id": 72,
+            "chapter_number": 72,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/072.AL-JINN.mp3",
+            "revelation_order": 40,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಜಿನ್ನ್",
+            "name_arabic": "الجن",
+            "name_simple": "ಅಲ್ ಜಿನ್ನ್",
+            "verses_count": 28,
+            "pages": [
+                572,
+                573
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಜಿನ್ನ್"
+            }
+        },
+        {
+            "id": 73,
+            "chapter_number": 73,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/073.AL-MUZZAMMIL.mp3",
+            "revelation_order": 3,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಮುಝಮ್ಮಿಲ್",
+            "name_arabic": "المزمل",
+            "name_simple": "ಅಲ್ ಮುಝಮ್ಮಿಲ್",
+            "verses_count": 20,
+            "pages": [
+                574,
+                575
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಹೊದ್ದು ಮಲಗಿದವರು"
+            }
+        },
+        {
+            "id": 74,
+            "chapter_number": 74,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/074.AL-MUDDASSIR.mp3",
+            "revelation_order": 4,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಮುದ್ದಸ್ಸಿರ್",
+            "name_arabic": "المدثر",
+            "name_simple": "ಅಲ್ ಮುದ್ದಸ್ಸಿರ್",
+            "verses_count": 56,
+            "pages": [
+                575,
+                577
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಹೊದ್ದುಕೊಂಡವರು"
+            }
+        },
+        {
+            "id": 75,
+            "chapter_number": 75,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/075.AL-KIYAMA.mp3",
+            "revelation_order": 31,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಕಿಯಾಮ",
+            "name_arabic": "القيامة",
+            "name_simple": "ಅಲ್ ಕಿಯಾಮ",
+            "verses_count": 40,
+            "pages": [
+                577,
+                578
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಪುನರುತ್ಥಾನ"
+            }
+        },
+        {
+            "id": 76,
+            "chapter_number": 76,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/076.ADDAHR.mp3",
+            "revelation_order": 98,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಇನ್ಸಾನ್",
+            "name_arabic": "الانسان",
+            "name_simple": "ಅಲ್ ಇನ್ಸಾನ್",
+            "verses_count": 31,
+            "pages": [
+                578,
+                580
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮನುಷ್ಯ"
+            }
+        },
+        {
+            "id": 77,
+            "chapter_number": 77,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/077.AL-MURSALATH.mp3",
+            "revelation_order": 33,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಮುರ್ಸಲಾತ್",
+            "name_arabic": "المرسلات",
+            "name_simple": "ಅಲ್ ಮುರ್ಸಲಾತ್",
+            "verses_count": 50,
+            "pages": [
+                580,
+                581
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಳುಹಿಸಲಾದವುಗಳು"
+            }
+        },
+        {
+            "id": 78,
+            "chapter_number": 78,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/078.ANNABA.mp3",
+            "revelation_order": 80,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅನ್ನಬಾ",
+            "name_arabic": "النبإ",
+            "name_simple": "ಅನ್ನಬಾ",
+            "verses_count": 40,
+            "pages": [
+                582,
+                583
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ವಾರ್ತೆ"
+            }
+        },
+        {
+            "id": 79,
+            "chapter_number": 79,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/079.ANNAAZIAAT.mp3",
+            "revelation_order": 81,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅನ್ನಾಝಿಯಾತ್",
+            "name_arabic": "النازعات",
+            "name_simple": "ಅನ್ನಾಝಿಯಾತ್",
+            "verses_count": 46,
+            "pages": [
+                583,
+                584
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮುಂದಕ್ಕೆ ಎಳೆಯುವವರು"
+            }
+        },
+        {
+            "id": 80,
+            "chapter_number": 80,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/080.ABASA.mp3",
+            "revelation_order": 24,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "`ಅಬಸ",
+            "name_arabic": "عبس",
+            "name_simple": "ಅಬಸ",
+            "verses_count": 42,
+            "pages": [
+                585,
+                585
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಅವರು ಅತೃಪ್ತರಾದರು"
+            }
+        },
+        {
+            "id": 81,
+            "chapter_number": 81,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/081.ATTAKWEER.mp3",
+            "revelation_order": 7,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅತ್ತಕ್ ವೀರ್",
+            "name_arabic": "التكوير",
+            "name_simple": "ಅತ್ತಕ್ ವೀರ್",
+            "verses_count": 29,
+            "pages": [
+                586,
+                586
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಉರುಳಿಸುವಿಕೆ"
+            }
+        },
+        {
+            "id": 82,
+            "chapter_number": 82,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/082.AL-INFITHAR.mp3",
+            "revelation_order": 82,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಇಂಫಿತಾರ್",
+            "name_arabic": "الإنفطار",
+            "name_simple": "ಅಲ್ ಇಂಫಿತಾರ್",
+            "verses_count": 19,
+            "pages": [
+                587,
+                587
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಬಿರಿದು ಬೀಳು"
+            }
+        },
+        {
+            "id": 83,
+            "chapter_number": 83,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/083.AL-MUTHAFFIFEEN.mp3",
+            "revelation_order": 86,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಮುತಫ್ಫಿಫೀನ್",
+            "name_arabic": "المطففين",
+            "name_simple": "ಅಲ್ ಮುತಫ್ಫಿಫೀನ್",
+            "verses_count": 36,
+            "pages": [
+                587,
+                589
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಡಿಮೆ ಕೊಡುವವರು"
+            }
+        },
+        {
+            "id": 84,
+            "chapter_number": 84,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/084.AL-INSHIQAAQ.mp3",
+            "revelation_order": 83,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಇನ್ ಶಿಕಾಕ್",
+            "name_arabic": "الإنشقاق",
+            "name_simple": "ಅಲ್ ಇನ್ ಶಿಕಾಕ್",
+            "verses_count": 25,
+            "pages": [
+                589,
+                589
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸ್ಫೋಟ"
+            }
+        },
+        {
+            "id": 85,
+            "chapter_number": 85,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/085.AL-BUROOJ.mp3",
+            "revelation_order": 27,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಬರೂಜ್",
+            "name_arabic": "البروج",
+            "name_simple": "ಅಲ್ ಬರೂಜ್",
+            "verses_count": 22,
+            "pages": [
+                590,
+                590
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಗೋಪುರಗಳು"
+            }
+        },
+        {
+            "id": 86,
+            "chapter_number": 86,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/086.ATTHARIQ.mp3",
+            "revelation_order": 36,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅತ್ತಾರಿಕ್",
+            "name_arabic": "الطارق",
+            "name_simple": "ಅತ್ತಾರಿಕ್",
+            "verses_count": 17,
+            "pages": [
+                591,
+                591
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮಿನುಗು ತಾರೆ"
+            }
+        },
+        {
+            "id": 87,
+            "chapter_number": 87,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/087.AL-ALA.mp3",
+            "revelation_order": 8,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಅಅಲಾ",
+            "name_arabic": "الأعلى",
+            "name_simple": "ಅಲ್ ಅಅಲಾ",
+            "verses_count": 19,
+            "pages": [
+                591,
+                592
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಅತ್ಯುನ್ನತ"
+            }
+        },
+        {
+            "id": 88,
+            "chapter_number": 88,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/088.AL-GHASHIYA.mp3",
+            "revelation_order": 68,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಗಾಶಿಯ",
+            "name_arabic": "الغاشية",
+            "name_simple": "ಅಲ್ ಗಾಶಿಯ",
+            "verses_count": 26,
+            "pages": [
+                592,
+                592
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಆವರಿಸುವ ವಸ್ತು"
+            }
+        },
+        {
+            "id": 89,
+            "chapter_number": 89,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/089.AL-FAJR.mp3",
+            "revelation_order": 10,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಫಜ್ರ್",
+            "name_arabic": "الفجر",
+            "name_simple": "ಅಲ್ ಫಜ್ರ್",
+            "verses_count": 30,
+            "pages": [
+                593,
+                594
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮುಂಜಾವು"
+            }
+        },
+        {
+            "id": 90,
+            "chapter_number": 90,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/090.AL-BALAD.mp3",
+            "revelation_order": 35,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಬಲದ್",
+            "name_arabic": "البلد",
+            "name_simple": "ಅಲ್ ಬಲದ್",
+            "verses_count": 20,
+            "pages": [
+                594,
+                594
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ನಗರ"
+            }
+        },
+        {
+            "id": 91,
+            "chapter_number": 91,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/091.ASSHAMSH.mp3",
+            "revelation_order": 26,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಶ್ಶಮ್ಸ್",
+            "name_arabic": "الشمس",
+            "name_simple": "ಅಶ್ಶಮ್ಸ್",
+            "verses_count": 15,
+            "pages": [
+                595,
+                595
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸೂರ್ಯ"
+            }
+        },
+        {
+            "id": 92,
+            "chapter_number": 92,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/092.ALLAIL.mp3",
+            "revelation_order": 9,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ಲೈಲ್",
+            "name_arabic": "الليل",
+            "name_simple": "ಅಲ್ಲೈಲ್",
+            "verses_count": 21,
+            "pages": [
+                595,
+                596
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ರಾತ್ರೆ"
+            }
+        },
+        {
+            "id": 93,
+            "chapter_number": 93,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/093.ADDUHA.mp3",
+            "revelation_order": 11,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅದ್ದುಹಾ",
+            "name_arabic": "الضحى",
+            "name_simple": "ಅದ್ದುಹಾ",
+            "verses_count": 11,
+            "pages": [
+                596,
+                596
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಬಿಸಿಲೇರುವ ಸಮಯ"
+            }
+        },
+        {
+            "id": 94,
+            "chapter_number": 94,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/094.ALAMNASHRAH.mp3",
+            "revelation_order": 12,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಇನ್‌ಶಿರಾಹ್",
+            "name_arabic": "الشرح",
+            "name_simple": "ಅಲ್ ಇನ್‌ಶಿರಾಹ್",
+            "verses_count": 8,
+            "pages": [
+                596,
+                596
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ವಿಸ್ತರಣೆ"
+            }
+        },
+        {
+            "id": 95,
+            "chapter_number": 95,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/095.ATTEEN.mp3",
+            "revelation_order": 28,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅತ್ತೀನ್",
+            "name_arabic": "التين",
+            "name_simple": "ಅತ್ತೀನ್",
+            "verses_count": 8,
+            "pages": [
+                597,
+                597
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಅಂಜೂರ"
+            }
+        },
+        {
+            "id": 96,
+            "chapter_number": 96,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/096.AL-ALAQ.mp3",
+            "revelation_order": 1,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್‌ಅಲಕ್",
+            "name_arabic": "العلق",
+            "name_simple": "ಅಲ್‌ಅಲಕ್",
+            "verses_count": 19,
+            "pages": [
+                597,
+                597
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ರಕ್ತ ಪಿಂಡ"
+            }
+        },
+        {
+            "id": 97,
+            "chapter_number": 97,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/097.AL-QADR.mp3",
+            "revelation_order": 25,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಕದ್ರ್",
+            "name_arabic": "القدر",
+            "name_simple": "ಅಲ್ ಕದ್ರ್",
+            "verses_count": 5,
+            "pages": [
+                598,
+                598
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ನಿರ್ಣಾಯಕ"
+            }
+        },
+        {
+            "id": 98,
+            "chapter_number": 98,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/098.AL-BAYYINAH.mp3",
+            "revelation_order": 100,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಲ್ ಬಯ್ಯಿನಃ",
+            "name_arabic": "البينة",
+            "name_simple": "ಅಲ್ ಬಯ್ಯಿನಃ",
+            "verses_count": 8,
+            "pages": [
+                598,
+                599
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸ್ಪಷ್ಟ ಪುರಾವೆ"
+            }
+        },
+        {
+            "id": 99,
+            "chapter_number": 99,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/099.AZZILZAL.mp3",
+            "revelation_order": 93,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅಝ್ಝಿಲ್‌ಝಾಲ್",
+            "name_arabic": "الزلزلة",
+            "name_simple": "ಅಝ್ಝಿಲ್‌ಝಾಲ್",
+            "verses_count": 8,
+            "pages": [
+                599,
+                599
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಂಪನ"
+            }
+        },
+        {
+            "id": 100,
+            "chapter_number": 100,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/100.AL-ADIYATH.mp3",
+            "revelation_order": 14,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಆದಿಯಾತ್",
+            "name_arabic": "العاديات",
+            "name_simple": "ಅಲ್ ಆದಿಯಾತ್",
+            "verses_count": 11,
+            "pages": [
+                599,
+                600
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಓಡುವವುಗಳು"
+            }
+        },
+        {
+            "id": 101,
+            "chapter_number": 101,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/101.AL-QARIAH.mp3",
+            "revelation_order": 30,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಕಾರಿಅಃ",
+            "name_arabic": "القارعة",
+            "name_simple": "ಅಲ್ ಕಾರಿಅಃ",
+            "verses_count": 11,
+            "pages": [
+                600,
+                600
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಭಾರೀ ಆಘಾತ"
+            }
+        },
+        {
+            "id": 102,
+            "chapter_number": 102,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/102.ATTAKASUR.mp3",
+            "revelation_order": 16,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅತ್ತಕಾಸುರ್",
+            "name_arabic": "التكاثر",
+            "name_simple": "ಅತ್ತಕಾಸುರ್",
+            "verses_count": 8,
+            "pages": [
+                600,
+                600
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಅಧಿಕದ ಚಿಂತೆ"
+            }
+        },
+        {
+            "id": 103,
+            "chapter_number": 103,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/103.AL-ASR.mp3",
+            "revelation_order": 13,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಅಸ್ರ್",
+            "name_arabic": "العصر",
+            "name_simple": "ಅಲ್ ಅಸ್ರ್",
+            "verses_count": 3,
+            "pages": [
+                601,
+                601
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕಾಲ"
+            }
+        },
+        {
+            "id": 104,
+            "chapter_number": 104,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/104.AL-HUMAZAH.mp3",
+            "revelation_order": 32,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಹುಮಝಃ",
+            "name_arabic": "الهمزة",
+            "name_simple": "ಅಲ್ ಹುಮಝಃ",
+            "verses_count": 9,
+            "pages": [
+                601,
+                601
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮೂದಲಿಸುವವನು"
+            }
+        },
+        {
+            "id": 105,
+            "chapter_number": 105,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/105.AL-FEEL.mp3",
+            "revelation_order": 19,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಫೀಲ್",
+            "name_arabic": "الفيل",
+            "name_simple": "ಅಲ್ ಫೀಲ್",
+            "verses_count": 5,
+            "pages": [
+                601,
+                601
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಆನೆ"
+            }
+        },
+        {
+            "id": 106,
+            "chapter_number": 106,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/106.AL-QURAISH.mp3",
+            "revelation_order": 29,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಕುರೈಶ್",
+            "name_arabic": "قريش",
+            "name_simple": "ಕುರೈಶ್",
+            "verses_count": 4,
+            "pages": [
+                602,
+                602
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಕುರೈಶರು"
+            }
+        },
+        {
+            "id": 107,
+            "chapter_number": 107,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/107.AL-MAOON.mp3",
+            "revelation_order": 17,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಮಾಊನ್",
+            "name_arabic": "الماعون",
+            "name_simple": "ಅಲ್ ಮಾಊನ್",
+            "verses_count": 7,
+            "pages": [
+                602,
+                602
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಾಮಾನ್ಯ ದಯೆ"
+            }
+        },
+        {
+            "id": 108,
+            "chapter_number": 108,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/108.AL-KAWSAR.mp3",
+            "revelation_order": 15,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಕೌಸರ್",
+            "name_arabic": "الكوثر",
+            "name_simple": "ಅಲ್ ಕೌಸರ್",
+            "verses_count": 3,
+            "pages": [
+                602,
+                602
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಮೃದ್ಧಿ"
+            }
+        },
+        {
+            "id": 109,
+            "chapter_number": 109,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/109.AL-KAAFIROON.mp3",
+            "revelation_order": 18,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್‌ಕಾಫಿರೂನ್",
+            "name_arabic": "الكافرون",
+            "name_simple": "ಅಲ್‌ಕಾಫಿರೂನ್",
+            "verses_count": 6,
+            "pages": [
+                603,
+                603
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಧಿಕ್ಕಾರಿಗಳು"
+            }
+        },
+        {
+            "id": 110,
+            "chapter_number": 110,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/110.-ANNASR.mp3",
+            "revelation_order": 114,
+            "revelation_place": "ಮದೀನಾ",
+            "name_complex": "ಅನ್ನಸ್ರ್",
+            "name_arabic": "النصر",
+            "name_simple": "ಅನ್ನಸ್ರ್",
+            "verses_count": 3,
+            "pages": [
+                603,
+                603
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಸಹಾಯ"
+            }
+        },
+        {
+            "id": 111,
+            "chapter_number": 111,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/111.-AL-LAHAB.mp3",
+            "revelation_order": 6,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಲಹಬ್",
+            "name_arabic": "المسد",
+            "name_simple": "ಅಲ್ ಲಹಬ್",
+            "verses_count": 5,
+            "pages": [
+                603,
+                603
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಜ್ವಾಲೆ"
+            }
+        },
+        {
+            "id": 112,
+            "chapter_number": 112,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/112.AL-IKHLAS.mp3",
+            "revelation_order": 22,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಇಖ್ಲಾಸ್",
+            "name_arabic": "الإخلاص",
+            "name_simple": "ಅಲ್ ಇಖ್ಲಾಸ್",
+            "verses_count": 4,
+            "pages": [
+                604,
+                604
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಪ್ರಾಮಾಣಿಕತೆ"
+            }
+        },
+        {
+            "id": 113,
+            "chapter_number": 113,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/113.AL-FALAQ.mp3",
+            "revelation_order": 20,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅಲ್ ಫಲಕ್",
+            "name_arabic": "الفلق",
+            "name_simple": "ಅಲ್ ಫಲಕ್",
+            "verses_count": 5,
+            "pages": [
+                604,
+                604
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮುಂಜಾವು"
+            }
+        },
+        {
+            "id": 114,
+            "chapter_number": 114,
+            "bismillah_pre": true,
+            "audio_url": "https://ia800501.us.archive.org/8/items/quraninkannada/114.ANNAAS.mp3",
+            "revelation_order": 21,
+            "revelation_place": "ಮಕ್ಕಾ",
+            "name_complex": "ಅನ್ನಾಸ್",
+            "name_arabic": "الناس",
+            "name_simple": "ಅನ್ನಾಸ್",
+            "verses_count": 6,
+            "pages": [
+                604,
+                604
+            ],
+            "translated_name": {
+                "language_name": "ಕನ್ನಡ",
+                "name": "ಮಾನವರು"
+            }
+        }
+    ]
+}
