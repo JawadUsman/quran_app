@@ -39,6 +39,7 @@ class _QuranWidgetState extends State<QuranWidget>
         BaseStateMixin<QuranStore, QuranWidget>,
         AutomaticKeepAliveClientMixin {
   QuranStore _store;
+
   @override
   QuranStore get store => _store;
 
@@ -74,12 +75,12 @@ class _QuranWidgetState extends State<QuranWidget>
   }
 
   Widget circularProgress(BuildContext context) => Theme(
-    data: Theme.of(context).copyWith(accentColor: Color(0xffe1d79f)),
-    child: CircularProgressIndicator(
-      strokeWidth: 2.0,
-      backgroundColor: Color(0x86000000),
-    ),
-  );
+        data: Theme.of(context).copyWith(accentColor: Color(0xffe1d79f)),
+        child: CircularProgressIndicator(
+          strokeWidth: 2.0,
+          backgroundColor: Color(0x86000000),
+        ),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -155,9 +156,9 @@ class _QuranWidgetState extends State<QuranWidget>
         initialData: store.state$.value,
         stream: store.state$,
         builder: (
-            BuildContext context,
-            AsyncSnapshot<DataState> snapshot,
-            ) {
+          BuildContext context,
+          AsyncSnapshot<DataState> snapshot,
+        ) {
           if (EnumSelector.success == _store.state$.value.enumSelector) {
             setMediaURL(_store.selectedChapter$.value.audioURL);
           }
@@ -170,7 +171,7 @@ class _QuranWidgetState extends State<QuranWidget>
                 child: Observer(
                   builder: (BuildContext context) {
                     var itemIndex = store.listAya.indexWhere(
-                          (t) => t.aya.value == store.initialSelectedAya$.value,
+                      (t) => t.aya.value == store.initialSelectedAya$.value,
                     );
                     return Column(
                       children: <Widget>[
@@ -179,12 +180,12 @@ class _QuranWidgetState extends State<QuranWidget>
                             child: ScrollablePositionedList.builder(
                               itemCount: store.listAya.length,
                               initialScrollIndex:
-                              itemIndex >= 0 ? itemIndex : 0,
+                                  itemIndex >= 0 ? itemIndex : 0,
                               addAutomaticKeepAlives: true,
                               itemBuilder: (
-                                  BuildContext context,
-                                  int index,
-                                  ) {
+                                BuildContext context,
+                                int index,
+                              ) {
                                 if (store.listAya.isEmpty) {
                                   return Container();
                                 }
@@ -200,9 +201,9 @@ class _QuranWidgetState extends State<QuranWidget>
                                   initialData: item.isBookmarked.value,
                                   stream: item.isBookmarked,
                                   builder: (
-                                      BuildContext context,
-                                      AsyncSnapshot snapshot,
-                                      ) {
+                                    BuildContext context,
+                                    AsyncSnapshot snapshot,
+                                  ) {
                                     var isBookmarked = item.isBookmarked.value;
                                     return Material(
                                       color: isBookmarked
@@ -210,7 +211,7 @@ class _QuranWidgetState extends State<QuranWidget>
                                           : Colors.transparent,
                                       child: Column(
                                         crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
+                                            CrossAxisAlignment.stretch,
                                         children: <Widget>[
                                           InkWell(
                                             onLongPress: () {
@@ -248,39 +249,39 @@ class _QuranWidgetState extends State<QuranWidget>
                                                 children: <Widget>[
                                                   Column(
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .stretch,
+                                                        CrossAxisAlignment
+                                                            .stretch,
                                                     children: <Widget>[
                                                       // Bismillah
                                                       !isBlank('aya.bismillah') &&
-                                                          aya.index == 1 &&
-                                                          item.chapter
-                                                              .chapterNumber !=
-                                                              9 &&
-                                                          item.chapter
-                                                              .chapterNumber !=
-                                                              1
-                                                      //!isBlank('')
+                                                              aya.index == 1 &&
+                                                              item.chapter
+                                                                      .chapterNumber !=
+                                                                  9 &&
+                                                              item.chapter
+                                                                      .chapterNumber !=
+                                                                  1
+                                                          //!isBlank('')
                                                           ? Container(
-                                                        padding:
-                                                        EdgeInsets
-                                                            .only(
-                                                          top: 6,
-                                                          bottom: 10,
-                                                        ),
-                                                        child: Text(
-                                                          'بِسۡـــــــــمِ ٱللهِ ٱلرَّحۡـمَـٰنِ ٱلرَّحِـــــــيمِ',
-                                                          textAlign:
-                                                          TextAlign
-                                                              .center,
-                                                          style:
-                                                          TextStyle(
-                                                            fontSize: 18,
-                                                            fontFamily:
-                                                            'noorehira',
-                                                          ),
-                                                        ),
-                                                      )
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .only(
+                                                                top: 6,
+                                                                bottom: 10,
+                                                              ),
+                                                              child: Text(
+                                                                'بِسۡـــــــــمِ ٱللهِ ٱلرَّحۡـمَـٰنِ ٱلرَّحِـــــــيمِ',
+                                                                textAlign:
+                                                                    TextAlign
+                                                                        .center,
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontSize: 18,
+                                                                  fontFamily:
+                                                                      'noorehira',
+                                                                ),
+                                                              ),
+                                                            )
                                                           : Container(),
                                                       // 1
                                                       Row(
@@ -292,111 +293,111 @@ class _QuranWidgetState extends State<QuranWidget>
                                                                 //index
                                                                 Stack(
                                                                     alignment:
-                                                                    Alignment
-                                                                        .center,
+                                                                        Alignment
+                                                                            .center,
                                                                     children: <
                                                                         Widget>[
                                                                       Container(
                                                                           child:
-                                                                          Image(
-                                                                            image: AssetImage(
-                                                                                'assets/images/ayah-background.png'),
-                                                                            color: Theme.of(context)
-                                                                                .textTheme
-                                                                                .bodyText1
-                                                                                .color,
-                                                                            width:
+                                                                              Image(
+                                                                        image: AssetImage(
+                                                                            'assets/images/ayah-background.png'),
+                                                                        color: Theme.of(context)
+                                                                            .textTheme
+                                                                            .bodyText1
+                                                                            .color,
+                                                                        width:
                                                                             44.0,
-                                                                            height:
+                                                                        height:
                                                                             45.0,
-                                                                            fit: BoxFit
-                                                                                .fill,
-                                                                          )),
+                                                                        fit: BoxFit
+                                                                            .fill,
+                                                                      )),
                                                                       Container(
                                                                         alignment:
-                                                                        Alignment.center,
+                                                                            Alignment.center,
                                                                         child:
-                                                                        Text(
+                                                                            Text(
                                                                           '${aya.index}',
                                                                           style:
-                                                                          TextStyle(
+                                                                              TextStyle(
                                                                             fontSize:
-                                                                            14,
+                                                                                14,
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ]),
                                                                 ruku
                                                                     ? Image(
-                                                                  color: Theme.of(context)
-                                                                      .iconTheme
-                                                                      .color,
-                                                                  image: AssetImage(
-                                                                      'assets/images/ruku.png'),
-                                                                  width:
-                                                                  20.0,
-                                                                  height:
-                                                                  20.0,
-                                                                )
+                                                                        color: Theme.of(context)
+                                                                            .iconTheme
+                                                                            .color,
+                                                                        image: AssetImage(
+                                                                            'assets/images/ruku.png'),
+                                                                        width:
+                                                                            20.0,
+                                                                        height:
+                                                                            20.0,
+                                                                      )
                                                                     : Container(),
                                                                 //bookmark
                                                                 Row(
                                                                   mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
+                                                                      MainAxisSize
+                                                                          .min,
                                                                   children: <
                                                                       Widget>[
                                                                     isBookmarked
                                                                         ? Builder(
-                                                                      builder:
-                                                                          (
-                                                                          BuildContext context,
-                                                                          ) {
-                                                                        return Animator<double>(
-                                                                          duration: const Duration(
-                                                                            milliseconds: 100,
-                                                                          ),
-                                                                          builder: (v) {
-                                                                            return Transform.scale(
-                                                                              scale: v.value,
-                                                                              child: IconButton(
-                                                                                icon: Icon(
-                                                                                  Icons.bookmark,
+                                                                            builder:
+                                                                                (
+                                                                              BuildContext context,
+                                                                            ) {
+                                                                              return Animator<double>(
+                                                                                duration: const Duration(
+                                                                                  milliseconds: 100,
                                                                                 ),
-                                                                                onPressed: () {
-                                                                                  store.bookmarkActionType.add(
-                                                                                    Tuple3(QuranBookmarkButtonMode.remove, item, item.quranBookmark),
+                                                                                builder: (v) {
+                                                                                  return Transform.scale(
+                                                                                    scale: v.value,
+                                                                                    child: IconButton(
+                                                                                      icon: Icon(
+                                                                                        Icons.bookmark,
+                                                                                      ),
+                                                                                      onPressed: () {
+                                                                                        store.bookmarkActionType.add(
+                                                                                          Tuple3(QuranBookmarkButtonMode.remove, item, item.quranBookmark),
+                                                                                        );
+                                                                                      },
+                                                                                    ),
                                                                                   );
                                                                                 },
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        );
-                                                                      },
-                                                                    )
-                                                                        : Animator<
-                                                                        double>(
-                                                                      duration:
-                                                                      const Duration(
-                                                                        milliseconds: 100,
-                                                                      ),
-                                                                      builder:
-                                                                          (v) {
-                                                                        return Transform.scale(
-                                                                          scale: v.value,
-                                                                          child: IconButton(
-                                                                            icon: Icon(
-                                                                              Icons.bookmark_border,
-                                                                            ),
-                                                                            onPressed: () {
-                                                                              store.bookmarkActionType.add(
-                                                                                Tuple3(QuranBookmarkButtonMode.add, item, null),
                                                                               );
                                                                             },
-                                                                          ),
-                                                                        );
-                                                                      },
-                                                                    )
+                                                                          )
+                                                                        : Animator<
+                                                                            double>(
+                                                                            duration:
+                                                                                const Duration(
+                                                                              milliseconds: 100,
+                                                                            ),
+                                                                            builder:
+                                                                                (v) {
+                                                                              return Transform.scale(
+                                                                                scale: v.value,
+                                                                                child: IconButton(
+                                                                                  icon: Icon(
+                                                                                    Icons.bookmark_border,
+                                                                                  ),
+                                                                                  onPressed: () {
+                                                                                    store.bookmarkActionType.add(
+                                                                                      Tuple3(QuranBookmarkButtonMode.add, item, null),
+                                                                                    );
+                                                                                  },
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                          )
                                                                   ],
                                                                 ),
                                                               ],
@@ -417,107 +418,107 @@ class _QuranWidgetState extends State<QuranWidget>
                                                         stream: store
                                                             .arabicFontSize$,
                                                         builder: (
-                                                            BuildContext context,
-                                                            AsyncSnapshot<double>
-                                                            snapshot,
-                                                            ) {
+                                                          BuildContext context,
+                                                          AsyncSnapshot<double>
+                                                              snapshot,
+                                                        ) {
                                                           //۩ ۞ noorehira
                                                           return Text(
                                                             '${aya.text}',
                                                             textDirection:
-                                                            TextDirection
-                                                                .rtl,
+                                                                TextDirection
+                                                                    .rtl,
                                                             style: TextStyle(
                                                               fontSize:
-                                                              snapshot.data,
+                                                                  snapshot.data,
                                                               fontFamily:
-                                                              'noorehira',
+                                                                  'noorehira',
                                                               // 'qalam Majeed',
                                                             ),
                                                           );
                                                         },
                                                       ),
                                                     ]..add(
-                                                      Builder(
-                                                        builder: (
+                                                        Builder(
+                                                          builder: (
                                                             BuildContext
-                                                            context,
-                                                            ) {
-                                                          return StreamBuilder<
-                                                              DataState>(
-                                                            initialData: item
-                                                                .translationState
-                                                                .value,
-                                                            stream: item
-                                                                .translationState
-                                                                .delay(
-                                                              const Duration(
-                                                                milliseconds:
-                                                                500,
-                                                              ),
-                                                            ),
-                                                            builder: (
-                                                                BuildContext
                                                                 context,
+                                                          ) {
+                                                            return StreamBuilder<
+                                                                DataState>(
+                                                              initialData: item
+                                                                  .translationState
+                                                                  .value,
+                                                              stream: item
+                                                                  .translationState
+                                                                  .delay(
+                                                                const Duration(
+                                                                  milliseconds:
+                                                                      500,
+                                                                ),
+                                                              ),
+                                                              builder: (
+                                                                BuildContext
+                                                                    context,
                                                                 AsyncSnapshot<
-                                                                    DataState>
-                                                                snapshot,
-                                                                ) {
-                                                              return WidgetSelector(
-                                                                selectedState:
-                                                                snapshot
-                                                                    .data,
-                                                                states: {
-                                                                  DataState(
-                                                                    enumSelector:
-                                                                    EnumSelector
-                                                                        .loading,
-                                                                  ): Center(
-                                                                    child: circularProgress(
-                                                                        context),
-                                                                  ),
-                                                                  DataState(
-                                                                    enumSelector:
-                                                                    EnumSelector
-                                                                        .success,
-                                                                  ): Builder(
-                                                                    builder:
-                                                                        (BuildContext
-                                                                    context) {
-                                                                      return StreamBuilder<
-                                                                          List<Tuple2<Aya, TranslationData>>>(
-                                                                        initialData: item
-                                                                            .translations
-                                                                            .value,
-                                                                        stream: item
-                                                                            .translations
-                                                                            .delay(
-                                                                          const Duration(
-                                                                            milliseconds: 500,
+                                                                        DataState>
+                                                                    snapshot,
+                                                              ) {
+                                                                return WidgetSelector(
+                                                                  selectedState:
+                                                                      snapshot
+                                                                          .data,
+                                                                  states: {
+                                                                    DataState(
+                                                                      enumSelector:
+                                                                          EnumSelector
+                                                                              .loading,
+                                                                    ): Center(
+                                                                      child: circularProgress(
+                                                                          context),
+                                                                    ),
+                                                                    DataState(
+                                                                      enumSelector:
+                                                                          EnumSelector
+                                                                              .success,
+                                                                    ): Builder(
+                                                                      builder:
+                                                                          (BuildContext
+                                                                              context) {
+                                                                        return StreamBuilder<
+                                                                            List<Tuple2<Aya, TranslationData>>>(
+                                                                          initialData: item
+                                                                              .translations
+                                                                              .value,
+                                                                          stream: item
+                                                                              .translations
+                                                                              .delay(
+                                                                            const Duration(
+                                                                              milliseconds: 500,
+                                                                            ),
                                                                           ),
-                                                                        ),
-                                                                        builder:
-                                                                            (
+                                                                          builder:
+                                                                              (
                                                                             BuildContext
-                                                                            context,
+                                                                                context,
                                                                             AsyncSnapshot<List<Tuple2<Aya, TranslationData>>>
-                                                                            snapshot,
-                                                                            ) {
-                                                                          List<Widget>
-                                                                          listTranslationWidget =
-                                                                          [];
-                                                                          for (var item
-                                                                          in snapshot.data) {
-                                                                            var translation = item.item1;
-                                                                            var translationData = item.item2;
-                                                                            //print('Jawad ${translationData.languageCode}');
-                                                                            listTranslationWidget.add(Column(
-                                                                              crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                                              children: <Widget>[
-                                                                                SizedBox.fromSize(
-                                                                                  size: Size.fromHeight(10),
-                                                                                ),
-                                                                                /*Container(
+                                                                                snapshot,
+                                                                          ) {
+                                                                            List<Widget>
+                                                                                listTranslationWidget =
+                                                                                [];
+                                                                            for (var item
+                                                                                in snapshot.data) {
+                                                                              var translation = item.item1;
+                                                                              var translationData = item.item2;
+                                                                              //print('Jawad ${translationData.languageCode}');
+                                                                              listTranslationWidget.add(Column(
+                                                                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                                                children: <Widget>[
+                                                                                  SizedBox.fromSize(
+                                                                                    size: Size.fromHeight(10),
+                                                                                  ),
+                                                                                  /*Container(
                                                                                   child:
                                                                                       Text(
                                                                                     '${translationData.languageCode ?? ''}',
@@ -528,46 +529,46 @@ class _QuranWidgetState extends State<QuranWidget>
                                                                                     ),
                                                                                   ),
                                                                                 ),*/
-                                                                                SizedBox.fromSize(
-                                                                                  size: Size.fromHeight(1),
-                                                                                ),
-                                                                                Container(
-                                                                                  child: StreamBuilder<double>(
-                                                                                    initialData: store.translationFontSize$.value,
-                                                                                    stream: store.translationFontSize$,
-                                                                                    builder: (
+                                                                                  SizedBox.fromSize(
+                                                                                    size: Size.fromHeight(1),
+                                                                                  ),
+                                                                                  Container(
+                                                                                    child: StreamBuilder<double>(
+                                                                                      initialData: store.translationFontSize$.value,
+                                                                                      stream: store.translationFontSize$,
+                                                                                      builder: (
                                                                                         BuildContext context,
                                                                                         AsyncSnapshot<double> snapshot,
-                                                                                        ) {
-                                                                                      return SelectableText(
-                                                                                        '${translation.text}',
-                                                                                        style: Theme.of(context).textTheme.bodyText1.copyWith(
-                                                                                          fontSize: snapshot.data,
-                                                                                          fontFamily: translationData.languageCode == 'kan' ? 'kannada' : null,
-                                                                                        ),
-                                                                                      );
-                                                                                    },
+                                                                                      ) {
+                                                                                        return SelectableText(
+                                                                                          '${translation.text}',
+                                                                                          style: Theme.of(context).textTheme.bodyText1.copyWith(
+                                                                                                fontSize: snapshot.data,
+                                                                                                fontFamily: translationData.languageCode == 'kan' ? 'kannada' : null,
+                                                                                              ),
+                                                                                        );
+                                                                                      },
+                                                                                    ),
                                                                                   ),
-                                                                                ),
-                                                                              ],
-                                                                            ));
-                                                                          }
-                                                                          return Column(
-                                                                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                                                                            mainAxisSize: MainAxisSize.min,
-                                                                            children: listTranslationWidget,
-                                                                          );
-                                                                        },
-                                                                      );
-                                                                    },
-                                                                  ),
-                                                                },
-                                                              );
-                                                            },
-                                                          );
-                                                        },
+                                                                                ],
+                                                                              ));
+                                                                            }
+                                                                            return Column(
+                                                                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                                                                              mainAxisSize: MainAxisSize.min,
+                                                                              children: listTranslationWidget,
+                                                                            );
+                                                                          },
+                                                                        );
+                                                                      },
+                                                                    ),
+                                                                  },
+                                                                );
+                                                              },
+                                                            );
+                                                          },
+                                                        ),
                                                       ),
-                                                    ),
                                                   ),
                                                 ],
                                               ),
@@ -576,7 +577,7 @@ class _QuranWidgetState extends State<QuranWidget>
                                           Container(
                                             height: 1,
                                             color:
-                                            Theme.of(context).dividerColor,
+                                                Theme.of(context).dividerColor,
                                           ),
                                         ],
                                       ),
@@ -598,9 +599,9 @@ class _QuranWidgetState extends State<QuranWidget>
               ): ScrollablePositionedList.builder(
                 itemCount: 10,
                 itemBuilder: (
-                    BuildContext context,
-                    int index,
-                    ) {
+                  BuildContext context,
+                  int index,
+                ) {
                   return InkWell(
                     child: Container(
                       padding: EdgeInsets.only(
@@ -667,7 +668,7 @@ class _QuranWidgetState extends State<QuranWidget>
   void _audioPlayerStateUpdate(PlayerState state) => state;
 
   final StreamController<AppPlayerState> _streamController =
-  StreamController<AppPlayerState>.broadcast();
+      StreamController<AppPlayerState>.broadcast();
 
   void checkInitValue(String url) {
     var duration = PreferencesUtils.getAudioTime(url, 0);
@@ -675,7 +676,6 @@ class _QuranWidgetState extends State<QuranWidget>
   }
 
   Future<int> setMediaURL(String url) async {
-    print("Jawad ---> audio URL:  $url");
     try {
       //currentPosition = Duration(seconds: 0);
       //_streamController.add(PlayerState.paused(duration: currentPosition));
@@ -732,8 +732,8 @@ class _QuranWidgetState extends State<QuranWidget>
         });
         audioPlayer.onAudioPositionChanged.listen((Duration p) {
           if (p.inSeconds != 0)
-            _streamController.add(
-                AppPlayerState.playing(totalDuration: totalDuration, duration: p));
+            _streamController.add(AppPlayerState.playing(
+                totalDuration: totalDuration, duration: p));
         });
       }
       audioPlayer.onPlayerError.listen((event) {
@@ -778,39 +778,42 @@ class _QuranWidgetState extends State<QuranWidget>
               children: <Widget>[
                 !playerStateValue.isBuffering
                     ? IconButton(
-                  icon: Icon(
-                    playerStateValue.isPlaying
-                        ? Icons.pause
-                        : Icons.play_arrow,
-                    color: Color(0xffe1d79f),
-                  ),
-                  onPressed: () async {
-                    print("Jawad ---> Button onPressed");
-                    var connectivityResult =
-                    await (Connectivity().checkConnectivity());
-                    print(
-                        "Jawad ---> network status $connectivityResult");
-                    if (connectivityResult != ConnectivityResult.none) {
-                      _streamController.add(AppPlayerState.buffering(
-                          totalDuration: totalDuration,
-                          duration: currentPosition));
-                      if (!playerStateValue.isPlaying) {
-                        print("Jawad ---> player resume");
-                        await audioPlayer.resume();
-                      } else {
-                        print("Jawad ---> player pause");
-                        await audioPlayer.pause();
-                      }
-                    } else {
-                      showMessage('No internet connection');
-                    }
-                  },
-                )
-                    : SizedBox(
-                  height: 18.0,
-                  width: 18.0,
-                  child: circularProgress(context),
-                ),
+                        icon: Icon(
+                          playerStateValue.isPlaying
+                              ? Icons.pause
+                              : Icons.play_arrow,
+                          color: Color(0xffe1d79f),
+                        ),
+                        onPressed: () async {
+                          print("Jawad ---> Button onPressed");
+                          var connectivityResult =
+                              await (Connectivity().checkConnectivity());
+                          print(
+                              "Jawad ---> network status $connectivityResult");
+                          if (connectivityResult != ConnectivityResult.none) {
+                            _streamController.add(AppPlayerState.buffering(
+                                totalDuration: totalDuration,
+                                duration: currentPosition));
+                            if (!playerStateValue.isPlaying) {
+                              print("Jawad ---> player resume");
+                              await audioPlayer.resume();
+                            } else {
+                              print("Jawad ---> player pause");
+                              await audioPlayer.pause();
+                            }
+                          } else {
+                            showMessage('No internet connection');
+                          }
+                        },
+                      )
+                    : Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child: SizedBox(
+                          height: 18.0,
+                          width: 18.0,
+                          child: circularProgress(context),
+                        ),
+                    ),
                 Expanded(
                   child: SliderTheme(
                     data: SliderTheme.of(context).copyWith(
@@ -820,21 +823,21 @@ class _QuranWidgetState extends State<QuranWidget>
                       trackHeight: 2.0,
                       thumbColor: Color(0xffb4ac7f),
                       thumbShape:
-                      RoundSliderThumbShape(enabledThumbRadius: 12.0),
+                          RoundSliderThumbShape(enabledThumbRadius: 12.0),
                       overlayColor: Color(0x60e7dfb2),
                       overlayShape:
-                      RoundSliderOverlayShape(overlayRadius: 28.0),
+                          RoundSliderOverlayShape(overlayRadius: 28.0),
                     ),
                     child: Slider(
                         value: (isSliderReady &&
-                            playerStateValue.totalDuration.inSeconds >
-                                currentPosition.inSeconds)
+                                playerStateValue.totalDuration.inSeconds >
+                                    currentPosition.inSeconds)
                             ? playerStateValue.duration.inSeconds.toDouble()
                             : 0.0,
                         min: 0.0,
                         max: isSliderReady
                             ? playerStateValue.totalDuration.inSeconds
-                            .toDouble()
+                                .toDouble()
                             : 0.0,
                         onChanged: (double value) {
                           seekToSecond(value.toInt());
@@ -870,7 +873,7 @@ class _QuranWidgetState extends State<QuranWidget>
   //not used
   void playAudio({String url, String key}) async {
     var fetchedFile =
-    DefaultCacheManager().getFileStream(url, withProgress: true, key: key);
+        DefaultCacheManager().getFileStream(url, withProgress: true, key: key);
     fetchedFile.listen((event) {
       if (event is DownloadProgress) {
         var data = event;
@@ -916,6 +919,7 @@ class _QuranWidgetState extends State<QuranWidget>
         audioPlayer.onPlayerStateChanged.listen((PlayerState s) async {
           if (currentPosition == null || currentPosition.inSeconds < 0)
             currentPosition = Duration(seconds: 0);
+          print("Jawad player status: $s ");
           if (s == PlayerState.PLAYING) {
             _streamController.add(AppPlayerState.playing(
                 totalDuration: totalDuration, duration: currentPosition));
@@ -929,8 +933,8 @@ class _QuranWidgetState extends State<QuranWidget>
           }
         });
         audioPlayer.onAudioPositionChanged.listen((Duration p) {
-          _streamController.add(
-              AppPlayerState.playing(totalDuration: totalDuration, duration: p));
+          _streamController.add(AppPlayerState.playing(
+              totalDuration: totalDuration, duration: p));
         });
       }
       audioPlayer.onPlayerError.listen((event) {

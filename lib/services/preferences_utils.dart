@@ -1,8 +1,8 @@
-
 import 'package:shared_preferences/shared_preferences.dart';
 
 class PreferencesUtils {
-  static Future<SharedPreferences>? get _instance async => _prefsInstance ??= await SharedPreferences.getInstance();
+  static Future<SharedPreferences>? get _instance async =>
+      _prefsInstance ??= await SharedPreferences.getInstance();
   static SharedPreferences? _prefsInstance;
 
   // call this method from iniState() function of mainApp().
@@ -10,8 +10,12 @@ class PreferencesUtils {
     _prefsInstance = await _instance;
     return _prefsInstance;
   }
+
   static int getAudioTime(String key, int defValue) {
-    return _prefsInstance!.getInt(key) ?? defValue;
+    if (_prefsInstance != null) {
+      return _prefsInstance!.getInt(key) ?? defValue;
+    } else
+      return 0;
   }
 
   static Future<bool> setAudioTime(String key, int value) async {

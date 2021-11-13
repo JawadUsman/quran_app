@@ -4,8 +4,8 @@ class AppPlayerState {
   bool isPlaying;
   bool isPaused;
   bool isStopped;
-  Duration duration;
-  Duration totalDuration;
+  Duration? duration;
+  Duration? totalDuration;
 
   AppPlayerState.initial(
       {this.isBuffering = false,
@@ -13,8 +13,7 @@ class AppPlayerState {
       this.isPlaying = false,
       this.isPaused = false,
       this.isStopped = false,
-      required this.duration,
-      required this.totalDuration});
+        this.duration,this.totalDuration});
 
   AppPlayerState.buffering(
       {this.isBuffering = true,
@@ -22,8 +21,8 @@ class AppPlayerState {
       this.isPlaying = false,
       this.isPaused = false,
       this.isStopped = false,
-      required this.duration,
-      required this.totalDuration});
+      this.duration,
+      this.totalDuration});
 
   AppPlayerState.playing(
       {this.isBuffering = false,
@@ -31,8 +30,8 @@ class AppPlayerState {
       this.isPlaying = true,
       this.isPaused = false,
       this.isStopped = false,
-      required this.duration,
-      required this.totalDuration});
+       this.duration,
+       this.totalDuration});
 
   AppPlayerState.paused(
       {this.isBuffering = false,
@@ -40,8 +39,8 @@ class AppPlayerState {
       this.isPlaying = false,
       this.isPaused = true,
       this.isStopped = false,
-      required this.duration,
-      required this.totalDuration});
+       this.duration,
+       this.totalDuration});
 
   AppPlayerState.stopped(
       {this.isBuffering = false,
@@ -49,6 +48,6 @@ class AppPlayerState {
       this.isPlaying = false,
       this.isPaused = false,
       this.isStopped = true,
-      required this.duration,
-      required this.totalDuration});
+       this.duration,
+       this.totalDuration});
 }
