@@ -1,2 +1,4 @@
 # Project exclude paths
 /.dart_tool/
+/android/app/nzymic_keystore
+/android/keystore.properties
