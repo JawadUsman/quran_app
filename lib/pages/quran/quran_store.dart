@@ -165,10 +165,14 @@ abstract class _QuranStore extends BaseStore with Store {
         sourceListAya.addAll(v);
         if (!initialSelectedAya$.hasValue) {
           int aya = parameter['aya'];
+
+          appServices.logger.d("jawad1", "Aya: $aya");
           var f = sourceListAya.firstWhere(
             (t) => aya != null ? t.index == aya : t != null,
             orElse: () => null,
           );
+
+          appServices.logger.d("jawad1", "f value: $f");
           if (f != null) {
             initialSelectedAya$.add(f);
           }

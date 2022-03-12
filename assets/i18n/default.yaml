@@ -1,8 +1,8 @@
 AppName: Divya Quran
 home_widget.sura: Sura
 home_widget.juz: Juz
-quran_navigator_widget.pick_sura: Pick Sura
-quran_navigator_widget.pick_aya: Pick Aya
+quran_navigator_widget.pick_sura: PICK SURA
+quran_navigator_widget.pick_aya: PICK AYA
 quran_settings_translations.translations: Translations
 quran_settings.title: Settings
 quran_settings_fontsizes.arabic_fontsize: Arabic font size

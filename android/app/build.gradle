@@ -30,6 +30,7 @@ if (keystorePropertiesFile.exists()) {
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
@@ -43,7 +44,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.yunus.quran"
+        applicationId "com.nzymic.quran"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()

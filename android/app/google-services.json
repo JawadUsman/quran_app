@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "1072768395805",
+    "firebase_url": "https://divya-quran.firebaseio.com",
+    "project_id": "divya-quran",
+    "storage_bucket": "divya-quran.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072768395805:android:c8596a06891fd89bf834f4",
+        "android_client_info": {
+          "package_name": "com.android.divyaquran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072768395805-9h1cmn034v4aq390a0ujoom3662sn4vr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCInecbUjUCho8WigI8IeAyB80mwIBvD5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072768395805-9h1cmn034v4aq390a0ujoom3662sn4vr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1072768395805:android:7abd5388222fa4d9f834f4",
+        "android_client_info": {
+          "package_name": "com.nzymic.quran"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1072768395805-9h1cmn034v4aq390a0ujoom3662sn4vr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCInecbUjUCho8WigI8IeAyB80mwIBvD5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1072768395805-9h1cmn034v4aq390a0ujoom3662sn4vr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

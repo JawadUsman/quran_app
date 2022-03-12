@@ -1,7 +1,8 @@
 // @dart=2.11
 import 'dart:async';
-import 'dart:io';
 
+//import 'package:just_audio/just_audio.dart';
+// import 'package:audiofileplayer/audiofileplayer.dart';
 import 'package:animator/animator.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:connectivity/connectivity.dart';
@@ -487,12 +488,8 @@ class _QuranWidgetState extends State<QuranWidget>
                                                                               context) {
                                                                         return StreamBuilder<
                                                                             List<Tuple2<Aya, TranslationData>>>(
-                                                                          initialData: item
-                                                                              .translations
-                                                                              .value,
-                                                                          stream: item
-                                                                              .translations
-                                                                              .delay(
+                                                                          initialData: item.translations.hasValue ? item.translations.value: null,
+                                                                          stream: item.translations.delay(
                                                                             const Duration(
                                                                               milliseconds: 500,
                                                                             ),
@@ -675,6 +672,8 @@ class _QuranWidgetState extends State<QuranWidget>
     if (duration != null) seekToSecond(duration);
   }
 
+  Timer _timer;
+
   Future<int> setMediaURL(String url) async {
     try {
       //currentPosition = Duration(seconds: 0);
@@ -689,26 +688,58 @@ class _QuranWidgetState extends State<QuranWidget>
       }
       // prepare the player with this audio but do not start playing
       int result = await audioPlayer.setUrl(url);
+      print('jawad test result: $result');
       if (result == 1) {
         checkInitValue(url);
         /*if (Platform.isIOS) {
-          audioPlayer.monitorNotificationStateChanges(_audioPlayerStateUpdate);
+          /*audioPlayer.monitorNotificationStateChanges(_audioPlayerStateUpdate);
           int duration = await audioPlayer.getDuration();
           totalDuration = Duration(milliseconds: duration);
           _streamController.add(AppPlayerState.paused(
-              totalDuration: Duration(milliseconds: duration)));
+              totalDuration: Duration(milliseconds: duration)));*/
+          print('Jawad test Timer start');
+          /*_timer = new Timer(const Duration(milliseconds: 100), () {
+            print('Jawad test Timer end');
+            setState(() {
+              print('Jawad test set onDurationChanged');
+              audioPlayer.onDurationChanged.listen((d) {
+                totalDuration = d;
+                print('Jawad test set totalDuration $totalDuration');
+                _streamController.add(AppPlayerState.paused(totalDuration: d));
+              });
+            });
+          });
+          Future.delayed(Duration(milliseconds: 500), () {
+            print('Jawad test set onDurationChanged');
+
+            audioPlayer.onDurationChanged.listen((d) {
+              totalDuration = d;
+              print('Jawad test set totalDuration $totalDuration');
+              _streamController.add(AppPlayerState.paused(totalDuration: d));
+            });
+          });*/
+          /*Audio.loadFromRemoteUrl(url, onDuration: ((double seconds) {
+            totalDuration = Duration(seconds: seconds.toInt());
+            print('Jawad test set totalDuration $totalDuration');
+          }));*/
         } else {
           audioPlayer.onDurationChanged.listen((d) {
             totalDuration = d;
             _streamController.add(AppPlayerState.paused(totalDuration: d));
           });
         }*/
-
+        print('Jawad test before onDurationChanged');
         audioPlayer.onDurationChanged.listen((d) {
+          print('Jawad test after onDurationChanged: $d');
           totalDuration = d;
           _streamController.add(AppPlayerState.paused(totalDuration: d));
         });
 
+        audioPlayer.onAudioPositionChanged.listen((Duration p) {
+          if (p.inSeconds != 0)
+            _streamController.add(AppPlayerState.playing(
+                totalDuration: totalDuration, duration: p));
+        });
         audioPlayer.onPlayerStateChanged.listen((PlayerState s) async {
           if (currentPosition == null || currentPosition.inSeconds < 0)
             currentPosition = Duration(seconds: 0);
@@ -729,11 +760,6 @@ class _QuranWidgetState extends State<QuranWidget>
               if (value == 1) audioPlayer.resume();
             }
           }
-        });
-        audioPlayer.onAudioPositionChanged.listen((Duration p) {
-          if (p.inSeconds != 0)
-            _streamController.add(AppPlayerState.playing(
-                totalDuration: totalDuration, duration: p));
         });
       }
       audioPlayer.onPlayerError.listen((event) {
@@ -769,7 +795,7 @@ class _QuranWidgetState extends State<QuranWidget>
           var isSliderReady = playerStateValue != null &&
               playerStateValue.duration != null &&
               playerStateValue.totalDuration != null;
-          print("Jawad ---> playerStateValue ${playerStateValue.isPlaying}");
+          //print("Jawad ---> playerStateValue ${playerStateValue.isPlaying}");
           currentPosition = playerStateValue.duration;
           return Container(
             color: Color(0x86000000),
@@ -807,13 +833,13 @@ class _QuranWidgetState extends State<QuranWidget>
                         },
                       )
                     : Padding(
-                      padding: const EdgeInsets.only(left: 12.0),
-                      child: SizedBox(
+                        padding: const EdgeInsets.only(left: 12.0),
+                        child: SizedBox(
                           height: 18.0,
                           width: 18.0,
                           child: circularProgress(context),
                         ),
-                    ),
+                      ),
                 Expanded(
                   child: SliderTheme(
                     data: SliderTheme.of(context).copyWith(
@@ -899,6 +925,7 @@ class _QuranWidgetState extends State<QuranWidget>
       _streamController.add(AppPlayerState.paused(duration: currentPosition));
       // prepare the player with this audio but do not start playing
       int result = await audioPlayer.play(filePath, isLocal: true);
+      print('Jawad test $result');
       if (result == 1) {
         /*if (Platform.isIOS) {
           audioPlayer.monitorNotificationStateChanges(_audioPlayerStateUpdate);
@@ -912,7 +939,9 @@ class _QuranWidgetState extends State<QuranWidget>
             _streamController.add(AppPlayerState.paused(totalDuration: d));
           });
         }*/
+        print('Jawad test before onDurationChanged');
         audioPlayer.onDurationChanged.listen((d) {
+          print('Jawad test after onDurationChanged $d');
           totalDuration = d;
           _streamController.add(AppPlayerState.paused(totalDuration: d));
         });
@@ -954,7 +983,11 @@ class _QuranWidgetState extends State<QuranWidget>
   @override
   void dispose() {
     if (_streamController != null) _streamController.close();
-    if (audioPlayer != null) audioPlayer.release();
+    if (audioPlayer != null) {
+      audioPlayer.release();
+      audioPlayer.dispose();
+    }
     super.dispose();
+    if (_timer != null) _timer.cancel();
   }
 }
