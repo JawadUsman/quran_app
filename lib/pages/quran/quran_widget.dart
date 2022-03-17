@@ -1,5 +1,6 @@
 // @dart=2.11
 import 'dart:async';
+import 'dart:io';
 
 //import 'package:just_audio/just_audio.dart';
 // import 'package:audiofileplayer/audiofileplayer.dart';
@@ -76,7 +77,7 @@ class _QuranWidgetState extends State<QuranWidget>
   }
 
   Widget circularProgress(BuildContext context) => Theme(
-        data: Theme.of(context).copyWith(accentColor: Color(0xffe1d79f)),
+        data: Theme.of(context).copyWith(cardColor: Color(0xffe1d79f)),
         child: CircularProgressIndicator(
           strokeWidth: 2.0,
           backgroundColor: Color(0x86000000),
@@ -488,8 +489,12 @@ class _QuranWidgetState extends State<QuranWidget>
                                                                               context) {
                                                                         return StreamBuilder<
                                                                             List<Tuple2<Aya, TranslationData>>>(
-                                                                          initialData: item.translations.hasValue ? item.translations.value: null,
-                                                                          stream: item.translations.delay(
+                                                                          initialData: item.translations.hasValue
+                                                                              ? item.translations.value
+                                                                              : null,
+                                                                          stream: item
+                                                                              .translations
+                                                                              .delay(
                                                                             const Duration(
                                                                               milliseconds: 500,
                                                                             ),
@@ -585,7 +590,9 @@ class _QuranWidgetState extends State<QuranWidget>
                             ),
                           ),
                         ),
-                        AudioPlayerView(),
+                        Platform.isIOS
+                            ? iosAudioPlayerView()
+                            : AudioPlayerView(),
                       ],
                     );
                   },
@@ -869,6 +876,65 @@ class _QuranWidgetState extends State<QuranWidget>
                           seekToSecond(value.toInt());
                         }),
                   ),
+                ),
+              ],
+            ),
+          );
+        });
+  }
+
+  Widget iosAudioPlayerView() {
+    return StreamBuilder<AppPlayerState>(
+        stream: _streamController.stream,
+        initialData: AppPlayerState.initial(),
+        builder: (context, snapshot) {
+          final playerStateValue = snapshot.data;
+          var isSliderReady = playerStateValue != null &&
+              playerStateValue.duration != null &&
+              playerStateValue.totalDuration != null;
+          currentPosition = playerStateValue.duration;
+          return Container(
+            color: Color(0x86000000),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: <Widget>[
+                SizedBox(
+                  width: 55.0,
+                  height: 55.0,
+                  child: !playerStateValue.isBuffering
+                      ? IconButton(
+                          icon: Icon(
+                            playerStateValue.isPlaying
+                                ? Icons.pause
+                                : Icons.play_arrow,
+                            color: Color(0xffe1d79f),
+                          ),
+                          onPressed: () async {
+                            print("Jawad ---> Button onPressed");
+                            var connectivityResult =
+                                await (Connectivity().checkConnectivity());
+                            print(
+                                "Jawad ---> network status $connectivityResult");
+                            if (connectivityResult != ConnectivityResult.none) {
+                              _streamController.add(AppPlayerState.buffering(
+                                  totalDuration: totalDuration,
+                                  duration: currentPosition));
+                              if (!playerStateValue.isPlaying) {
+                                print("Jawad ---> player resume");
+                                await audioPlayer.resume();
+                              } else {
+                                print("Jawad ---> player pause");
+                                await audioPlayer.pause();
+                              }
+                            } else {
+                              showMessage('No internet connection');
+                            }
+                          },
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: circularProgress(context),
+                        ),
                 ),
               ],
             ),
