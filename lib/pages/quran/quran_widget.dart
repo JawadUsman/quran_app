@@ -90,6 +90,10 @@ class _QuranWidgetState extends State<QuranWidget>
 
     return Scaffold(
       appBar: AppBar(
+        leading: new IconButton(
+          icon: new Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
         title: InkWell(
           onTap: () async {
             store.pickQuranNavigator.executeIf();
