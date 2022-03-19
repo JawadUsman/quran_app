@@ -101,6 +101,8 @@ class _QuranWidgetState extends State<QuranWidget>
           child: Container(
             alignment: Alignment.centerLeft,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 StreamBuilder<Chapters>(
                   initialData: store.selectedChapter$.value,

@@ -154,12 +154,7 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                                       return Center(
                                         child: Text(
                                           '$v',
-                                          style: TextStyle(
-                                            color: Theme.of(context)
-                                                .textTheme
-                                                .bodyText2
-                                                .color,
-                                          ),
+                                          style:Theme.of(context).textTheme.bodyText1,
                                         ),
                                       );
                                     },
