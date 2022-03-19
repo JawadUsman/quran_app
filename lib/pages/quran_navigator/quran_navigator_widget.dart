@@ -11,6 +11,7 @@ import 'package:rxdart/rxdart.dart';
 
 class QuranNavigatorWidget extends StatefulWidget {
   final QuranNavigatorStore store;
+
   QuranNavigatorWidget({
     @required this.store,
     Key key,
@@ -96,12 +97,7 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                               return Center(
                                 child: Text(
                                   '${item.chapterNumber}. ${item.nameSimple}',
-                                  style: TextStyle(
-                                    color: Theme.of(context)
-                                        .textTheme
-                                        .bodyText2
-                                        .color,
-                                  ),
+                                  style: Theme.of(context).textTheme.bodyText1,
                                 ),
                               );
                             }).toList(),
@@ -129,6 +125,7 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                       store.localization.getByKey(
                         'quran_navigator_widget.pick_sura',
                       ),
+                      style:Theme.of(context).textTheme.bodyText1,
                     ),
                   ),
                 ],
@@ -137,68 +134,70 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
             SizedBox.fromSize(
               size: Size.fromWidth(10),
             ),
-            Platform.isAndroid?
-            Container(
-              width: 72,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  Expanded(
-                    child: Container(
-                      child: Observer(
-                        builder: (BuildContext context) {
-                          if (store.listAya.isEmpty) {
-                            return Container();
-                          }
+            Platform.isAndroid
+                ? Container(
+                    width: 72,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: <Widget>[
+                        Expanded(
+                          child: Container(
+                            child: Observer(
+                              builder: (BuildContext context) {
+                                if (store.listAya.isEmpty) {
+                                  return Container();
+                                }
 
-                          return CupertinoPicker(
-                            children: store.listAya.map(
-                              (v) {
-                                return Center(
-                                  child: Text(
-                                    '$v',
-                                    style: TextStyle(
-                                      color: Theme.of(context)
-                                          .textTheme
-                                          .bodyText2
-                                          .color,
-                                    ),
-                                  ),
+                                return CupertinoPicker(
+                                  children: store.listAya.map(
+                                    (v) {
+                                      return Center(
+                                        child: Text(
+                                          '$v',
+                                          style: TextStyle(
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .bodyText2
+                                                .color,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).toList(),
+                                  itemExtent: 30,
+                                  looping: true,
+                                  scrollController: pickerAyaController,
+                                  backgroundColor:
+                                      Theme.of(context).dialogBackgroundColor,
+                                  onSelectedItemChanged: (
+                                    int value,
+                                  ) {
+                                    var item = store.listAya[value];
+                                    store.selectedAya = item;
+                                  },
                                 );
                               },
-                            ).toList(),
-                            itemExtent: 30,
-                            looping: true,
-                            scrollController: pickerAyaController,
-                            backgroundColor:
-                                Theme.of(context).dialogBackgroundColor,
-                            onSelectedItemChanged: (
-                              int value,
-                            ) {
-                              var item = store.listAya[value];
-                              store.selectedAya = item;
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      store.pickAya.executeIf();
-                    },
-                    child: Center(
-                      child: Text(
-                        store.localization.getByKey(
-                          'quran_navigator_widget.pick_aya',
+                            ),
+                          ),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
+                        TextButton(
+                          onPressed: () {
+                            store.pickAya.executeIf();
+                          },
+                          child: Center(
+                            child: Text(
+                              store.localization.getByKey(
+                                'quran_navigator_widget.pick_aya',
+                              ),
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-            ) : SizedBox(),
+                  )
+                : SizedBox(),
           ],
         ),
       ),

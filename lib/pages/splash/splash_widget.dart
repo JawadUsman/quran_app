@@ -63,7 +63,7 @@ class _SplashWidgetState extends State<SplashWidget>
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/images/divya-quran.png'),
-                  fit: BoxFit.cover)),
+                  fit: BoxFit.fill)),
         ),
       ),
     );

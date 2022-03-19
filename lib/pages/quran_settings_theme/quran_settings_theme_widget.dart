@@ -39,7 +39,7 @@ class _QuranSettingsThemeWidgetState extends State<QuranSettingsThemeWidget>
             child: Card(
               clipBehavior: Clip.antiAlias,
               child: StreamBuilder<List<ThemeItem>>(
-                initialData: store.themes$.value,
+                initialData: store.themes$.valueOrNull,
                 stream: store.themes$,
                 builder: (
                     BuildContext context,
@@ -47,7 +47,7 @@ class _QuranSettingsThemeWidgetState extends State<QuranSettingsThemeWidget>
                     ) {
                   final themes = snapshot.data;
                   return StreamBuilder<ThemeItem>(
-                    initialData: store.currentTheme$.value,
+                    initialData: store.currentTheme$.valueOrNull,
                     stream: store.currentTheme$,
                     builder: (
                         BuildContext context,

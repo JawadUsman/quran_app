@@ -39,7 +39,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
       ),
       body: Container(
         child: StreamBuilder<DataState>(
-          initialData: store.bookmarkState.value,
+          initialData: store.bookmarkState.valueOrNull,
           stream: store.bookmarkState,
           builder: (
               BuildContext context,
@@ -50,13 +50,13 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
               states: {
                 DataState.success: Container(
                   child: StreamBuilder<List<QuranBookmark>>(
-                    initialData: store.bookmarks.value,
+                    initialData: store.bookmarks.valueOrNull,
                     stream: store.bookmarks,
                     builder: (
                         BuildContext context,
                         AsyncSnapshot snapshot,
                         ) {
-                      if (store.bookmarks.value.isEmpty) {
+                      if (store.bookmarks.valueOrNull.isEmpty) {
                         return Container(
                           child: Center(
                             child: Column(
@@ -75,12 +75,12 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                       }
 
                       return ListView.builder(
-                        itemCount: store.bookmarks.value.length,
+                        itemCount: store.bookmarks.valueOrNull.length,
                         itemBuilder: (
                             BuildContext context,
                             int index,
                             ) {
-                          var item = store.bookmarks.value[index];
+                          var item = store.bookmarks.valueOrNull[index];
 
                           return ListTile(
                             dense: true,
