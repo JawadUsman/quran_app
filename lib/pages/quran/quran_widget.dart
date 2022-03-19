@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/services/preferences_utils.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:quran_app/app_widgets/shimmer_loading.dart';
@@ -27,6 +28,7 @@ import 'package:quran_app/pages/quran_settings/quran_settings_widget.dart';
 import 'package:quran_app/services/quran_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:tuple/tuple.dart';
+import '../../main.dart';
 import '../quran_settings/quran_settings_store.dart';
 import 'player_state.dart';
 
@@ -41,6 +43,7 @@ class _QuranWidgetState extends State<QuranWidget>
         BaseStateMixin<QuranStore, QuranWidget>,
         AutomaticKeepAliveClientMixin {
   QuranStore _store;
+  var _appServices = sl.get<AppServices>();
 
   @override
   QuranStore get store => _store;
@@ -197,7 +200,6 @@ class _QuranWidgetState extends State<QuranWidget>
                                 if (store.listAya.isEmpty) {
                                   return Container();
                                 }
-
                                 var item = store.listAya[index];
                                 item.getTranslations.execute();
                                 item.getBookmark.execute();
@@ -269,7 +271,6 @@ class _QuranWidgetState extends State<QuranWidget>
                                                               item.chapter
                                                                       .chapterNumber !=
                                                                   1
-                                                          //!isBlank('')
                                                           ? Container(
                                                               padding:
                                                                   EdgeInsets
@@ -582,11 +583,6 @@ class _QuranWidgetState extends State<QuranWidget>
                                               ),
                                             ),
                                           ),
-                                          Container(
-                                            height: 1,
-                                            color:
-                                                Theme.of(context).dividerColor,
-                                          ),
                                         ],
                                       ),
                                     );
@@ -596,6 +592,35 @@ class _QuranWidgetState extends State<QuranWidget>
                             ),
                           ),
                         ),
+                        Container(
+                          height: 1,
+                          color: Theme.of(context).dividerColor,
+                        ),
+                        _store.selectedChapter$.value.chapterNumber == 114
+                            ? InkWell(
+                                onTap: () async {
+                                  Navigator.pushNamed(context, '/dua',
+                                      arguments: {
+                                        'fontSize':
+                                            _store.arabicFontSize$.value,
+                                      });
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.only(
+                                    top: 6,
+                                    bottom: 10,
+                                  ),
+                                  child: Text(
+                                    'دعاء ختم القرآنِ',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontFamily: 'noorehira',
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : Container(),
                         Platform.isIOS
                             ? iosAudioPlayerView()
                             : AudioPlayerView(),
