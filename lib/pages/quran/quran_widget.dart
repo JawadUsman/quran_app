@@ -775,12 +775,13 @@ class _QuranWidgetState extends State<QuranWidget>
           _streamController.add(AppPlayerState.paused(totalDuration: d));
         });
 
-        if (Platform.isAndroid)
+        if (Platform.isAndroid) {
           audioPlayer.onAudioPositionChanged.listen((Duration p) {
             if (p.inSeconds != 0)
               _streamController.add(AppPlayerState.playing(
                   totalDuration: totalDuration, duration: p));
           });
+        }
         audioPlayer.onPlayerStateChanged.listen((PlayerState s) async {
           print('Jawad player state $s');
           if (currentPosition == null || currentPosition.inSeconds < 0)
@@ -960,7 +961,8 @@ class _QuranWidgetState extends State<QuranWidget>
                                   await (Connectivity().checkConnectivity());
                               print(
                                   "Jawad ---> network status $connectivityResult");
-                              if (connectivityResult != ConnectivityResult.none) {
+                              if (connectivityResult !=
+                                  ConnectivityResult.none) {
                                 _streamController.add(AppPlayerState.buffering(
                                     totalDuration: totalDuration,
                                     duration: currentPosition));
