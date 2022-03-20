@@ -768,20 +768,12 @@ class _QuranWidgetState extends State<QuranWidget>
           });
         }*/
 
-        print('Jawad test before onDurationChanged');
         audioPlayer.onDurationChanged.listen((d) {
           print('Jawad test after onDurationChanged: ${d.inMilliseconds}');
           totalDuration = d;
           _streamController.add(AppPlayerState.paused(totalDuration: d));
         });
 
-        if (Platform.isAndroid) {
-          audioPlayer.onAudioPositionChanged.listen((Duration p) {
-            if (p.inSeconds != 0)
-              _streamController.add(AppPlayerState.playing(
-                  totalDuration: totalDuration, duration: p));
-          });
-        }
         audioPlayer.onPlayerStateChanged.listen((PlayerState s) async {
           print('Jawad player state $s');
           if (currentPosition == null || currentPosition.inSeconds < 0)
@@ -805,6 +797,13 @@ class _QuranWidgetState extends State<QuranWidget>
           }
         });
       }
+      audioPlayer.onAudioPositionChanged.listen((Duration p) {
+        if (p.inSeconds != 0 && (Platform.isAndroid || !playerUsed)) {
+          playerUsed = true;
+          _streamController.add(AppPlayerState.playing(
+              totalDuration: totalDuration, duration: p));
+        }
+      });
       audioPlayer.onPlayerError.listen((event) {
         totalDuration = Duration(seconds: 0);
         currentPosition = Duration(seconds: 0);
@@ -817,6 +816,8 @@ class _QuranWidgetState extends State<QuranWidget>
       return 0;
     }
   }
+
+  bool playerUsed = false;
 
   Future<int> _getDuration(String url) async {
     await audioPlayer.setUrl(url);
