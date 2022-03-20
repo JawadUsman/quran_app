@@ -726,7 +726,8 @@ class _QuranWidgetState extends State<QuranWidget>
       }
       // prepare the player with this audio but do not start playing
       int result = await audioPlayer.setUrl(url);
-      print('jawad test result: $result');
+      /*var duration = _getDuration(url).asStream().first;
+      print('jawad test duration: $duration');*/
       if (result == 1) {
         checkInitValue(url);
         /*if (Platform.isIOS) {
@@ -766,19 +767,22 @@ class _QuranWidgetState extends State<QuranWidget>
             _streamController.add(AppPlayerState.paused(totalDuration: d));
           });
         }*/
+
         print('Jawad test before onDurationChanged');
         audioPlayer.onDurationChanged.listen((d) {
-          print('Jawad test after onDurationChanged: $d');
+          print('Jawad test after onDurationChanged: ${d.inMilliseconds}');
           totalDuration = d;
           _streamController.add(AppPlayerState.paused(totalDuration: d));
         });
 
-        audioPlayer.onAudioPositionChanged.listen((Duration p) {
-          if (p.inSeconds != 0)
-            _streamController.add(AppPlayerState.playing(
-                totalDuration: totalDuration, duration: p));
-        });
+        if (Platform.isAndroid)
+          audioPlayer.onAudioPositionChanged.listen((Duration p) {
+            if (p.inSeconds != 0)
+              _streamController.add(AppPlayerState.playing(
+                  totalDuration: totalDuration, duration: p));
+          });
         audioPlayer.onPlayerStateChanged.listen((PlayerState s) async {
+          print('Jawad player state $s');
           if (currentPosition == null || currentPosition.inSeconds < 0)
             currentPosition = Duration(seconds: 0);
           PreferencesUtils.setAudioTime(url, currentPosition.inSeconds);
@@ -813,6 +817,14 @@ class _QuranWidgetState extends State<QuranWidget>
     }
   }
 
+  Future<int> _getDuration(String url) async {
+    await audioPlayer.setUrl(url);
+    return Future.delayed(
+      const Duration(seconds: 2),
+      () => audioPlayer.getDuration(),
+    );
+  }
+
   void showMessage(String message) {
     Fluttertoast.showToast(
         msg: message,
@@ -824,6 +836,7 @@ class _QuranWidgetState extends State<QuranWidget>
         fontSize: 16.0);
   }
 
+  // for android
   Widget AudioPlayerView() {
     return StreamBuilder<AppPlayerState>(
         stream: _streamController.stream,
@@ -833,7 +846,8 @@ class _QuranWidgetState extends State<QuranWidget>
           var isSliderReady = playerStateValue != null &&
               playerStateValue.duration != null &&
               playerStateValue.totalDuration != null;
-          //print("Jawad ---> playerStateValue ${playerStateValue.isPlaying}");
+
+          print("Jawad ---> AudioPlayerView ${playerStateValue.isPlaying}");
           currentPosition = playerStateValue.duration;
           return Container(
             color: Color(0x86000000),
@@ -914,60 +928,61 @@ class _QuranWidgetState extends State<QuranWidget>
         });
   }
 
+  // for ios
   Widget iosAudioPlayerView() {
     return StreamBuilder<AppPlayerState>(
         stream: _streamController.stream,
         initialData: AppPlayerState.initial(),
         builder: (context, snapshot) {
           final playerStateValue = snapshot.data;
-          var isSliderReady = playerStateValue != null &&
-              playerStateValue.duration != null &&
-              playerStateValue.totalDuration != null;
           currentPosition = playerStateValue.duration;
           return Container(
             color: Color(0x86000000),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                SizedBox(
-                  width: 55.0,
-                  height: 55.0,
-                  child: !playerStateValue.isBuffering
-                      ? IconButton(
-                          icon: Icon(
-                            playerStateValue.isPlaying
-                                ? Icons.pause
-                                : Icons.play_arrow,
-                            color: Color(0xffe1d79f),
-                          ),
-                          onPressed: () async {
-                            print("Jawad ---> Button onPressed");
-                            var connectivityResult =
-                                await (Connectivity().checkConnectivity());
-                            print(
-                                "Jawad ---> network status $connectivityResult");
-                            if (connectivityResult != ConnectivityResult.none) {
-                              _streamController.add(AppPlayerState.buffering(
-                                  totalDuration: totalDuration,
-                                  duration: currentPosition));
-                              if (!playerStateValue.isPlaying) {
-                                print("Jawad ---> player resume");
-                                await audioPlayer.resume();
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 12.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: <Widget>[
+                  SizedBox(
+                    width: 55.0,
+                    height: 55.0,
+                    child: !playerStateValue.isBuffering
+                        ? IconButton(
+                            icon: Icon(
+                              playerStateValue.isPlaying
+                                  ? Icons.pause
+                                  : Icons.play_arrow,
+                              color: Color(0xffe1d79f),
+                            ),
+                            onPressed: () async {
+                              print("Jawad ---> Button onPressed");
+                              var connectivityResult =
+                                  await (Connectivity().checkConnectivity());
+                              print(
+                                  "Jawad ---> network status $connectivityResult");
+                              if (connectivityResult != ConnectivityResult.none) {
+                                _streamController.add(AppPlayerState.buffering(
+                                    totalDuration: totalDuration,
+                                    duration: currentPosition));
+                                if (!playerStateValue.isPlaying) {
+                                  print("Jawad ---> player resume");
+                                  await audioPlayer.resume();
+                                } else {
+                                  print("Jawad ---> player pause");
+                                  await audioPlayer.pause();
+                                }
                               } else {
-                                print("Jawad ---> player pause");
-                                await audioPlayer.pause();
+                                showMessage('No internet connection');
                               }
-                            } else {
-                              showMessage('No internet connection');
-                            }
-                          },
-                        )
-                      : Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: circularProgress(context),
-                        ),
-                ),
-              ],
+                            },
+                          )
+                        : Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: circularProgress(context),
+                          ),
+                  ),
+                ],
+              ),
             ),
           );
         });
@@ -1021,8 +1036,7 @@ class _QuranWidgetState extends State<QuranWidget>
       currentPosition = Duration(seconds: 0);
       _streamController.add(AppPlayerState.paused(duration: currentPosition));
       // prepare the player with this audio but do not start playing
-      int result = await audioPlayer.play(filePath, isLocal: true);
-      print('Jawad test $result');
+      int result = await audioPlayer.play(filePath, isLocal: false);
       if (result == 1) {
         /*if (Platform.isIOS) {
           audioPlayer.monitorNotificationStateChanges(_audioPlayerStateUpdate);
