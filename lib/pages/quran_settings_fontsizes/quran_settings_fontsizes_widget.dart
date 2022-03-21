@@ -66,7 +66,7 @@ class _QuranSettingsFontSizesWidgetState
                             child: Align(
                               alignment: Alignment.center,
                               child: Text(
-                                'بِسۡـــــــــمِ ٱللهِ ٱلرَّحۡـمَـٰنِ ٱلرَّحِـــــــيمِ',
+                                'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
                                 style: TextStyle(
                                   fontFamily: 'noorehira',
                                   fontSize: store.arabicFontSize$.value,

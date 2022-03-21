@@ -279,17 +279,35 @@ class _QuranWidgetState extends State<QuranWidget>
                                                                 top: 6,
                                                                 bottom: 10,
                                                               ),
-                                                              child: Text(
-                                                                'بِسۡـــــــــمِ ٱللهِ ٱلرَّحۡـمَـٰنِ ٱلرَّحِـــــــيمِ',
-                                                                textAlign:
-                                                                    TextAlign
-                                                                        .center,
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize: 18,
-                                                                  fontFamily:
-                                                                      'noorehira',
-                                                                ),
+                                                              child:
+                                                              StreamBuilder<double>(
+                                                                initialData: store
+                                                                    .arabicFontSize$
+                                                                    .value,
+                                                                stream: store
+                                                                    .arabicFontSize$,
+                                                                builder: (
+                                                                    BuildContext context,
+                                                                    AsyncSnapshot<double>
+                                                                    snapshot,
+                                                                    ) {
+                                                                  //۩ ۞ noorehira
+                                                                  return
+                                                                    Text(
+                                                                      '﷽',
+                                                                      textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                      style:
+                                                                      TextStyle(
+                                                                        fontSize:
+                                                                        snapshot.data,
+                                                                        fontFamily:
+                                                                        'noorehira',
+                                                                        // 'qalam Majeed',
+                                                                      )
+                                                                    );
+                                                                },
                                                               ),
                                                             )
                                                           : Container(),
