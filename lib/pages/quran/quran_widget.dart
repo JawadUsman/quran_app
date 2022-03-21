@@ -92,6 +92,7 @@ class _QuranWidgetState extends State<QuranWidget>
     super.build(context);
 
     return Scaffold(
+      drawerEdgeDragWidth: 0,
       appBar: AppBar(
         leading: new IconButton(
           icon: new Icon(Icons.arrow_back_ios),

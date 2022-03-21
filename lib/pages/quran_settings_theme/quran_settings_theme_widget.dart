@@ -81,7 +81,7 @@ class _QuranSettingsThemeWidgetState extends State<QuranSettingsThemeWidget>
                             buttonPadding: EdgeInsets.all(2.0),
                             children: <Widget>[
                               Radio(
-                                value: themes[0],
+                                value: themes[1],
                                 groupValue: currentTheme,
                                 activeColor: Colors.blue,
                                 onChanged: (val) {
@@ -89,7 +89,7 @@ class _QuranSettingsThemeWidgetState extends State<QuranSettingsThemeWidget>
                                 },
                               ),
                               Radio(
-                                value: themes[1],
+                                value: themes[0],
                                 groupValue: currentTheme,
                                 activeColor: Colors.blue,
                                 onChanged: (val) {

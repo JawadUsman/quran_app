@@ -65,6 +65,15 @@ class MainApp extends StatelessWidget {
     })();
     final themeMapping = {
       ThemeItem(
+        themeType: ThemeType.Night,
+      ): ThemeData.dark().copyWith(
+        textTheme: TextTheme(
+          bodyText1: TextStyle(
+            color: Color(0xffc5c4c3),
+          ),
+        ),
+      ),
+      ThemeItem(
         themeType: ThemeType.Light,
       ): ThemeData(
         scaffoldBackgroundColor: Color(0xfff3efd9),
@@ -77,15 +86,6 @@ class MainApp extends StatelessWidget {
           ),
         ),
       ),
-      ThemeItem(
-        themeType: ThemeType.Night,
-      ): ThemeData.dark().copyWith(
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
-            color: Color(0xffc5c4c3),
-          ),
-        ),
-      )
     };
     return StreamBuilder<ThemeItem>(
       initialData: store.currentTheme$.valueOrNull,
@@ -95,17 +95,18 @@ class MainApp extends StatelessWidget {
         AsyncSnapshot<ThemeItem> snapshot,
       ) {
         var currentTheme = themeMapping[snapshot.data];
-        print("Jawad $currentTheme");
         var themeData = currentTheme ??
-            ThemeData(
-                scaffoldBackgroundColor: Color(0xfff3efd9),
-                appBarTheme: AppBarTheme(
-                  color: Color(0x86000000),
-                ));
-
+            ThemeData.dark().copyWith(
+              textTheme: TextTheme(
+                bodyText1: TextStyle(
+                  color: Color(0xffc5c4c3),
+                ),
+              ),
+            );
         return MaterialApp(
           title: 'Divya Quran',
           theme: themeData,
+          debugShowCheckedModeBanner: false,
           onGenerateRoute: (s) {
             var widgetBuilder = Routes.routes[s.name];
             return MaterialPageRoute(

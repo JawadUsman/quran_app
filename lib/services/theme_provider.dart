@@ -59,12 +59,12 @@ class ThemeProviderImplementation {
   Future<List<ThemeItem>> getThemes() {
     return Future.value([
       ThemeItem(
-        name: 'Light',
-        themeType: ThemeType.Light,
-      ),
-      ThemeItem(
         name: 'Night',
         themeType: ThemeType.Night,
+      ),
+      ThemeItem(
+        name: 'Light',
+        themeType: ThemeType.Light,
       ),
     ]);
   }
