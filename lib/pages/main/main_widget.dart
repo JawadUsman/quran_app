@@ -1,6 +1,5 @@
 // @dart=2.11
 import 'package:flutter/material.dart';
-import 'package:quran_app/baselib/base_state_mixin.dart';
 import 'package:quran_app/baselib/base_widgetparameter_mixin.dart';
 import 'package:quran_app/routes/routes.dart';
 import 'package:quran_app/services/theme_provider.dart';

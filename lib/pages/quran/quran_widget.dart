@@ -2,8 +2,6 @@
 import 'dart:async';
 import 'dart:io';
 
-//import 'package:just_audio/just_audio.dart';
-// import 'package:audiofileplayer/audiofileplayer.dart';
 import 'package:animator/animator.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:connectivity/connectivity.dart';
@@ -11,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/services/preferences_utils.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import 'package:quran_app/app_widgets/shimmer_loading.dart';
@@ -28,7 +25,6 @@ import 'package:quran_app/pages/quran_settings/quran_settings_widget.dart';
 import 'package:quran_app/services/quran_provider.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:tuple/tuple.dart';
-import '../../main.dart';
 import '../quran_settings/quran_settings_store.dart';
 import 'player_state.dart';
 
@@ -43,7 +39,6 @@ class _QuranWidgetState extends State<QuranWidget>
         BaseStateMixin<QuranStore, QuranWidget>,
         AutomaticKeepAliveClientMixin {
   QuranStore _store;
-  var _appServices = sl.get<AppServices>();
 
   @override
   QuranStore get store => _store;
@@ -280,33 +275,36 @@ class _QuranWidgetState extends State<QuranWidget>
                                                                 bottom: 10,
                                                               ),
                                                               child:
-                                                              StreamBuilder<double>(
+                                                                  StreamBuilder<
+                                                                      double>(
                                                                 initialData: store
                                                                     .arabicFontSize$
                                                                     .value,
                                                                 stream: store
                                                                     .arabicFontSize$,
                                                                 builder: (
-                                                                    BuildContext context,
-                                                                    AsyncSnapshot<double>
-                                                                    snapshot,
-                                                                    ) {
+                                                                  BuildContext
+                                                                      context,
+                                                                  AsyncSnapshot<
+                                                                          double>
+                                                                      snapshot,
+                                                                ) {
                                                                   //۩ ۞ noorehira
-                                                                  return
-                                                                    Text(
-                                                                      '﷽',
+                                                                  return Text(
+                                                                      Platform.isIOS
+                                                                          ? '﷽'
+                                                                          : 'بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
                                                                       textAlign:
-                                                                      TextAlign
-                                                                          .center,
+                                                                          TextAlign
+                                                                              .center,
                                                                       style:
-                                                                      TextStyle(
+                                                                          TextStyle(
                                                                         fontSize:
-                                                                        snapshot.data,
+                                                                            snapshot.data,
                                                                         fontFamily:
-                                                                        'noorehira',
+                                                                            'noorehira',
                                                                         // 'qalam Majeed',
-                                                                      )
-                                                                    );
+                                                                      ));
                                                                 },
                                                               ),
                                                             )
@@ -721,8 +719,7 @@ class _QuranWidgetState extends State<QuranWidget>
 
   void _audioPlayerStateUpdate(PlayerState state) => state;
 
-  final StreamController<AppPlayerState> _streamController =
-      StreamController<AppPlayerState>.broadcast();
+  final StreamController<AppPlayerState> _streamController = StreamController<AppPlayerState>.broadcast();
 
   void checkInitValue(String url) {
     var duration = PreferencesUtils.getAudioTime(url, 0);
@@ -1021,7 +1018,7 @@ class _QuranWidgetState extends State<QuranWidget>
       barrierDismissible: true, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          content: FlatButton(
+          content: TextButton(
             child: Text(buttonText),
             onPressed: onPress,
           ),
@@ -1037,7 +1034,6 @@ class _QuranWidgetState extends State<QuranWidget>
     fetchedFile.listen((event) {
       if (event is DownloadProgress) {
         var data = event;
-        double progress = data.progress * 100;
       } else if (event is FileInfo) {
         var data2 = event;
         print('Jawad test FileInfo: ${data2.file.toString()}');

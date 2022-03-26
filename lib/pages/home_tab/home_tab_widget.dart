@@ -1,5 +1,4 @@
 // @dart=2.11
-import 'package:bubble_tab_indicator/bubble_tab_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quran_app/baselib/base_state_mixin.dart';
@@ -111,54 +110,36 @@ class _HomeTabWidgetState extends State<HomeTabWidget>
     backgroundColor: Color(0x86000000),
     unselectedItemColor: Color(0x35ffffff),
     selectedItemColor: Color(0xffffffff),
+    selectedFontSize: 10.0,
+    unselectedFontSize: 10.0,
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
-        icon: Icon(FontAwesomeIcons.bookOpen),
-        title: Padding(
-            padding: EdgeInsets.only(top: 4.0),
-            child: Text(
-              'Surahs',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 10,
-              ),
-            )),
+        icon: Padding(
+          padding: EdgeInsets.all(6.0),
+          child: Icon(FontAwesomeIcons.bookOpen),
+        ),
+        label: "Surahs",
       ),
       BottomNavigationBarItem(
-        icon: Icon(FontAwesomeIcons.chartPie),
-        title: Padding(
-            padding: EdgeInsets.only(top: 4.0),
-            child: Text(
-              'Juz\'',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 10,
-              ),
-            )),
+        icon: Padding(
+          padding: EdgeInsets.all(6.0),
+          child: Icon(FontAwesomeIcons.chartPie),
+        ),
+        label: "Juz",
       ),
       BottomNavigationBarItem(
-        icon: Icon(FontAwesomeIcons.solidBookmark),
-        title: Padding(
-            padding: EdgeInsets.only(top: 4.0),
-            child: Text(
-              'Bookmarks',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 10,
-              ),
-            )),
+        icon: Padding(
+          padding: EdgeInsets.all(6.0),
+          child: Icon(FontAwesomeIcons.solidBookmark),
+        ),
+        label: "Bookmarks",
       ),
       BottomNavigationBarItem(
-        icon: Icon(FontAwesomeIcons.infoCircle),
-        title: Padding(
-            padding: EdgeInsets.only(top: 4.0),
-            child: Text(
-              'About Us',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 10,
-              ),
-            )),
+        icon: Padding(
+          padding: EdgeInsets.all(6.0),
+          child: Icon(FontAwesomeIcons.infoCircle),
+        ),
+        label: "About Us",
       ),
     ],
   );

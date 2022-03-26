@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:quran_app/extensions/settings_extension.dart';
 import 'package:quran_app/main.dart';
