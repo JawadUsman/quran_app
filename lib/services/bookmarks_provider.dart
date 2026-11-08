@@ -1,16 +1,12 @@
-// @dart=2.11
-import 'package:moor/moor.dart';
+import 'package:drift/drift.dart';
 
 import '../main.dart';
 import 'appdb.dart';
 
-// ignore_for_file: invalid_use_of_visible_for_testing_member
-// ignore_for_file: invalid_use_of_protected_member
-
 class BookmarksRequest {}
 
 abstract class BookmarksProvider {
-  Future<QuranBookmark> getItem(int aya, int sura);
+  Future<QuranBookmark?> getItem(int aya, int sura);
 
   Future<List<QuranBookmark>> getItems(BookmarksRequest request);
 
@@ -22,26 +18,26 @@ abstract class BookmarksProvider {
 }
 
 class SqliteBookmarksProvider implements BookmarksProvider {
-  AppDb appDb = sl.get<AppDb>();
+  late AppDb appDb;
 
   SqliteBookmarksProvider({
-    AppDb appDb,
+    AppDb? appDb,
   }) {
-    this.appDb = appDb ?? (appDb = this.appDb);
+    this.appDb = appDb ?? sl.get<AppDb>();
   }
 
-  Future<QuranBookmark> getItem(int aya, int sura) async {
+  @override
+  Future<QuranBookmark?> getItem(int aya, int sura) async {
     var l = await (appDb.select(appDb.quranBookmarks)
           ..where((t) {
             return t.sura.equals(sura) & t.aya.equals(aya);
           }))
         .get();
-    return l.firstWhere(
-      (t) => t != null,
-      orElse: () => null,
-    );
+    if (l.isEmpty) return null;
+    return l.first;
   }
 
+  @override
   Future<List<QuranBookmark>> getItems(BookmarksRequest request) async {
     var l = await (appDb.select(appDb.quranBookmarks)
           ..orderBy([
@@ -54,21 +50,27 @@ class SqliteBookmarksProvider implements BookmarksProvider {
     return l;
   }
 
+  @override
   Future<int> addItem(QuranBookmarksCompanion item) async {
-    var existingItem = await (appDb.select(appDb.quranBookmarks)
-          ..where(
-            (t) =>
-                t.sura.equals(item.sura.value) & t.aya.equals(item.aya.value),
-          ))
-        .get();
-    if (existingItem.isNotEmpty) {
-      return -1;
+    var suraVal = item.sura.value;
+    var ayaVal = item.aya.value;
+    if (suraVal != null && ayaVal != null) {
+      var existingItem = await (appDb.select(appDb.quranBookmarks)
+            ..where(
+              (t) =>
+                  t.sura.equals(suraVal) & t.aya.equals(ayaVal),
+            ))
+          .get();
+      if (existingItem.isNotEmpty) {
+        return -1;
+      }
     }
 
     var id = await appDb.into(appDb.quranBookmarks).insert(item);
     return id;
   }
 
+  @override
   Future<int> removeItem(QuranBookmark item) async {
     var id = await (appDb.delete(appDb.quranBookmarks)
           ..where(
@@ -78,6 +80,7 @@ class SqliteBookmarksProvider implements BookmarksProvider {
     return id;
   }
 
+  @override
   Future<bool> udpateItem(QuranBookmark item) async {
     var b = await appDb.update(appDb.quranBookmarks).replace(item);
     return b;

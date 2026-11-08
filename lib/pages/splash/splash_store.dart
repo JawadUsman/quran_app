@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/command.dart';
 import 'package:quran_app/services/quran_provider.dart';
@@ -13,36 +12,35 @@ part 'splash_store.g.dart';
 class SplashStore = _SplashStore with _$SplashStore;
 
 abstract class _SplashStore extends BaseStore with Store {
-  var _appServices = sl.get<AppServices>();
-  var _localizationService = sl.get<ILocalizationService>();
-  var _quranProvider = sl.get<QuranProvider>();
+  late AppServices _appServices;
+  late ILocalizationService _localizationService;
+  late QuranProvider _quranProvider;
 
   _SplashStore({
-    AppServices appServices,
-    ILocalizationService localizationService,
-    QuranProvider quranProvider,
+    AppServices? appServices,
+    ILocalizationService? localizationService,
+    QuranProvider? quranProvider,
   }) {
-    _appServices = appServices ?? _appServices;
-    _localizationService = localizationService ?? _localizationService;
-    _quranProvider = quranProvider ?? _quranProvider;
+    _appServices = appServices ?? sl.get<AppServices>()!;
+    _localizationService = localizationService ?? sl.get<ILocalizationService>()!;
+    _quranProvider = quranProvider ?? sl.get<QuranProvider>()!;
 
     initialize = Command(() async {
       await _appServices.initialize();
 
       await _quranProvider.initialize();
 
-      // Load localization
       var language = await _localizationService.getSavedLanguage();
       await _localizationService.loadFromBundle(
         language.locale,
       );
 
-      await _appServices.navigatorState.pushNamedAndRemoveUntil(
+      await _appServices.navigatorState?.pushNamedAndRemoveUntil(
         '/home',
         (_) => false,
       );
     });
   }
 
-  Command initialize;
+  late Command initialize;
 }

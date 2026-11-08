@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:mobx/mobx.dart';
 
 import '../../baselib/base_store.dart';
@@ -10,11 +9,11 @@ part 'home_store.g.dart';
 class HomeStore = _HomeStore with _$HomeStore;
 
 abstract class _HomeStore extends BaseStore with Store {
-  var localization = sl.get<ILocalizationService>();
+  late ILocalizationService localization;
 
   _HomeStore({
-    ILocalizationService localization,
+    ILocalizationService? localization,
   }) {
-    this.localization = localization ?? this.localization;
+    this.localization = localization ?? sl.get<ILocalizationService>()!;
   }
 }

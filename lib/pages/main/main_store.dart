@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/baselib/base_store.dart';
@@ -14,42 +13,42 @@ part 'main_store.g.dart';
 class MainStore = _MainStore with _$MainStore;
 
 abstract class _MainStore extends BaseStore with Store {
-  var localizationService = sl.get<ILocalizationService>();
-  var appServices = sl.get<AppServices>();
-  var themeProvider = sl.get<ThemeProviderImplementation>();
+  late ILocalizationService localizationService;
+  late AppServices appServices;
+  late ThemeProviderImplementation themeProvider;
 
   _MainStore({
-    ILocalizationService localizationService,
-    AppServices appServices,
-    ThemeProviderImplementation themeProvider,
+    ILocalizationService? localizationService,
+    AppServices? appServices,
+    ThemeProviderImplementation? themeProvider,
   }) {
     this.localizationService =
-        localizationService ?? (localizationService = this.localizationService);
-    this.appServices = appServices ?? (appServices = this.appServices);
-    this.themeProvider = themeProvider ?? (themeProvider = this.themeProvider);
+        localizationService ?? sl.get<ILocalizationService>()!;
+    this.appServices = appServices ?? sl.get<AppServices>()!;
+    this.themeProvider = themeProvider ?? sl.get<ThemeProviderImplementation>()!;
 
     getCurrentTheme = Command(() async {
-      var currentTheme = await themeProvider.getCurrentTheme();
+      var currentTheme = await this.themeProvider.getCurrentTheme();
       currentTheme$.add(currentTheme);
     });
 
-    var ds = CompositeSubscription();
+    CompositeSubscription? ds = CompositeSubscription();
 
-    ds.add(themeProvider.themeChanged.map((_) => null).mergeWith([
+    ds.add(this.themeProvider.themeChanged.map((_) => null).mergeWith([
       currentThemeRefresher$.map(
         (_) => null,
       ),
     ]).asyncExpand((_) {
       return getCurrentTheme.executeIf().asStream();
     }).listen(null));
-    
+
     registerDispose(() {
-      ds.dispose();
+      ds?.dispose();
       ds = null;
     });
   }
 
-  final currentThemeRefresher$ = PublishSubject(
+  final currentThemeRefresher$ = PublishSubject<void>(
     sync: true,
   );
 
@@ -57,5 +56,5 @@ abstract class _MainStore extends BaseStore with Store {
     sync: true,
   );
 
-  Command getCurrentTheme;
+  late Command getCurrentTheme;
 }

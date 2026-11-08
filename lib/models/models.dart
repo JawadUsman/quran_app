@@ -1,4 +1,3 @@
-// @dart=2.11
 library surah;
 
 import 'dart:convert';
@@ -25,8 +24,8 @@ part 'models.g.dart';
 Serializers serializers = (_$serializers.toBuilder()
       ..addBuilderFactory(
           const FullType(BuiltMap, [
-            const FullType(String),
-            const FullType(String),
+            FullType(String),
+            FullType(String),
           ]),
           () => MapBuilder<String, String>())
       ..addPlugin(StandardJsonPlugin()))
@@ -35,7 +34,7 @@ Serializers serializers = (_$serializers.toBuilder()
 abstract class ChapterData implements Built<ChapterData, ChapterDataBuilder> {
   ChapterData._();
 
-  factory ChapterData([updates(ChapterDataBuilder b)]) = _$ChapterData;
+  factory ChapterData([void Function(ChapterDataBuilder b)? updates]) = _$ChapterData;
 
   @BuiltValueField(wireName: 'chapters')
   BuiltList<Chapters> get chapters;
@@ -43,7 +42,7 @@ abstract class ChapterData implements Built<ChapterData, ChapterDataBuilder> {
     return json.encode(serializers.serializeWith(ChapterData.serializer, this));
   }
 
-  static ChapterData fromJson(String jsonString) {
+  static ChapterData? fromJson(String jsonString) {
     return serializers.deserializeWith(
         ChapterData.serializer, json.decode(jsonString));
   }
@@ -54,61 +53,49 @@ abstract class ChapterData implements Built<ChapterData, ChapterDataBuilder> {
 abstract class Chapters implements Built<Chapters, ChaptersBuilder> {
   Chapters._();
 
-  factory Chapters([updates(ChaptersBuilder b)]) = _$Chapters;
+  factory Chapters([void Function(ChaptersBuilder b)? updates]) = _$Chapters;
 
-  @nullable
   @BuiltValueField(wireName: 'id')
-  int get id;
+  int? get id;
 
-  @nullable
   @BuiltValueField(wireName: 'chapter_number')
-  int get chapterNumber;
+  int? get chapterNumber;
 
-  @nullable
   @BuiltValueField(wireName: 'bismillah_pre')
-  bool get bismillahPre;
+  bool? get bismillahPre;
 
-  @nullable
   @BuiltValueField(wireName: 'revelation_order')
-  int get revelationOrder;
+  int? get revelationOrder;
 
-  @nullable
   @BuiltValueField(wireName: 'revelation_place')
-  String get revelationPlace;
+  String? get revelationPlace;
 
-  @nullable
   @BuiltValueField(wireName: 'name_complex')
-  String get nameComplex;
+  String? get nameComplex;
 
-  @nullable
   @BuiltValueField(wireName: 'name_arabic')
-  String get nameArabic;
+  String? get nameArabic;
 
-  @nullable
   @BuiltValueField(wireName: 'name_simple')
-  String get nameSimple;
+  String? get nameSimple;
 
-  @nullable
   @BuiltValueField(wireName: 'audio_url')
-  String get audioURL;
+  String? get audioURL;
 
-  @nullable
   @BuiltValueField(wireName: 'verses_count')
-  int get versesCount;
+  int? get versesCount;
 
-  @nullable
   @BuiltValueField(wireName: 'pages')
-  BuiltList<int> get pages;
+  BuiltList<int>? get pages;
 
-  @nullable
   @BuiltValueField(wireName: 'translated_name')
-  TranslatedName get translatedName;
+  TranslatedName? get translatedName;
 
   String toJson() {
     return json.encode(serializers.serializeWith(Chapters.serializer, this));
   }
 
-  static Chapters fromJson(String jsonString) {
+  static Chapters? fromJson(String jsonString) {
     return serializers.deserializeWith(
         Chapters.serializer, json.decode(jsonString));
   }
@@ -121,20 +108,18 @@ abstract class TranslatedName
   static Serializer<TranslatedName> get serializer =>
       _$translatedNameSerializer;
 
-  @nullable
-  String get languageName;
-  @nullable
-  String get name;
+  String? get languageName;
+  String? get name;
 
   TranslatedName._();
-  factory TranslatedName([void Function(TranslatedNameBuilder) updates]) =
+  factory TranslatedName([void Function(TranslatedNameBuilder)? updates]) =
       _$TranslatedName;
 }
 
 abstract class RootJuzItem implements Built<RootJuzItem, RootJuzItemBuilder> {
   RootJuzItem._();
 
-  factory RootJuzItem([updates(RootJuzItemBuilder b)]) = _$RootJuzItem;
+  factory RootJuzItem([void Function(RootJuzItemBuilder b)? updates]) = _$RootJuzItem;
 
   @BuiltValueField(wireName: 'juzs')
   BuiltList<JuzItem> get juzs;
@@ -142,7 +127,7 @@ abstract class RootJuzItem implements Built<RootJuzItem, RootJuzItemBuilder> {
     return json.encode(serializers.serializeWith(RootJuzItem.serializer, this));
   }
 
-  static RootJuzItem fromJson(String jsonString) {
+  static RootJuzItem? fromJson(String jsonString) {
     return serializers.deserializeWith(
         RootJuzItem.serializer, json.decode(jsonString));
   }
@@ -158,17 +143,15 @@ abstract class JuzItem implements Built<JuzItem, JuzItemBuilder> {
   @BuiltValueField(wireName: 'verse_mapping')
   BuiltMap<String, String> get verseMapping;
 
-  @nullable
   @BuiltValueField(
     serialize: false,
   )
-  Chapters get chapters;
+  Chapters? get chapters;
 
-  @nullable
   @BuiltValueField(
     serialize: false,
   )
-  BuiltList<Aya> get listAya;
+  BuiltList<Aya>? get listAya;
 
   static BuiltList<VerseMappingJuzItem> getVerseMappingJuzItem(
       BuiltMap<String, String> verseMapping) {
@@ -185,13 +168,13 @@ abstract class JuzItem implements Built<JuzItem, JuzItemBuilder> {
   }
 
   JuzItem._();
-  factory JuzItem([void Function(JuzItemBuilder) updates]) = _$JuzItem;
+  factory JuzItem([void Function(JuzItemBuilder)? updates]) = _$JuzItem;
 
-  Map<String, dynamic> toMap() {
+  Object? toMap() {
     return serializers.serializeWith(JuzItem.serializer, this);
   }
 
-  static JuzItem fromMap(Map<String, dynamic> map) {
+  static JuzItem? fromMap(Map<String, dynamic> map) {
     return serializers.deserializeWith(JuzItem.serializer, map);
   }
 
@@ -200,25 +183,22 @@ abstract class JuzItem implements Built<JuzItem, JuzItemBuilder> {
 
 abstract class VerseMappingJuzItem
     implements Built<VerseMappingJuzItem, VerseMappingJuzItemBuilder> {
-  @nullable
-  int get surah;
+  int? get surah;
 
-  @nullable
-  int get startAya;
+  int? get startAya;
 
-  @nullable
-  int get endAya;
+  int? get endAya;
 
   VerseMappingJuzItem._();
   factory VerseMappingJuzItem(
-          [void Function(VerseMappingJuzItemBuilder) updates]) =
+          [void Function(VerseMappingJuzItemBuilder)? updates]) =
       _$VerseMappingJuzItem;
 
-  Map<String, dynamic> toMap() {
+  Object? toMap() {
     return serializers.serializeWith(VerseMappingJuzItem.serializer, this);
   }
 
-  static VerseMappingJuzItem fromMap(Map<String, dynamic> map) {
+  static VerseMappingJuzItem? fromMap(Map<String, dynamic> map) {
     return serializers.deserializeWith(VerseMappingJuzItem.serializer, map);
   }
 

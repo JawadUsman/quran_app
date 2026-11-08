@@ -10,7 +10,6 @@
 #endif
 #endif
 
-#import "Sqlite3FlutterLibsPlugin.h"
 
 FOUNDATION_EXPORT double sqlite3_flutter_libsVersionNumber;
 FOUNDATION_EXPORT const unsigned char sqlite3_flutter_libsVersionString[];

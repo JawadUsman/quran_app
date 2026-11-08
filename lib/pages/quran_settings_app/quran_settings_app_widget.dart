@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:quran_app/baselib/base_state_mixin.dart';
@@ -8,11 +7,12 @@ import 'package:rxdart/rxdart.dart';
 
 class QuranSettingsAppWidget extends StatefulWidget {
   final QuranSettingsAppStore store;
-  QuranSettingsAppWidget({
-    @required this.store,
-    Key key,
+  const QuranSettingsAppWidget({
+    required this.store,
+    Key? key,
   }) : super(key: key);
 
+  @override
   _QuranSettingsFontSApptState createState() => _QuranSettingsFontSApptState();
 }
 
@@ -29,7 +29,7 @@ class _QuranSettingsFontSApptState extends State<QuranSettingsAppWidget>
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 10,
       ),
       child: Column(
@@ -42,34 +42,35 @@ class _QuranSettingsFontSApptState extends State<QuranSettingsAppWidget>
                 children: <Widget>[
                   ExpandablePanel(
                     theme: ExpandableThemeData(
-                      iconColor: Theme.of(context).accentColor,
+                      iconColor: Theme.of(context).colorScheme.secondary,
                     ),
                     header: Padding(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: Text(
                         store.localization.getByKey(
                           'quran_settings_app_widget.title',
                         ),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
+                    collapsed: Container(),
                     expanded: Container(
-                      margin: EdgeInsets.symmetric(
+                      margin: const EdgeInsets.symmetric(
                         horizontal: 15,
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
                           StreamBuilder<List<LanguageModel>>(
-                            initialData: [],
+                            initialData: const [],
                             stream: store.supportedLanguages,
                             builder: (
                               BuildContext context,
                               AsyncSnapshot<List<LanguageModel>> snapshot,
                             ) {
-                              var items = snapshot.data;
+                              var items = snapshot.data ?? [];
 
                               return StreamBuilder<LanguageModel>(
                                 initialData: null,
@@ -89,7 +90,9 @@ class _QuranSettingsFontSApptState extends State<QuranSettingsAppWidget>
                                   return DropdownButtonHideUnderline(
                                     child: DropdownButton<LanguageModel>(
                                       onChanged: (v) {
-                                        store.selectedLanguage.add(v);
+                                        if (v != null) {
+                                          store.selectedLanguage.add(v);
+                                        }
                                       },
                                       value: initialValue,
                                       isExpanded: true,
@@ -108,7 +111,7 @@ class _QuranSettingsFontSApptState extends State<QuranSettingsAppWidget>
                               );
                             },
                           ),
-                          Container(
+                          SizedBox(
                             height: 5,
                             child: Center(
                               child: Container(
@@ -121,12 +124,12 @@ class _QuranSettingsFontSApptState extends State<QuranSettingsAppWidget>
                             store.localization.getByKey(
                               'quran_settings_app_widget.language',
                             ),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 12,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 10,
                           ),
                         ],

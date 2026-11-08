@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:quran_app/extensions/settings_extension.dart';
 import 'package:quran_app/main.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:rxdart/src/transformers/do.dart';
 
 class DuaKhatmUlQuranWidget extends StatefulWidget {
+  const DuaKhatmUlQuranWidget({Key? key}) : super(key: key);
+
   @override
   _DuaKhatmUlQuranWidgetState createState() => _DuaKhatmUlQuranWidgetState();
 }
@@ -27,11 +28,11 @@ class _DuaKhatmUlQuranWidgetState extends State<DuaKhatmUlQuranWidget> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back_ios),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text(
+        title: const Text(
           'دعاء ختم القرآنِ',
           textAlign: TextAlign.center,
           style: TextStyle(
@@ -43,11 +44,11 @@ class _DuaKhatmUlQuranWidgetState extends State<DuaKhatmUlQuranWidget> {
       body: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SizedBox(
+                const SizedBox(
                   height: 20.0,
                 ),
                 Text(
@@ -56,7 +57,7 @@ class _DuaKhatmUlQuranWidgetState extends State<DuaKhatmUlQuranWidget> {
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.right,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
                 Text(
@@ -65,7 +66,7 @@ class _DuaKhatmUlQuranWidgetState extends State<DuaKhatmUlQuranWidget> {
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.right,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
                 Text(
@@ -74,16 +75,16 @@ class _DuaKhatmUlQuranWidgetState extends State<DuaKhatmUlQuranWidget> {
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.right,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
                 Text(
-                  'اللَّهُمَّ إِنِّي أَسْأَلُكَ مُوجِبَاتِ رَحْمَتِكَ وَعَزَائِمِ مَغْفِرَتِكَ وَالسَّلاَمَةَ مِنْ كُلِّ إِثْمٍ وَالغَنِيمَةَ مِنْ كُلِّ بِرٍّ وَالفَوْزَ بِالجَنَّةِ وَالنَّجَاةَ مِنَ النَّارِ ۝ اللَّهُمَّ أَحْسِنْ عَاقِبَتَنَا فِي الأُمُورِ كُلِّهَا، وَأجِرْنَا مِنْ خِزْيِ الدُّنْيَا وَعَذَابِ الآخِرَةِ ۝ اللَّهُمَّ اقْسِمْ لَنَا مِنْ خَشْيَتِكَ مَاتَحُولُ بِهِ بَيْنَنَا وَبَيْنَ مَعْصِيَتِكَ وَمِنْ طَاعَتِكَ مَاتُبَلِّغُنَا بِهَا جَنَّتَكَ وَمِنَ اليَقِينِ مَاتُهَوِّنُ بِهِ عَلَيْنَا مَصَائِبَ الدُّنْيَا وَمَتِّعْنَا بِأَسْمَاعِنَا وَأَبْصَارِنَا وَقُوَّتِنَا مَاأَحْيَيْتَنَا وَاجْعَلْهُ الوَارِثَ مِنَّا وَاجْعَلْ ثَأْرَنَا عَلَى مَنْ ظَلَمَنَا وَانْصُرْنَا عَلَى مَنْ عَادَانَا وَلاَ تجْعَلْ مُصِيبَتَنَا فِي دِينِنَا وَلاَ تَجْعَلِ الدُّنْيَا أَكْبَرَ هَمِّنَا وَلَا مَبْلَغَ عِلْمِنَا وَلاَ تُسَلِّطْ عَلَيْنَا مَنْ لَا يَرْحَمُنَا',
+                  'اللَّهُمَّ إِنِّي أَسْأَلُكَ مُوجِبَاتِ رَحْمَتِكَ وَعَزَائِمِ مَغْفِرَتِكَ وَالسَّلاَمَةَ مِنْ كُلِّ إِثْمٍ وَالغَنِيمَةَ مِنْ كُلِّ بِرٍّ وَالفَوْزَ بِالجَنَّةِ وَالنَّجَاةَ مِنَ النَّارِ ۝ اللَّهُمَّ أَحْسِنْ عَاقِبَتَنَا فِي الأُمُورِ كُلِّهَا، وَأجِرْنَا مِنْ خِزْيِ الدُّنْيَا وَعَذَابِ الآخِرَةِ ۝ اللَّهُمَّ اقْسِمْ لَنَا مِنْ خَشْيَتِكَ مَاتَحُولُ بِهِ بَيْنَنَا وَبَيْنَ مَعْصِيَتِكَ وَمِنْ طَاعَتِكَ مَاتُبَلِّغُنَا بِهَا جَنَّتَكَ وَمِنَ اليَقِينِ مَاتُهَوِّنُ بِهِ عَلَيْنَا مَصَائِبَ الدُّنْيَا وَمَتِّعْنَا بِأَسْمَاعِنَا وَأَبْصَارِنَا وَقُوَّتِنَا مَاأَحْيَيْتَنَا وَاجْعَلْهُ الوَارِثَ مِنَّا وَاجْعَلْ ثَأْرَنَا عَلَى مَنْ ظَلَمَنَا وَانْصُرْنَا عَلَى مَنْ عَادَانَا وَلاَ تجْعَلْ مُصِيبَتَنَا فِي دِينِينَا وَلاَ تَجْعَلِ الدُّنْيَا أَكْبَرَ هَمِّنَا وَلَا مَبْلَغَ عِلْمِنَا وَلاَ تُسَلِّطْ عَلَيْنَا مَنْ لَا يَرْحَمُنَا',
                   style: textStyle,
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
                 Text(
@@ -92,7 +93,7 @@ class _DuaKhatmUlQuranWidgetState extends State<DuaKhatmUlQuranWidget> {
                   textAlign: TextAlign.right,
                   textDirection: TextDirection.rtl,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30.0,
                 ),
               ],

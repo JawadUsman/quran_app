@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'dart:convert';
 import 'dart:io';
 
@@ -16,7 +15,7 @@ part 'quran_provider.g.dart';
 abstract class Sura implements Built<Sura, SuraBuilder> {
   Sura._();
 
-  factory Sura([updates(SuraBuilder b)]) = _$Sura;
+  factory Sura([void Function(SuraBuilder b)? updates]) = _$Sura;
 
   @BuiltValueField(wireName: 'index')
   String get index;
@@ -28,7 +27,7 @@ abstract class Sura implements Built<Sura, SuraBuilder> {
     return json.encode(serializers.serializeWith(Sura.serializer, this));
   }
 
-  static Sura fromJson(String jsonString) {
+  static Sura? fromJson(String jsonString) {
     return serializers.deserializeWith(
         Sura.serializer, json.decode(jsonString));
   }
@@ -39,7 +38,7 @@ abstract class Sura implements Built<Sura, SuraBuilder> {
 abstract class Aya implements Built<Aya, AyaBuilder> {
   Aya._();
 
-  factory Aya([updates(AyaBuilder b)]) = _$Aya;
+  factory Aya([void Function(AyaBuilder b)? updates]) = _$Aya;
 
   @BuiltValueField(wireName: 'index')
   String get indexString;
@@ -50,34 +49,31 @@ abstract class Aya implements Built<Aya, AyaBuilder> {
   @BuiltValueField(wireName: 'text')
   String get text;
 
-  @nullable
   @BuiltValueField(wireName: 'ruku')
-  int get ruku;
+  int? get ruku;
   
-  @nullable
   @BuiltValueField(serialize: false)
-  TranslationData get translationData;
+  TranslationData? get translationData;
 
   String toJson() {
-    return json.encode(serializers..serializeWith(Aya.serializer, this));
+    return json.encode(serializers.serializeWith(Aya.serializer, this));
   }
 
-  static Aya fromJson(String jsonString) {
+  static Aya? fromJson(String jsonString) {
     return serializers.deserializeWith(Aya.serializer, json.decode(jsonString));
   }
 
   static Serializer<Aya> get serializer => _$ayaSerializer;
 
-  @nullable
   @BuiltValueField(serialize: false)
-  BuiltList<Aya> get translations;
+  BuiltList<Aya>? get translations;
 }
 
 abstract class AyaTranslation
     implements Built<AyaTranslation, AyaTranslationBuilder> {
   AyaTranslation._();
 
-  factory AyaTranslation([updates(AyaTranslationBuilder b)]) = _$AyaTranslation;
+  factory AyaTranslation([void Function(AyaTranslationBuilder b)? updates]) = _$AyaTranslation;
 
   @BuiltValueField(wireName: 'languageCode')
   String get languageCode;
@@ -88,7 +84,7 @@ abstract class AyaTranslation
         .encode(serializers.serializeWith(AyaTranslation.serializer, this));
   }
 
-  static AyaTranslation fromJson(String jsonString) {
+  static AyaTranslation? fromJson(String jsonString) {
     return serializers.deserializeWith(
         AyaTranslation.serializer, json.decode(jsonString));
   }
@@ -109,14 +105,14 @@ abstract class QuranProvider {
   Future<List<Aya>> getAyaByChapter(
     int chapter,
     QuranTextData quranTextData, [
-    List<TranslationData> translations,
+    List<TranslationData>? translations,
   ]);
 
   Future<Aya> getAya(
     int chapter,
     int aya,
     QuranTextData quranTextData, [
-    List<TranslationData> translations,
+    List<TranslationData>? translations,
   ]);
 
   Future<List<Aya>> getTranslations(
@@ -124,7 +120,7 @@ abstract class QuranProvider {
     TranslationData translationData,
   );
 
-  Future<Aya> getTranslation(
+  Future<Aya?> getTranslation(
     int chapter,
     int aya,
     TranslationData translationData,
@@ -142,13 +138,14 @@ Directory getQuranFolder(AppServices appServices) {
 }
 
 class QuranTextData {
-  String id;
+  late String id;
 
-  String name;
+  late String name;
 
-  String tableName;
+  late String tableName;
 
-  bool operator ==(o) => o is QuranTextData && id == o.id;
+  @override
+  bool operator ==(Object other) => other is QuranTextData && id == other.id;
 
   @override
   int get hashCode => id.hashCode;

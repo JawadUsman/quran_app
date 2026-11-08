@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -12,11 +11,12 @@ import 'quran_settings_translations_store.dart';
 
 class QuranSettingsTranslationsWidget extends StatefulWidget {
   final QuranSettingsTranslationsStore store;
-  QuranSettingsTranslationsWidget({
-    @required this.store,
-    Key key,
+  const QuranSettingsTranslationsWidget({
+    required this.store,
+    Key? key,
   }) : super(key: key);
 
+  @override
   _QuranSettingsTranslationsWidgetState createState() =>
       _QuranSettingsTranslationsWidgetState();
 }
@@ -36,7 +36,7 @@ class _QuranSettingsTranslationsWidgetState
     })();
 
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 10,
       ),
       child: StreamBuilder<DataState>(
@@ -47,11 +47,11 @@ class _QuranSettingsTranslationsWidgetState
             AsyncSnapshot<DataState> snapshot,
             ) {
           return WidgetSelector<DataState>(
-            selectedState: snapshot.data,
+            selectedState: snapshot.data ?? DataState.none,
             states: {
               DataState(
                 enumSelector: EnumSelector.loading,
-              ): CircularProgressIndicator(),
+              ): const CircularProgressIndicator(),
               DataState(
                 enumSelector: EnumSelector.success,
               ): Observer(
@@ -64,23 +64,24 @@ class _QuranSettingsTranslationsWidgetState
                         children: <Widget>[
                           ExpandablePanel(
                             theme: ExpandableThemeData(
-                              iconColor: Theme.of(context).accentColor,
+                              iconColor: Theme.of(context).colorScheme.secondary,
                             ),
                             header: Padding(
-                              padding: EdgeInsets.all(10),
+                              padding: const EdgeInsets.all(10),
                               child: Text(
                                 store.localization.getByKey(
                                   'quran_settings_translations.translations',
                                 ),
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
+                            collapsed: Container(),
                             expanded: ListView.builder(
                               itemCount: store.translations.length,
                               shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               itemBuilder: (
                                   BuildContext context,
                                   int index,
@@ -90,7 +91,7 @@ class _QuranSettingsTranslationsWidgetState
 
                                 return StreamBuilder<bool>(
                                   initialData:
-                                  item.translationData.isSelected$.value,
+                                  item.translationData.isSelected$.valueOrNull,
                                   stream: item.translationData.isSelected$
                                       .distinct(),
                                   builder: (
@@ -106,7 +107,7 @@ class _QuranSettingsTranslationsWidgetState
                                     })();
 
                                     Widget content = Container(
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                         vertical: 5,
                                       ),
                                       child: Column(
@@ -114,13 +115,13 @@ class _QuranSettingsTranslationsWidgetState
                                         CrossAxisAlignment.stretch,
                                         children: <Widget>[
                                           Text(
-                                            translationData.language ?? '',
-                                            style: TextStyle(
+                                            translationData.language,
+                                            style: const TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          SizedBox(
+                                          const SizedBox(
                                             height: 3,
                                           ),
                                           Text(
@@ -193,7 +194,7 @@ class _QuranSettingsTranslationsWidgetState
                                                                       .status ??
                                                                       '',
                                                                   style:
-                                                                  TextStyle(
+                                                                  const TextStyle(
                                                                     fontStyle:
                                                                     FontStyle
                                                                         .italic,
@@ -210,14 +211,13 @@ class _QuranSettingsTranslationsWidgetState
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsets.symmetric(
+                                                padding: const EdgeInsets.symmetric(
                                                   horizontal: 10,
                                                 ),
                                                 child: Row(
                                                   mainAxisSize:
                                                   MainAxisSize.min,
                                                   children: <Widget>[
-                                                    // Download button
                                                     StreamBuilder<bool>(
                                                       initialData: true,
                                                       stream: item
@@ -228,8 +228,8 @@ class _QuranSettingsTranslationsWidgetState
                                                           AsyncSnapshot<bool>
                                                           snapshot,
                                                           ) {
-                                                        if (snapshot.data) {
-                                                          return Padding(
+                                                        if (snapshot.data == true) {
+                                                          return const Padding(
                                                             padding: EdgeInsets
                                                                 .symmetric(
                                                               horizontal: 8,
@@ -252,7 +252,7 @@ class _QuranSettingsTranslationsWidgetState
 
                                                         var downloadWidget =
                                                         AppIconButton(
-                                                          icon: Icon(
+                                                          icon: const Icon(
                                                             Icons.file_download,
                                                           ),
                                                           onTap: () {
@@ -289,7 +289,7 @@ class _QuranSettingsTranslationsWidgetState
                                                                   if (status ==
                                                                       QueueStatus
                                                                           .downloading) {
-                                                                    return Padding(
+                                                                    return const Padding(
                                                                       padding:
                                                                       EdgeInsets
                                                                           .symmetric(
@@ -307,23 +307,6 @@ class _QuranSettingsTranslationsWidgetState
                                                                       ),
                                                                     );
                                                                   }
-
-                                                                  // if (downloadStatus ==
-                                                                  //     DownloadStatus
-                                                                  //         .error) {
-                                                                  //   return Observer(
-                                                                  //     builder:
-                                                                  //         (BuildContext
-                                                                  //             context) {
-                                                                  //       return Container(
-                                                                  //         child: Text(
-                                                                  //           item.downloadStatus ??
-                                                                  //               '',
-                                                                  //         ),
-                                                                  //       );
-                                                                  //     },
-                                                                  //   );
-                                                                  // }
 
                                                                   return downloadWidget;
                                                                 },
@@ -349,8 +332,8 @@ class _QuranSettingsTranslationsWidgetState
                                                       .executeIf(
                                                     Tuple2(
                                                       item,
-                                                      !item.translationData
-                                                          .isSelected$.value,
+                                                      !(item.translationData
+                                                          .isSelected$.valueOrNull ?? false),
                                                     ),
                                                   );
                                                 },
@@ -359,7 +342,7 @@ class _QuranSettingsTranslationsWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: EdgeInsets.symmetric(
+                                              padding: const EdgeInsets.symmetric(
                                                 horizontal: 5,
                                               ),
                                               child: Center(
@@ -371,7 +354,7 @@ class _QuranSettingsTranslationsWidgetState
                                                       initialData: item
                                                           .translationData
                                                           .isSelected$
-                                                          .value,
+                                                          .valueOrNull,
                                                       stream: item
                                                           .translationData
                                                           .isSelected$,
@@ -381,13 +364,15 @@ class _QuranSettingsTranslationsWidgetState
                                                           snapshot,
                                                           ) {
                                                         return Checkbox(
-                                                          value: snapshot.data,
+                                                          value: snapshot.data ?? false,
                                                           onChanged: (
-                                                              bool value,
+                                                              bool? value,
                                                               ) {
-                                                            item.translationData
-                                                                .isSelected$
-                                                                .add(value);
+                                                            if (value != null) {
+                                                              item.translationData
+                                                                  .isSelected$
+                                                                  .add(value);
+                                                            }
                                                           },
                                                         );
                                                       },
@@ -397,7 +382,7 @@ class _QuranSettingsTranslationsWidgetState
                                                         TranslationType
                                                             .download)
                                                       AppIconButton(
-                                                        icon: Icon(
+                                                        icon: const Icon(
                                                           Icons.clear,
                                                         ),
                                                         onTap: () {

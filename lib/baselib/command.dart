@@ -1,23 +1,22 @@
-// @dart=2.11
 import 'dart:async';
 
 import 'package:rxdart/rxdart.dart';
 
 class Command<TParameter> {
-  Future Function(TParameter parameter) _execute;
+  late Future Function(TParameter? parameter) _execute;
 
   Command._(
-    Future Function(TParameter parameter) execute, [
-    Future<bool> Function(TParameter parameter) canExecute,
+    Future Function(TParameter? parameter) execute, [
+    Future<bool> Function(TParameter? parameter)? canExecute,
   ]) {
     _execute = execute;
     this.canExecute =
-        canExecute ?? (TParameter parameter) => Future.value(!isExecuting);
+        canExecute ?? (TParameter? parameter) => Future.value(!isExecuting);
   }
 
   factory Command(
     Future Function() execute, [
-    Future<bool> Function() canExecute,
+    Future<bool> Function()? canExecute,
   ]) {
     return Command._(
       (_) => execute(),
@@ -26,17 +25,17 @@ class Command<TParameter> {
   }
 
   factory Command.parameter(
-    Future Function(TParameter parameter) execute, [
-    Future<bool> Function(TParameter parameter) canExecute,
+    Future Function(TParameter? parameter) execute, [
+    Future<bool> Function(TParameter? parameter)? canExecute,
   ]) {
     return Command._(execute, canExecute);
   }
 
-  Future<bool> Function(TParameter parameter) canExecute;
+  late Future<bool> Function(TParameter? parameter) canExecute;
 
   var isExecuting = false;
 
-  Future execute([TParameter parameter]) async {
+  Future execute([TParameter? parameter]) async {
     try {
       isExecuting = true;
 
@@ -48,7 +47,7 @@ class Command<TParameter> {
     }
   }
 
-  Future executeIf([TParameter parameter]) async {
+  Future executeIf([TParameter? parameter]) async {
     var canExecute = await this.canExecute(parameter);
     if (!canExecute || isExecuting) {
       return null;
@@ -59,12 +58,12 @@ class Command<TParameter> {
     });
   }
 
-  var _subject = BehaviorSubject(
+  final _subject = BehaviorSubject<void>(
     sync: true,
   );
   Future get next => _subject.take(1).last;
 
-  BehaviorSubject get execute$ => _subject;
+  BehaviorSubject<void> get execute$ => _subject;
 
   void dispose() {
     _subject.close();

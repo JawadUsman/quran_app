@@ -1,16 +1,15 @@
-// @dart=2.11
-import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:quran_app/baselib/base_state_mixin.dart';
 import 'package:quran_app/pages/quran_settings_fontsizes/quran_settings_fontsizes_store.dart';
 
 class QuranSettingsFontSizesWidget extends StatefulWidget {
   final QuranSettingsFontsizesStore store;
-  QuranSettingsFontSizesWidget({
-    @required this.store,
-    Key key,
+  const QuranSettingsFontSizesWidget({
+    required this.store,
+    Key? key,
   }) : super(key: key);
 
+  @override
   _QuranSettingsFontSizesWidgetState createState() =>
       _QuranSettingsFontSizesWidgetState();
 }
@@ -31,7 +30,7 @@ class _QuranSettingsFontSizesWidgetState
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: 10,
       ),
       child: Column(
@@ -47,7 +46,7 @@ class _QuranSettingsFontSizesWidgetState
                   clipBehavior: Clip.antiAlias,
                   child:
                   Padding(
-                    padding: EdgeInsets.all(15.0),
+                    padding: const EdgeInsets.all(15.0),
                     child: Column(
                       children: <Widget>[
                         Align(
@@ -56,7 +55,7 @@ class _QuranSettingsFontSizesWidgetState
                             store.localization.getByKey(
                               'quran_settings_fontsizes.arabic_fontsize',
                             ),
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -84,7 +83,7 @@ class _QuranSettingsFontSizesWidgetState
                             return Slider(
                               min: 20,
                               max: 100,
-                              value: snapshot.data,
+                              value: snapshot.data ?? 28.0,
                               onChanged: (double value) {
                                 store.arabicFontSizeChanged$.add(value);
                               },
@@ -106,7 +105,7 @@ class _QuranSettingsFontSizesWidgetState
                 return Card(
                   clipBehavior: Clip.antiAlias,
                   child: Padding(
-                      padding: EdgeInsets.all(15.0),
+                      padding: const EdgeInsets.all(15.0),
                       child: Column(
                         children: <Widget>[
                           Align(
@@ -115,7 +114,7 @@ class _QuranSettingsFontSizesWidgetState
                               store.localization.getByKey(
                                 'quran_settings_fontsizes.translation_fontsize',
                               ),
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
@@ -141,7 +140,7 @@ class _QuranSettingsFontSizesWidgetState
                               return Slider(
                                 min: 20,
                                 max: 100,
-                                value: snapshot.data,
+                                value: snapshot.data ?? 16.0,
                                 onChanged: (double value) {
                                   store.translationFontSizeChanged$.add(value);
                                 },

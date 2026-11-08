@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:moor/moor.dart';
-import 'package:moor/ffi.dart';
+import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/services/quran_provider.dart';
 import 'package:path/path.dart';
@@ -10,7 +10,7 @@ import '../main.dart';
 
 part 'translationdb.g.dart';
 
-@UseMoor()
+@DriftDatabase()
 class TranslationDb extends _$TranslationDb {
   TranslationDb() : super(_openConnection());
 
@@ -27,14 +27,14 @@ class TranslationDb extends _$TranslationDb {
 }
 
 LazyDatabase _openConnection() {
-  return LazyDatabase(() {
-    var appServices = sl.get<AppServices>();
+  return LazyDatabase(() async {
+    var appServices = sl.get<AppServices>()!;
     var directory = getQuranFolder(appServices);
     var translationDbPath = join(
       directory.path,
       'translations.db',
     );
     var f = File(translationDbPath);
-    return VmDatabase(f);
+    return NativeDatabase(f);
   });
 }

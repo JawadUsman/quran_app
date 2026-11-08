@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
@@ -12,11 +11,12 @@ import 'package:rxdart/rxdart.dart';
 class QuranNavigatorWidget extends StatefulWidget {
   final QuranNavigatorStore store;
 
-  QuranNavigatorWidget({
-    @required this.store,
-    Key key,
+  const QuranNavigatorWidget({
+    required this.store,
+    Key? key,
   }) : super(key: key);
 
+  @override
   QuranNavigatorWidgetState createState() => QuranNavigatorWidgetState();
 }
 
@@ -25,8 +25,8 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
   @override
   QuranNavigatorStore get store => widget.store;
 
-  FixedExtentScrollController pickerSurahController;
-  FixedExtentScrollController pickerAyaController;
+  FixedExtentScrollController? pickerSurahController;
+  FixedExtentScrollController? pickerAyaController;
 
   @override
   void initState() {
@@ -34,13 +34,17 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
 
     {
       autorun((_) {
-        var itemIndex = store.chapters.indexOf(store.initialSelectedChapter);
-        if (pickerSurahController == null) {
-          pickerSurahController = FixedExtentScrollController(
-            initialItem: itemIndex,
-          );
-        } else {
-          pickerSurahController.jumpToItem(itemIndex);
+        if (store.initialSelectedChapter != null) {
+          var itemIndex = store.chapters.indexOf(store.initialSelectedChapter!);
+          if (itemIndex >= 0) {
+            if (pickerSurahController == null) {
+              pickerSurahController = FixedExtentScrollController(
+                initialItem: itemIndex,
+              );
+            } else {
+              pickerSurahController?.jumpToItem(itemIndex);
+            }
+          }
         }
       });
 
@@ -51,12 +55,14 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
           }
 
           var itemIndex = store.listAya.indexOf(v);
-          if (pickerAyaController == null) {
-            pickerAyaController = FixedExtentScrollController(
-              initialItem: itemIndex,
-            );
-          } else {
-            pickerAyaController.jumpToItem(itemIndex);
+          if (itemIndex >= 0) {
+            if (pickerAyaController == null) {
+              pickerAyaController = FixedExtentScrollController(
+                initialItem: itemIndex,
+              );
+            } else {
+              pickerAyaController?.jumpToItem(itemIndex);
+            }
           }
         }).listen(null);
         store.registerDispose(() {
@@ -80,7 +86,7 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
         ),
       ),
       child: Container(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         height: 250,
         child: Row(
           children: <Widget>[
@@ -93,14 +99,6 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                       child: Observer(
                         builder: (BuildContext context) {
                           return CupertinoPicker(
-                            children: store.chapters.map((item) {
-                              return Center(
-                                child: Text(
-                                  '${item.chapterNumber}. ${item.nameSimple}',
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                              );
-                            }).toList(),
                             looping: true,
                             itemExtent: 30,
                             scrollController: pickerSurahController,
@@ -112,6 +110,14 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                               var item = store.chapters[value];
                               store.selectedChapter$.add(item);
                             },
+                            children: store.chapters.map((item) {
+                              return Center(
+                                child: Text(
+                                  '${item.chapterNumber}. ${item.nameSimple}',
+                                  style: Theme.of(context).textTheme.bodyLarge,
+                                ),
+                              );
+                            }).toList(),
                           );
                         },
                       ),
@@ -125,17 +131,17 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                       store.localization.getByKey(
                         'quran_navigator_widget.pick_sura',
                       ),
-                      style:Theme.of(context).textTheme.bodyText1,
+                      style: Theme.of(context).textTheme.bodyLarge,
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox.fromSize(
-              size: Size.fromWidth(10),
+              size: const Size.fromWidth(10),
             ),
             Platform.isAndroid
-                ? Container(
+                ? SizedBox(
                     width: 72,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -149,16 +155,6 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                                 }
 
                                 return CupertinoPicker(
-                                  children: store.listAya.map(
-                                    (v) {
-                                      return Center(
-                                        child: Text(
-                                          '$v',
-                                          style:Theme.of(context).textTheme.bodyText1,
-                                        ),
-                                      );
-                                    },
-                                  ).toList(),
                                   itemExtent: 30,
                                   looping: true,
                                   scrollController: pickerAyaController,
@@ -170,6 +166,16 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                                     var item = store.listAya[value];
                                     store.selectedAya = item;
                                   },
+                                  children: store.listAya.map(
+                                    (v) {
+                                      return Center(
+                                        child: Text(
+                                          '$v',
+                                          style: Theme.of(context).textTheme.bodyLarge,
+                                        ),
+                                      );
+                                    },
+                                  ).toList(),
                                 );
                               },
                             ),
@@ -185,162 +191,17 @@ class QuranNavigatorWidgetState extends State<QuranNavigatorWidget>
                                 'quran_navigator_widget.pick_aya',
                               ),
                               textAlign: TextAlign.center,
-                              style: Theme.of(context).textTheme.bodyText1,
+                              style: Theme.of(context).textTheme.bodyLarge,
                             ),
                           ),
                         ),
                       ],
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       ),
     );
-    // NOTE(yunus) Cupertino aya flickering when draging
-    // return Container(
-    //   height: 260,
-    //   color: Theme.of(context).dialogBackgroundColor,
-    //   child: Column(
-    //     crossAxisAlignment: CrossAxisAlignment.stretch,
-    //     children: <Widget>[
-    //       Container(
-    //         child: Align(
-    //           alignment: Alignment.center,
-    //           child: Icon(
-    //             Icons.drag_handle,
-    //           ),
-    //         ),
-    //       ),
-    //       Expanded(
-    //         child: Container(
-    //           padding: EdgeInsets.symmetric(
-    //             horizontal: 10,
-    //           ),
-    //           child: Row(
-    //             children: <Widget>[
-    //               Expanded(
-    //                 flex: 70,
-    //                 child: Column(
-    //                   crossAxisAlignment: CrossAxisAlignment.stretch,
-    //                   children: <Widget>[
-    //                     Expanded(
-    //                       child: Container(
-    //                         child: Observer(
-    //                           builder: (BuildContext context) {
-    //                             return CupertinoPicker(
-    //                               children: store.chapters.map((item) {
-    //                                 return Center(
-    //                                   child: Text(
-    //                                     '${item.chapterNumber}. ${item.nameSimple}',
-    //                                     style: TextStyle(
-    //                                       color: Theme.of(context)
-    //                                           .textTheme
-    //                                           .bodyText2
-    //                                           .color,
-    //                                     ),
-    //                                   ),
-    //                                 );
-    //                               }).toList(),
-    //                               looping: true,
-    //                               itemExtent: 30,
-    //                               scrollController: pickerSurahController,
-    //                               backgroundColor:
-    //                                   Theme.of(context).dialogBackgroundColor,
-    //                               onSelectedItemChanged: (
-    //                                 int value,
-    //                               ) {
-    //                                 var item = store.chapters[value];
-    //                                 store.selectedChapter$.add(item);
-    //                               },
-    //                             );
-    //                           },
-    //                         ),
-    //                       ),
-    //                     ),
-    //                     FlatButton(
-    //                       onPressed: () {
-    //                         store.pickSura.executeIf();
-    //                       },
-    //                       child: Text(
-    //                         store.localization.getByKey(
-    //                           'quran_navigator_widget.pick_sura',
-    //                         ),
-    //                       ),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //               SizedBox.fromSize(
-    //                 size: Size.fromWidth(10),
-    //               ),
-    //               Expanded(
-    //                 flex: 30,
-    //                 child: Column(
-    //                   crossAxisAlignment: CrossAxisAlignment.stretch,
-    //                   children: <Widget>[
-    //                     Expanded(
-    //                       child: Container(
-    //                         child: Observer(
-    //                           builder: (BuildContext context) {
-    //                             if (store.listAya.isEmpty) {
-    //                               return Container();
-    //                             }
-
-    //                             return CupertinoPicker(
-    //                               children: store.listAya.map(
-    //                                 (v) {
-    //                                   return Center(
-    //                                     child: Text(
-    //                                       '$v',
-    //                                       style: TextStyle(
-    //                                         color: Theme.of(context)
-    //                                             .textTheme
-    //                                             .bodyText2
-    //                                             .color,
-    //                                       ),
-    //                                     ),
-    //                                   );
-    //                                 },
-    //                               ).toList(),
-    //                               itemExtent: 30,
-    //                               looping: true,
-    //                               scrollController: pickerAyaController,
-    //                               backgroundColor:
-    //                                   Theme.of(context).dialogBackgroundColor,
-    //                               onSelectedItemChanged: (
-    //                                 int value,
-    //                               ) {
-    //                                 var item = store.listAya[value];
-    //                                 store.selectedAya = item;
-    //                               },
-    //                             );
-    //                           },
-    //                         ),
-    //                       ),
-    //                     ),
-    //                     FlatButton(
-    //                       onPressed: () {
-    //                         store.pickAya.executeIf();
-    //                       },
-    //                       child: Center(
-    //                         child: Text(
-    //                           store.localization.getByKey(
-    //                             'quran_navigator_widget.pick_aya',
-    //                           ),
-    //                           textAlign: TextAlign.center,
-    //                         ),
-    //                       ),
-    //                     ),
-    //                   ],
-    //                 ),
-    //               ),
-    //             ],
-    //           ),
-    //         ),
-    //       ),
-    //     ],
-    //   ),
-    // );
   }
 }

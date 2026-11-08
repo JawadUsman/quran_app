@@ -1,5 +1,4 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// @dart=2.11
 
 part of 'quran_navigator_store.dart';
 
@@ -7,10 +6,11 @@ part of 'quran_navigator_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$QuranNavigatorStore on _QuranNavigatorStore, Store {
-  final _$chaptersAtom = Atom(name: '_QuranNavigatorStore.chapters');
+  late final _$chaptersAtom =
+      Atom(name: '_QuranNavigatorStore.chapters', context: context);
 
   @override
   ObservableList<Chapters> get chapters {
@@ -25,24 +25,25 @@ mixin _$QuranNavigatorStore on _QuranNavigatorStore, Store {
     });
   }
 
-  final _$initialSelectedChapterAtom =
-      Atom(name: '_QuranNavigatorStore.initialSelectedChapter');
+  late final _$initialSelectedChapterAtom = Atom(
+      name: '_QuranNavigatorStore.initialSelectedChapter', context: context);
 
   @override
-  Chapters get initialSelectedChapter {
+  Chapters? get initialSelectedChapter {
     _$initialSelectedChapterAtom.reportRead();
     return super.initialSelectedChapter;
   }
 
   @override
-  set initialSelectedChapter(Chapters value) {
+  set initialSelectedChapter(Chapters? value) {
     _$initialSelectedChapterAtom
         .reportWrite(value, super.initialSelectedChapter, () {
       super.initialSelectedChapter = value;
     });
   }
 
-  final _$listAyaAtom = Atom(name: '_QuranNavigatorStore.listAya');
+  late final _$listAyaAtom =
+      Atom(name: '_QuranNavigatorStore.listAya', context: context);
 
   @override
   ObservableList<int> get listAya {
@@ -57,7 +58,8 @@ mixin _$QuranNavigatorStore on _QuranNavigatorStore, Store {
     });
   }
 
-  final _$selectedAyaAtom = Atom(name: '_QuranNavigatorStore.selectedAya');
+  late final _$selectedAyaAtom =
+      Atom(name: '_QuranNavigatorStore.selectedAya', context: context);
 
   @override
   int get selectedAya {

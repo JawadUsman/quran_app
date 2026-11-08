@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '13.0'
 
 # CocoaPods analytics sends network stats synchronously affecting flutter build latency.
 ENV['COCOAPODS_DISABLE_STATS'] = 'true'
@@ -37,5 +37,15 @@ end
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     flutter_additional_ios_build_settings(target)
+  end
+
+  # Fix Reachability Xcode 16+ private header issue (<netinet6/in6.h>)
+  reachability_m = File.join(installer.sandbox.root, 'Reachability', 'Reachability.m')
+  if File.exist?(reachability_m)
+    text = File.read(reachability_m)
+    if text.include?('#import <netinet6/in6.h>')
+      new_text = text.gsub('#import <netinet6/in6.h>', '// #import <netinet6/in6.h>')
+      File.open(reachability_m, 'w') { |file| file.puts new_text }
+    end
   end
 end

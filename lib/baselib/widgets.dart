@@ -1,14 +1,14 @@
-// @dart=2.11
 import 'package:flutter/widgets.dart';
 
 class WidgetSelector<T> extends StatelessWidget {
   final Map<T, Widget> states;
   final T selectedState;
 
-  WidgetSelector({
-    @required this.selectedState,
-    @required this.states,
-  });
+  const WidgetSelector({
+    Key? key,
+    required this.selectedState,
+    required this.states,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +31,17 @@ class DataState {
   );
 
   final EnumSelector enumSelector;
-  String message;
+  String? message;
 
   DataState({
-    @required this.enumSelector,
+    required this.enumSelector,
     this.message,
   });
 
-  bool operator ==(o) {
-    DataState dataState = o;
-    var b = enumSelector == dataState.enumSelector;
-    return b;
+  @override
+  bool operator ==(Object other) {
+    if (other is! DataState) return false;
+    return enumSelector == other.enumSelector;
   }
 
   @override

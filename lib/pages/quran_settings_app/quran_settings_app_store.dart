@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/baselib/base_store.dart';
@@ -15,15 +14,15 @@ class QuranSettingsAppStore = _QuranSettingsAppStore
 abstract class _QuranSettingsAppStore extends BaseStore
     with Store
     implements QuranSettingsStoreProvider {
-  var localization = sl.get<ILocalizationService>();
-  var appServices = sl.get<AppServices>();
+  late ILocalizationService localization;
+  late AppServices appServices;
 
   _QuranSettingsAppStore({
-    ILocalizationService localizationService,
-    AppServices appServices,
+    ILocalizationService? localizationService,
+    AppServices? appServices,
   }) {
-    localization = localizationService ?? localization;
-    this.appServices = appServices ?? (appServices = this.appServices);
+    localization = localizationService ?? sl.get<ILocalizationService>()!;
+    this.appServices = appServices ?? sl.get<AppServices>()!;
 
     _settingsItems = SettingsItem();
 
@@ -46,12 +45,12 @@ abstract class _QuranSettingsAppStore extends BaseStore
         });
       }).asyncExpand((v) {
         return Rx.defer(() {
-          return appServices.navigatorState
-              .pushNamedAndRemoveUntil(
+          return (this.appServices.navigatorState
+              ?.pushNamedAndRemoveUntil(
                 '/',
                 (_) => false,
               )
-              .asStream();
+              .asStream() ?? const Stream.empty());
         });
       }).listen(null);
       registerDispose(() {
@@ -60,7 +59,7 @@ abstract class _QuranSettingsAppStore extends BaseStore
     }
   }
 
-  SettingsItem _settingsItems;
+  late SettingsItem _settingsItems;
   @override
   SettingsItem get settingsItem => _settingsItems;
 

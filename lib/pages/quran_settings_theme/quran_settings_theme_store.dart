@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/base_store.dart';
 import 'package:quran_app/baselib/command.dart';
@@ -19,16 +18,17 @@ class QuranSettingsThemeStore = _QuranSettingsThemeStore
 abstract class _QuranSettingsThemeStore extends BaseStore
     with Store
     implements QuranSettingsStoreProvider {
-  var localization = sl.get<ILocalizationService>();
-  var quranProvider = sl.get<QuranProvider>();
-  var themeProvider = sl.get<ThemeProviderImplementation>();
+  late ILocalizationService localization;
+  late QuranProvider quranProvider;
+  late ThemeProviderImplementation themeProvider;
 
   _QuranSettingsThemeStore({
-    QuranProvider quranProvider,
-    ThemeProviderImplementation themeProvider,
+    QuranProvider? quranProvider,
+    ThemeProviderImplementation? themeProvider,
   }) {
-    this.quranProvider = quranProvider ?? (quranProvider = this.quranProvider);
-    this.themeProvider = themeProvider ?? (themeProvider = this.themeProvider);
+    this.localization = sl.get<ILocalizationService>()!;
+    this.quranProvider = quranProvider ?? sl.get<QuranProvider>()!;
+    this.themeProvider = themeProvider ?? sl.get<ThemeProviderImplementation>()!;
 
     _settingsItems = SettingsItem();
 
@@ -37,10 +37,10 @@ abstract class _QuranSettingsThemeStore extends BaseStore
         enumSelector: EnumSelector.loading,
       ));
 
-      var themes = await themeProvider.getThemes();
+      var themes = await this.themeProvider.getThemes();
       themes$.add(themes);
 
-      var currentTheme = await themeProvider.getCurrentTheme();
+      var currentTheme = await this.themeProvider.getCurrentTheme();
       currentTheme = themes.firstWhere(
         (t) => t == currentTheme,
         orElse: () => themes.first,
@@ -52,22 +52,22 @@ abstract class _QuranSettingsThemeStore extends BaseStore
       )));
     });
 
-    var ds = CompositeSubscription();
+    CompositeSubscription? ds = CompositeSubscription();
 
     ds.add(currentThemeChanged$.asyncExpand((f) {
-      return themeProvider.setTheme(f).asStream().map((_) => f);
+      return this.themeProvider.setTheme(f).asStream().map((_) => f);
     }).asyncExpand((f) {
       currentTheme$.add(f);
       return currentTheme$.take(1).last.asStream();
     }).listen(null));
 
     registerDispose(() {
-      ds.dispose();
+      ds?.dispose();
       ds = null;
     });
   }
 
-  SettingsItem _settingsItems;
+  late SettingsItem _settingsItems;
   @override
   SettingsItem get settingsItem => _settingsItems;
 
@@ -88,5 +88,5 @@ abstract class _QuranSettingsThemeStore extends BaseStore
     sync: true,
   );
 
-  Command getThemes;
+  late Command getThemes;
 }

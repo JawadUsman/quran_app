@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/material.dart';
 import 'package:quran_app/baselib/base_state_mixin.dart';
 import 'package:quran_app/pages/home_tab/home_tab_widget.dart';
@@ -6,8 +5,9 @@ import 'package:quran_app/pages/home_tab/home_tab_widget.dart';
 import 'home_store.dart';
 
 class HomeWidget extends StatefulWidget {
-  HomeWidget({Key key}) : super(key: key);
+  const HomeWidget({Key? key}) : super(key: key);
 
+  @override
   _HomeWidgetState createState() => _HomeWidgetState();
 }
 

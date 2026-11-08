@@ -1,33 +1,19 @@
-// @dart=2.11
 import 'package:quiver/collection.dart';
 
-/// <summary>
-/// Sort direction
-/// </summary>
 enum SortDirection {
-  /// <summary>
-  /// Sort items ascending
-  /// </summary>
   Ascending,
-
-  /// <summary>
-  /// Sort items descending
-  /// </summary>
   Descending
 }
 
 class SortExpression<T> {
-  SortDirection sortDirection;
-  // int compareTo(T x, T y) {
-  //   return x.compareTo(y);
-  // }
-  Comparable Function(T) expression;
+  late SortDirection sortDirection;
+  late Comparable Function(T) expression;
 }
 
 class SortComparisonBuilder<T> extends DelegatingList<SortExpression<T>> {
-  List<SortExpression<T>> _list = [];
+  final List<SortExpression<T>> _list = [];
 
-  ascending(Comparable Function(T) expression) {
+  void ascending(Comparable Function(T) expression) {
     _list.add(
       SortExpression()
         ..sortDirection = SortDirection.Ascending
@@ -38,7 +24,7 @@ class SortComparisonBuilder<T> extends DelegatingList<SortExpression<T>> {
     );
   }
 
-  thenByAscending(Comparable Function(T) expression) {
+  void thenByAscending(Comparable Function(T) expression) {
     _list.add(
       SortExpression()
         ..sortDirection = SortDirection.Ascending
@@ -49,7 +35,7 @@ class SortComparisonBuilder<T> extends DelegatingList<SortExpression<T>> {
     );
   }
 
-  descending(Comparable Function(T) expression) {
+  void descending(Comparable Function(T) expression) {
     _list.add(
       SortExpression()
         ..sortDirection = SortDirection.Descending
@@ -60,7 +46,7 @@ class SortComparisonBuilder<T> extends DelegatingList<SortExpression<T>> {
     );
   }
 
-  thenByDescending(Comparable Function(T) expression) {
+  void thenByDescending(Comparable Function(T) expression) {
     _list.add(
       SortExpression()
         ..sortDirection = SortDirection.Descending
@@ -71,7 +57,7 @@ class SortComparisonBuilder<T> extends DelegatingList<SortExpression<T>> {
     );
   }
 
-  int getCompareTo(T x, T y) {
+  int getCompareTo(T? x, T? y) {
     for (var item in _list) {
       if (x == null && y == null) {
         continue;
@@ -87,17 +73,6 @@ class SortComparisonBuilder<T> extends DelegatingList<SortExpression<T>> {
 
       var xItem = item.expression(x);
       var yItem = item.expression(y);
-      if (xItem == null && yItem == null) {
-        continue;
-      }
-
-      if (xItem == null) {
-        return -1;
-      }
-
-      if (yItem == null) {
-        return 1;
-      }
 
       var result = xItem.compareTo(yItem);
       if (result == 0) {

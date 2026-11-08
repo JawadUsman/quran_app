@@ -1,9 +1,6 @@
-// @dart=2.11
-import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/base_store.dart';
 import 'package:quran_app/baselib/command.dart';
-import 'package:quran_app/baselib/disposable.dart';
 import 'package:quran_app/baselib/localization_service.dart';
 import 'package:quran_app/baselib/widgets.dart';
 import 'package:quran_app/helpers/sort_comparison_builder.dart';
@@ -26,14 +23,15 @@ class QuranSettingsTranslationsStore = _QuranSettingsTranslationsStore
 abstract class _QuranSettingsTranslationsStore extends BaseStore
     with Store
     implements QuranSettingsStoreProvider {
-  var localization = sl.get<ILocalizationService>();
-  var quranProvider = sl.get<QuranProvider>();
+  late ILocalizationService localization;
+  late QuranProvider quranProvider;
 
   _QuranSettingsTranslationsStore({
-    @required Map<Type, Object> parameter,
-    QuranProvider quranProvider,
+    required Map<Type, Object> parameter,
+    QuranProvider? quranProvider,
   }) {
-    this.quranProvider = quranProvider ?? (quranProvider = this.quranProvider);
+    this.localization = sl.get<ILocalizationService>()!;
+    this.quranProvider = quranProvider ?? sl.get<QuranProvider>()!;
 
     _settingsItems = SettingsItem()
       ..name = localization.getByKey(
@@ -41,11 +39,9 @@ abstract class _QuranSettingsTranslationsStore extends BaseStore
       );
 
     void disposeTraslations() {
-      translations.forEach((f) {
-        if (f is Disposable) {
-          f.dispose();
-        }
-      });
+      for (var f in translations) {
+        f.dispose();
+      }
     }
 
     var comparisoBuilder =
@@ -61,7 +57,7 @@ abstract class _QuranSettingsTranslationsStore extends BaseStore
 
         if (parameter[QuranSettingsTranslationsStore] != null) {
           ObservableList<TranslationData> fetchedTranslations =
-              parameter[QuranSettingsTranslationsStore];
+              parameter[QuranSettingsTranslationsStore] as ObservableList<TranslationData>;
           var _translations =
               await Stream.fromIterable(fetchedTranslations).asyncExpand((v) {
             var item = QuranSettingsTranslationItemStore(v);
@@ -78,6 +74,7 @@ abstract class _QuranSettingsTranslationsStore extends BaseStore
     });
 
     translationChanged = Command.parameter((v) async {
+      if (v == null) return;
       try {
         dataState$.add(DataState(enumSelector: EnumSelector.loading));
 
@@ -102,7 +99,7 @@ abstract class _QuranSettingsTranslationsStore extends BaseStore
     });
   }
 
-  SettingsItem _settingsItems;
+  late SettingsItem _settingsItems;
   @override
   SettingsItem get settingsItem => _settingsItems;
 
@@ -110,10 +107,10 @@ abstract class _QuranSettingsTranslationsStore extends BaseStore
     enumSelector: EnumSelector.none,
   ));
 
-  Command getListTranslations;
+  late Command getListTranslations;
 
   @observable
   var translations = ObservableList<QuranSettingsTranslationItemStore>();
 
-  Command<Tuple2<QuranSettingsTranslationItemStore, bool>> translationChanged;
+  late Command<Tuple2<QuranSettingsTranslationItemStore, bool>> translationChanged;
 }

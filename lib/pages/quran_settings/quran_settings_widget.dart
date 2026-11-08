@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/material.dart';
 import 'package:quran_app/baselib/base_state_mixin.dart';
 
@@ -7,11 +6,12 @@ import 'quran_settings_store.dart';
 class QuranSettingsWidget extends StatefulWidget {
   final QuranSettingsStore store;
 
-  QuranSettingsWidget({
-    @required this.store,
-    Key key,
+  const QuranSettingsWidget({
+    required this.store,
+    Key? key,
   }) : super(key: key);
 
+  @override
   _QuranSettingsWidgetState createState() => _QuranSettingsWidgetState();
 }
 
@@ -27,7 +27,7 @@ class _QuranSettingsWidgetState extends State<QuranSettingsWidget>
         title: Text(
           store.localization.getByKey('quran_settings.title'),
           style: TextStyle(
-            color: Theme.of(context).textTheme.bodyText2.color,
+            color: Theme.of(context).textTheme.bodyMedium?.color,
             fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
@@ -36,16 +36,6 @@ class _QuranSettingsWidgetState extends State<QuranSettingsWidget>
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          // SafeArea(
-          //   child: Container(
-          //     padding: EdgeInsets.only(
-          //       left: 15,
-          //       right: 15,
-          //       top: 10,
-          //     ),
-          //     child: ,
-          //   ),
-          // ),
           Expanded(
             child: ListView.builder(
               itemCount: store.items.length,

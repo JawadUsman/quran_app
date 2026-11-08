@@ -1,12 +1,11 @@
-// @dart=2.11
 import 'package:flutter/widgets.dart';
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 abstract class AppServices {
-  GlobalKey<NavigatorState> navigatorStateKey;
+  GlobalKey<NavigatorState> get navigatorStateKey;
 
-  NavigatorState get navigatorState;
+  NavigatorState? get navigatorState;
 
   Logger get logger;
 
@@ -16,8 +15,9 @@ abstract class AppServices {
 }
 
 class AppServicesImplementation implements AppServices {
-  NavigatorState _navigatorState;
-  NavigatorState get navigatorState {
+  NavigatorState? _navigatorState;
+  @override
+  NavigatorState? get navigatorState {
     if (_navigatorState == null) {
       _navigatorState = navigatorStateKey.currentState;
     }
@@ -27,10 +27,11 @@ class AppServicesImplementation implements AppServices {
   @override
   GlobalKey<NavigatorState> navigatorStateKey = GlobalKey<NavigatorState>();
 
-  Logger _logger;
-  Logger get logger => _logger ?? (_logger = Logger());
+  Logger? _logger;
+  @override
+  Logger get logger => _logger ??= Logger();
 
-  String _applicationDocumentsDirectory;
+  String _applicationDocumentsDirectory = '';
   @override
   String get applicationDocumentsDirectory => _applicationDocumentsDirectory;
 
