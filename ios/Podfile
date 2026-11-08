@@ -44,6 +44,7 @@ post_install do |installer|
   if File.exist?(reachability_m)
     text = File.read(reachability_m)
     if text.include?('#import <netinet6/in6.h>')
+      File.chmod(0644, reachability_m)
       new_text = text.gsub('#import <netinet6/in6.h>', '// #import <netinet6/in6.h>')
       File.open(reachability_m, 'w') { |file| file.puts new_text }
     end

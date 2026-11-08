@@ -116,28 +116,28 @@ class _HomeTabWidgetState extends State<HomeTabWidget>
       BottomNavigationBarItem(
         icon: Padding(
           padding: EdgeInsets.all(6.0),
-          child: Icon(FontAwesomeIcons.bookOpen),
+          child: FaIcon(FontAwesomeIcons.bookOpen),
         ),
         label: "Surahs",
       ),
       BottomNavigationBarItem(
         icon: Padding(
           padding: EdgeInsets.all(6.0),
-          child: Icon(FontAwesomeIcons.chartPie),
+          child: FaIcon(FontAwesomeIcons.chartPie),
         ),
         label: "Juz",
       ),
       BottomNavigationBarItem(
         icon: Padding(
           padding: EdgeInsets.all(6.0),
-          child: Icon(FontAwesomeIcons.solidBookmark),
+          child: FaIcon(FontAwesomeIcons.solidBookmark),
         ),
         label: "Bookmarks",
       ),
       BottomNavigationBarItem(
         icon: Padding(
           padding: EdgeInsets.all(6.0),
-          child: Icon(FontAwesomeIcons.circleInfo),
+          child: FaIcon(FontAwesomeIcons.circleInfo),
         ),
         label: "About Us",
       ),

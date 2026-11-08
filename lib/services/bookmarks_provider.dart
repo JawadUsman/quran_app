@@ -23,7 +23,7 @@ class SqliteBookmarksProvider implements BookmarksProvider {
   SqliteBookmarksProvider({
     AppDb? appDb,
   }) {
-    this.appDb = appDb ?? sl.get<AppDb>();
+    this.appDb = (appDb ?? sl.get<AppDb>())!;
   }
 
   @override

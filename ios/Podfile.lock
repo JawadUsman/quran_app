@@ -8,7 +8,7 @@ PODS:
   - Flutter (1.0.0)
   - fluttertoast (0.0.2):
     - Flutter
-  - Reachability (3.2)
+  - Reachability (3.7.7)
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -76,12 +76,12 @@ SPEC CHECKSUMS:
   connectivity: c4130b2985d4ef6fd26f9702e886bd5260681467
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   fluttertoast: 21eecd6935e7064cc1fcb733a4c5a428f3f24f0f
-  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  Reachability: 8bf74b755b2993968c344b465c13e602db2b1044
   shared_preferences_foundation: 5086985c1d43c5ba4d5e69a4e8083a389e2909e6
   sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
   sqlite3: a51c07cf16e023d6c48abd5e5791a61a47354921
   sqlite3_flutter_libs: f9114e4bbe1f2e03dd543373c53d23245982ca13
 
-PODFILE CHECKSUM: fab29cb5da3866c650ccabb8fc5c0f707fe2fe8e
+PODFILE CHECKSUM: 263a9c77b591164ccec92f6d70d3fffbfd4acf5e
 
 COCOAPODS: 1.17.0
