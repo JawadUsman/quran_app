@@ -10,7 +10,7 @@ TranslationData _$TranslationDataFromJson(Map<String, dynamic> json) =>
     TranslationData()
       ..id = json['id'] as String
       ..tableName = json['tableName'] as String
-      ..uri = json['uri'] as String
+      ..uri = json['uri'] as String?
       ..languageCode = json['languageCode'] as String
       ..language = json['language'] as String
       ..name = json['name'] as String

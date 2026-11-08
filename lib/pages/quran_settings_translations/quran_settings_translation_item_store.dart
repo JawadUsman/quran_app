@@ -59,7 +59,7 @@ class QuranSettingsTranslationItemStore implements Disposable {
       var dataFile = this.quranTranslationFileProvider.queueDownload(
         DataFile()
           ..id = translationData.id
-          ..url = translationData.uri
+          ..url = translationData.uri ?? ''
           ..tableName = translationData.tableName,
       );
       var queueStatus = await dataFile.onChangeStatus.skip(1).take(1).first;
