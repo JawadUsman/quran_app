@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quran_app/baselib/base_widgetparameter_mixin.dart';
@@ -58,6 +57,8 @@ void main() {
 class MainApp extends StatelessWidget {
   final store = MainStore();
 
+  MainApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     (() async {
@@ -67,8 +68,8 @@ class MainApp extends StatelessWidget {
       ThemeItem(
         themeType: ThemeType.Night,
       ): ThemeData.dark().copyWith(
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
             color: Color(0xffc5c4c3),
           ),
         ),
@@ -76,12 +77,12 @@ class MainApp extends StatelessWidget {
       ThemeItem(
         themeType: ThemeType.Light,
       ): ThemeData(
-        scaffoldBackgroundColor: Color(0xfff3efd9),
-        appBarTheme: AppBarTheme(
+        scaffoldBackgroundColor: const Color(0xfff3efd9),
+        appBarTheme: const AppBarTheme(
           color: Color(0x86000000),
         ),
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(
             color: Color(0xff8d642c),
           ),
         ),
@@ -97,8 +98,8 @@ class MainApp extends StatelessWidget {
         var currentTheme = themeMapping[snapshot.data];
         var themeData = currentTheme ??
             ThemeData.dark().copyWith(
-              textTheme: TextTheme(
-                bodyText1: TextStyle(
+              textTheme: const TextTheme(
+                bodyLarge: TextStyle(
                   color: Color(0xffc5c4c3),
                 ),
               ),
@@ -109,15 +110,16 @@ class MainApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           onGenerateRoute: (s) {
             var widgetBuilder = Routes.routes[s.name];
+            if (widgetBuilder == null) return null;
             return MaterialPageRoute(
               builder: (BuildContext context) {
                 var widget = widgetBuilder(context);
                 if (widget is BaseWidgetParameterMixin) {
                   var baseWidgetParameterMixin = widget;
-                  if (s.arguments != null) {
+                  if (s.arguments != null && s.arguments is Map) {
                     baseWidgetParameterMixin.parameter.addAll(
                       Map.from(
-                        s.arguments,
+                        s.arguments as Map,
                       ),
                     );
                   }

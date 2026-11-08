@@ -1,13 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// @dart=2.11
 
-part of surah;
+part of 'models.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializers _$serializers = (new Serializers().toBuilder()
+Serializers _$serializers = (Serializers().toBuilder()
       ..add(Aya.serializer)
       ..add(AyaTranslation.serializer)
       ..add(ChapterData.serializer)
@@ -19,29 +18,29 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(VerseMappingJuzItem.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Aya)]),
-          () => new ListBuilder<Aya>())
+          () => ListBuilder<Aya>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(Chapters)]),
-          () => new ListBuilder<Chapters>())
+          () => ListBuilder<Chapters>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(JuzItem)]),
-          () => new ListBuilder<JuzItem>())
+          () => ListBuilder<JuzItem>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(int)]),
-          () => new ListBuilder<int>())
+          () => ListBuilder<int>())
       ..addBuilderFactory(
           const FullType(
               BuiltMap, const [const FullType(String), const FullType(String)]),
-          () => new MapBuilder<String, String>()))
+          () => MapBuilder<String, String>()))
     .build();
-Serializer<ChapterData> _$chapterDataSerializer = new _$ChapterDataSerializer();
-Serializer<Chapters> _$chaptersSerializer = new _$ChaptersSerializer();
+Serializer<ChapterData> _$chapterDataSerializer = _$ChapterDataSerializer();
+Serializer<Chapters> _$chaptersSerializer = _$ChaptersSerializer();
 Serializer<TranslatedName> _$translatedNameSerializer =
-    new _$TranslatedNameSerializer();
-Serializer<RootJuzItem> _$rootJuzItemSerializer = new _$RootJuzItemSerializer();
-Serializer<JuzItem> _$juzItemSerializer = new _$JuzItemSerializer();
+    _$TranslatedNameSerializer();
+Serializer<RootJuzItem> _$rootJuzItemSerializer = _$RootJuzItemSerializer();
+Serializer<JuzItem> _$juzItemSerializer = _$JuzItemSerializer();
 Serializer<VerseMappingJuzItem> _$verseMappingJuzItemSerializer =
-    new _$VerseMappingJuzItemSerializer();
+    _$VerseMappingJuzItemSerializer();
 
 class _$ChapterDataSerializer implements StructuredSerializer<ChapterData> {
   @override
@@ -50,9 +49,9 @@ class _$ChapterDataSerializer implements StructuredSerializer<ChapterData> {
   final String wireName = 'ChapterData';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ChapterData object,
+  Iterable<Object?> serialize(Serializers serializers, ChapterData object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'chapters',
       serializers.serialize(object.chapters,
           specifiedType:
@@ -63,21 +62,21 @@ class _$ChapterDataSerializer implements StructuredSerializer<ChapterData> {
   }
 
   @override
-  ChapterData deserialize(Serializers serializers, Iterable<Object> serialized,
+  ChapterData deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ChapterDataBuilder();
+    final result = ChapterDataBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'chapters':
           result.chapters.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(Chapters)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(Chapters)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -93,10 +92,10 @@ class _$ChaptersSerializer implements StructuredSerializer<Chapters> {
   final String wireName = 'Chapters';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Chapters object,
+  Iterable<Object?> serialize(Serializers serializers, Chapters object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.id;
     if (value != null) {
       result
@@ -182,65 +181,66 @@ class _$ChaptersSerializer implements StructuredSerializer<Chapters> {
   }
 
   @override
-  Chapters deserialize(Serializers serializers, Iterable<Object> serialized,
+  Chapters deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new ChaptersBuilder();
+    final result = ChaptersBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'chapter_number':
           result.chapterNumber = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'bismillah_pre':
           result.bismillahPre = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'revelation_order':
           result.revelationOrder = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'revelation_place':
           result.revelationPlace = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name_complex':
           result.nameComplex = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name_arabic':
           result.nameArabic = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name_simple':
           result.nameSimple = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'audio_url':
           result.audioURL = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'verses_count':
           result.versesCount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'pages':
           result.pages.replace(serializers.deserialize(value,
                   specifiedType:
-                      const FullType(BuiltList, const [const FullType(int)]))
-              as BuiltList<Object>);
+                      const FullType(BuiltList, const [const FullType(int)]))!
+              as BuiltList<Object?>);
           break;
         case 'translated_name':
           result.translatedName.replace(serializers.deserialize(value,
-              specifiedType: const FullType(TranslatedName)) as TranslatedName);
+                  specifiedType: const FullType(TranslatedName))!
+              as TranslatedName);
           break;
       }
     }
@@ -257,10 +257,10 @@ class _$TranslatedNameSerializer
   final String wireName = 'TranslatedName';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TranslatedName object,
+  Iterable<Object?> serialize(Serializers serializers, TranslatedName object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.languageName;
     if (value != null) {
       result
@@ -280,23 +280,23 @@ class _$TranslatedNameSerializer
 
   @override
   TranslatedName deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new TranslatedNameBuilder();
+    final result = TranslatedNameBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'languageName':
           result.languageName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -312,9 +312,9 @@ class _$RootJuzItemSerializer implements StructuredSerializer<RootJuzItem> {
   final String wireName = 'RootJuzItem';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, RootJuzItem object,
+  Iterable<Object?> serialize(Serializers serializers, RootJuzItem object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'juzs',
       serializers.serialize(object.juzs,
           specifiedType:
@@ -325,21 +325,21 @@ class _$RootJuzItemSerializer implements StructuredSerializer<RootJuzItem> {
   }
 
   @override
-  RootJuzItem deserialize(Serializers serializers, Iterable<Object> serialized,
+  RootJuzItem deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new RootJuzItemBuilder();
+    final result = RootJuzItemBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'juzs':
           result.juzs.replace(serializers.deserialize(value,
                   specifiedType: const FullType(
-                      BuiltList, const [const FullType(JuzItem)]))
-              as BuiltList<Object>);
+                      BuiltList, const [const FullType(JuzItem)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -355,9 +355,9 @@ class _$JuzItemSerializer implements StructuredSerializer<JuzItem> {
   final String wireName = 'JuzItem';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, JuzItem object,
+  Iterable<Object?> serialize(Serializers serializers, JuzItem object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(int)),
       'juz_number',
@@ -373,28 +373,28 @@ class _$JuzItemSerializer implements StructuredSerializer<JuzItem> {
   }
 
   @override
-  JuzItem deserialize(Serializers serializers, Iterable<Object> serialized,
+  JuzItem deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new JuzItemBuilder();
+    final result = JuzItemBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'juz_number':
           result.juzNumber = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int))! as int;
           break;
         case 'verse_mapping':
           result.verseMapping.replace(serializers.deserialize(value,
               specifiedType: const FullType(BuiltMap,
-                  const [const FullType(String), const FullType(String)])));
+                  const [const FullType(String), const FullType(String)]))!);
           break;
       }
     }
@@ -414,11 +414,11 @@ class _$VerseMappingJuzItemSerializer
   final String wireName = 'VerseMappingJuzItem';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, VerseMappingJuzItem object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
-    Object value;
+    final result = <Object?>[];
+    Object? value;
     value = object.surah;
     if (value != null) {
       result
@@ -442,27 +442,27 @@ class _$VerseMappingJuzItemSerializer
 
   @override
   VerseMappingJuzItem deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new VerseMappingJuzItemBuilder();
+    final result = VerseMappingJuzItemBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current! as String;
       iterator.moveNext();
-      final Object value = iterator.current;
+      final Object? value = iterator.current;
       switch (key) {
         case 'surah':
           result.surah = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'startAya':
           result.startAya = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'endAya':
           result.endAya = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -475,19 +475,16 @@ class _$ChapterData extends ChapterData {
   @override
   final BuiltList<Chapters> chapters;
 
-  factory _$ChapterData([void Function(ChapterDataBuilder) updates]) =>
-      (new ChapterDataBuilder()..update(updates)).build();
+  factory _$ChapterData([void Function(ChapterDataBuilder)? updates]) =>
+      (ChapterDataBuilder()..update(updates))._build();
 
-  _$ChapterData._({this.chapters}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(chapters, 'ChapterData', 'chapters');
-  }
-
+  _$ChapterData._({required this.chapters}) : super._();
   @override
   ChapterData rebuild(void Function(ChapterDataBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ChapterDataBuilder toBuilder() => new ChapterDataBuilder()..replace(this);
+  ChapterDataBuilder toBuilder() => ChapterDataBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -497,24 +494,27 @@ class _$ChapterData extends ChapterData {
 
   @override
   int get hashCode {
-    return $jf($jc(0, chapters.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, chapters.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('ChapterData')
+    return (newBuiltValueToStringHelper(r'ChapterData')
           ..add('chapters', chapters))
         .toString();
   }
 }
 
 class ChapterDataBuilder implements Builder<ChapterData, ChapterDataBuilder> {
-  _$ChapterData _$v;
+  _$ChapterData? _$v;
 
-  ListBuilder<Chapters> _chapters;
+  ListBuilder<Chapters>? _chapters;
   ListBuilder<Chapters> get chapters =>
-      _$this._chapters ??= new ListBuilder<Chapters>();
-  set chapters(ListBuilder<Chapters> chapters) => _$this._chapters = chapters;
+      _$this._chapters ??= ListBuilder<Chapters>();
+  set chapters(ListBuilder<Chapters>? chapters) => _$this._chapters = chapters;
 
   ChapterDataBuilder();
 
@@ -529,28 +529,32 @@ class ChapterDataBuilder implements Builder<ChapterData, ChapterDataBuilder> {
 
   @override
   void replace(ChapterData other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$ChapterData;
   }
 
   @override
-  void update(void Function(ChapterDataBuilder) updates) {
+  void update(void Function(ChapterDataBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$ChapterData build() {
+  ChapterData build() => _build();
+
+  _$ChapterData _build() {
     _$ChapterData _$result;
     try {
-      _$result = _$v ?? new _$ChapterData._(chapters: chapters.build());
+      _$result = _$v ??
+          _$ChapterData._(
+            chapters: chapters.build(),
+          );
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'chapters';
         chapters.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'ChapterData', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(
+            r'ChapterData', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -561,32 +565,32 @@ class ChapterDataBuilder implements Builder<ChapterData, ChapterDataBuilder> {
 
 class _$Chapters extends Chapters {
   @override
-  final int id;
+  final int? id;
   @override
-  final int chapterNumber;
+  final int? chapterNumber;
   @override
-  final bool bismillahPre;
+  final bool? bismillahPre;
   @override
-  final int revelationOrder;
+  final int? revelationOrder;
   @override
-  final String revelationPlace;
+  final String? revelationPlace;
   @override
-  final String nameComplex;
+  final String? nameComplex;
   @override
-  final String nameArabic;
+  final String? nameArabic;
   @override
-  final String nameSimple;
+  final String? nameSimple;
   @override
-  final String audioURL;
+  final String? audioURL;
   @override
-  final int versesCount;
+  final int? versesCount;
   @override
-  final BuiltList<int> pages;
+  final BuiltList<int>? pages;
   @override
-  final TranslatedName translatedName;
+  final TranslatedName? translatedName;
 
-  factory _$Chapters([void Function(ChaptersBuilder) updates]) =>
-      (new ChaptersBuilder()..update(updates)).build();
+  factory _$Chapters([void Function(ChaptersBuilder)? updates]) =>
+      (ChaptersBuilder()..update(updates))._build();
 
   _$Chapters._(
       {this.id,
@@ -602,13 +606,12 @@ class _$Chapters extends Chapters {
       this.pages,
       this.translatedName})
       : super._();
-
   @override
   Chapters rebuild(void Function(ChaptersBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  ChaptersBuilder toBuilder() => new ChaptersBuilder()..replace(this);
+  ChaptersBuilder toBuilder() => ChaptersBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -630,33 +633,26 @@ class _$Chapters extends Chapters {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc(
-                $jc(
-                    $jc(
-                        $jc(
-                            $jc(
-                                $jc(
-                                    $jc(
-                                        $jc(
-                                            $jc($jc(0, id.hashCode),
-                                                chapterNumber.hashCode),
-                                            bismillahPre.hashCode),
-                                        revelationOrder.hashCode),
-                                    revelationPlace.hashCode),
-                                nameComplex.hashCode),
-                            nameArabic.hashCode),
-                        nameSimple.hashCode),
-                    audioURL.hashCode),
-                versesCount.hashCode),
-            pages.hashCode),
-        translatedName.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, chapterNumber.hashCode);
+    _$hash = $jc(_$hash, bismillahPre.hashCode);
+    _$hash = $jc(_$hash, revelationOrder.hashCode);
+    _$hash = $jc(_$hash, revelationPlace.hashCode);
+    _$hash = $jc(_$hash, nameComplex.hashCode);
+    _$hash = $jc(_$hash, nameArabic.hashCode);
+    _$hash = $jc(_$hash, nameSimple.hashCode);
+    _$hash = $jc(_$hash, audioURL.hashCode);
+    _$hash = $jc(_$hash, versesCount.hashCode);
+    _$hash = $jc(_$hash, pages.hashCode);
+    _$hash = $jc(_$hash, translatedName.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('Chapters')
+    return (newBuiltValueToStringHelper(r'Chapters')
           ..add('id', id)
           ..add('chapterNumber', chapterNumber)
           ..add('bismillahPre', bismillahPre)
@@ -674,58 +670,59 @@ class _$Chapters extends Chapters {
 }
 
 class ChaptersBuilder implements Builder<Chapters, ChaptersBuilder> {
-  _$Chapters _$v;
+  _$Chapters? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  int _chapterNumber;
-  int get chapterNumber => _$this._chapterNumber;
-  set chapterNumber(int chapterNumber) => _$this._chapterNumber = chapterNumber;
+  int? _chapterNumber;
+  int? get chapterNumber => _$this._chapterNumber;
+  set chapterNumber(int? chapterNumber) =>
+      _$this._chapterNumber = chapterNumber;
 
-  bool _bismillahPre;
-  bool get bismillahPre => _$this._bismillahPre;
-  set bismillahPre(bool bismillahPre) => _$this._bismillahPre = bismillahPre;
+  bool? _bismillahPre;
+  bool? get bismillahPre => _$this._bismillahPre;
+  set bismillahPre(bool? bismillahPre) => _$this._bismillahPre = bismillahPre;
 
-  int _revelationOrder;
-  int get revelationOrder => _$this._revelationOrder;
-  set revelationOrder(int revelationOrder) =>
+  int? _revelationOrder;
+  int? get revelationOrder => _$this._revelationOrder;
+  set revelationOrder(int? revelationOrder) =>
       _$this._revelationOrder = revelationOrder;
 
-  String _revelationPlace;
-  String get revelationPlace => _$this._revelationPlace;
-  set revelationPlace(String revelationPlace) =>
+  String? _revelationPlace;
+  String? get revelationPlace => _$this._revelationPlace;
+  set revelationPlace(String? revelationPlace) =>
       _$this._revelationPlace = revelationPlace;
 
-  String _nameComplex;
-  String get nameComplex => _$this._nameComplex;
-  set nameComplex(String nameComplex) => _$this._nameComplex = nameComplex;
+  String? _nameComplex;
+  String? get nameComplex => _$this._nameComplex;
+  set nameComplex(String? nameComplex) => _$this._nameComplex = nameComplex;
 
-  String _nameArabic;
-  String get nameArabic => _$this._nameArabic;
-  set nameArabic(String nameArabic) => _$this._nameArabic = nameArabic;
+  String? _nameArabic;
+  String? get nameArabic => _$this._nameArabic;
+  set nameArabic(String? nameArabic) => _$this._nameArabic = nameArabic;
 
-  String _nameSimple;
-  String get nameSimple => _$this._nameSimple;
-  set nameSimple(String nameSimple) => _$this._nameSimple = nameSimple;
+  String? _nameSimple;
+  String? get nameSimple => _$this._nameSimple;
+  set nameSimple(String? nameSimple) => _$this._nameSimple = nameSimple;
 
-  String _audioURL;
-  String get audioURL => _$this._audioURL;
-  set audioURL(String audioURL) => _$this._audioURL = audioURL;
+  String? _audioURL;
+  String? get audioURL => _$this._audioURL;
+  set audioURL(String? audioURL) => _$this._audioURL = audioURL;
 
-  int _versesCount;
-  int get versesCount => _$this._versesCount;
-  set versesCount(int versesCount) => _$this._versesCount = versesCount;
+  int? _versesCount;
+  int? get versesCount => _$this._versesCount;
+  set versesCount(int? versesCount) => _$this._versesCount = versesCount;
 
-  ListBuilder<int> _pages;
-  ListBuilder<int> get pages => _$this._pages ??= new ListBuilder<int>();
-  set pages(ListBuilder<int> pages) => _$this._pages = pages;
+  ListBuilder<int>? _pages;
+  ListBuilder<int> get pages => _$this._pages ??= ListBuilder<int>();
+  set pages(ListBuilder<int>? pages) => _$this._pages = pages;
 
-  TranslatedNameBuilder _translatedName;
+  TranslatedNameBuilder? _translatedName;
   TranslatedNameBuilder get translatedName =>
-      _$this._translatedName ??= new TranslatedNameBuilder();
-  set translatedName(TranslatedNameBuilder translatedName) =>
+      _$this._translatedName ??= TranslatedNameBuilder();
+  set translatedName(TranslatedNameBuilder? translatedName) =>
       _$this._translatedName = translatedName;
 
   ChaptersBuilder();
@@ -752,43 +749,45 @@ class ChaptersBuilder implements Builder<Chapters, ChaptersBuilder> {
 
   @override
   void replace(Chapters other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$Chapters;
   }
 
   @override
-  void update(void Function(ChaptersBuilder) updates) {
+  void update(void Function(ChaptersBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$Chapters build() {
+  Chapters build() => _build();
+
+  _$Chapters _build() {
     _$Chapters _$result;
     try {
       _$result = _$v ??
-          new _$Chapters._(
-              id: id,
-              chapterNumber: chapterNumber,
-              bismillahPre: bismillahPre,
-              revelationOrder: revelationOrder,
-              revelationPlace: revelationPlace,
-              nameComplex: nameComplex,
-              nameArabic: nameArabic,
-              nameSimple: nameSimple,
-              audioURL: audioURL,
-              versesCount: versesCount,
-              pages: _pages?.build(),
-              translatedName: _translatedName?.build());
+          _$Chapters._(
+            id: id,
+            chapterNumber: chapterNumber,
+            bismillahPre: bismillahPre,
+            revelationOrder: revelationOrder,
+            revelationPlace: revelationPlace,
+            nameComplex: nameComplex,
+            nameArabic: nameArabic,
+            nameSimple: nameSimple,
+            audioURL: audioURL,
+            versesCount: versesCount,
+            pages: _pages?.build(),
+            translatedName: _translatedName?.build(),
+          );
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'pages';
         _pages?.build();
         _$failedField = 'translatedName';
         _translatedName?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'Chapters', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(
+            r'Chapters', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -799,22 +798,20 @@ class ChaptersBuilder implements Builder<Chapters, ChaptersBuilder> {
 
 class _$TranslatedName extends TranslatedName {
   @override
-  final String languageName;
+  final String? languageName;
   @override
-  final String name;
+  final String? name;
 
-  factory _$TranslatedName([void Function(TranslatedNameBuilder) updates]) =>
-      (new TranslatedNameBuilder()..update(updates)).build();
+  factory _$TranslatedName([void Function(TranslatedNameBuilder)? updates]) =>
+      (TranslatedNameBuilder()..update(updates))._build();
 
   _$TranslatedName._({this.languageName, this.name}) : super._();
-
   @override
   TranslatedName rebuild(void Function(TranslatedNameBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  TranslatedNameBuilder toBuilder() =>
-      new TranslatedNameBuilder()..replace(this);
+  TranslatedNameBuilder toBuilder() => TranslatedNameBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -826,12 +823,16 @@ class _$TranslatedName extends TranslatedName {
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, languageName.hashCode), name.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, languageName.hashCode);
+    _$hash = $jc(_$hash, name.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('TranslatedName')
+    return (newBuiltValueToStringHelper(r'TranslatedName')
           ..add('languageName', languageName)
           ..add('name', name))
         .toString();
@@ -840,15 +841,15 @@ class _$TranslatedName extends TranslatedName {
 
 class TranslatedNameBuilder
     implements Builder<TranslatedName, TranslatedNameBuilder> {
-  _$TranslatedName _$v;
+  _$TranslatedName? _$v;
 
-  String _languageName;
-  String get languageName => _$this._languageName;
-  set languageName(String languageName) => _$this._languageName = languageName;
+  String? _languageName;
+  String? get languageName => _$this._languageName;
+  set languageName(String? languageName) => _$this._languageName = languageName;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
   TranslatedNameBuilder();
 
@@ -864,19 +865,23 @@ class TranslatedNameBuilder
 
   @override
   void replace(TranslatedName other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$TranslatedName;
   }
 
   @override
-  void update(void Function(TranslatedNameBuilder) updates) {
+  void update(void Function(TranslatedNameBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$TranslatedName build() {
-    final _$result =
-        _$v ?? new _$TranslatedName._(languageName: languageName, name: name);
+  TranslatedName build() => _build();
+
+  _$TranslatedName _build() {
+    final _$result = _$v ??
+        _$TranslatedName._(
+          languageName: languageName,
+          name: name,
+        );
     replace(_$result);
     return _$result;
   }
@@ -886,19 +891,16 @@ class _$RootJuzItem extends RootJuzItem {
   @override
   final BuiltList<JuzItem> juzs;
 
-  factory _$RootJuzItem([void Function(RootJuzItemBuilder) updates]) =>
-      (new RootJuzItemBuilder()..update(updates)).build();
+  factory _$RootJuzItem([void Function(RootJuzItemBuilder)? updates]) =>
+      (RootJuzItemBuilder()..update(updates))._build();
 
-  _$RootJuzItem._({this.juzs}) : super._() {
-    BuiltValueNullFieldError.checkNotNull(juzs, 'RootJuzItem', 'juzs');
-  }
-
+  _$RootJuzItem._({required this.juzs}) : super._();
   @override
   RootJuzItem rebuild(void Function(RootJuzItemBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  RootJuzItemBuilder toBuilder() => new RootJuzItemBuilder()..replace(this);
+  RootJuzItemBuilder toBuilder() => RootJuzItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -908,22 +910,25 @@ class _$RootJuzItem extends RootJuzItem {
 
   @override
   int get hashCode {
-    return $jf($jc(0, juzs.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, juzs.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('RootJuzItem')..add('juzs', juzs))
+    return (newBuiltValueToStringHelper(r'RootJuzItem')..add('juzs', juzs))
         .toString();
   }
 }
 
 class RootJuzItemBuilder implements Builder<RootJuzItem, RootJuzItemBuilder> {
-  _$RootJuzItem _$v;
+  _$RootJuzItem? _$v;
 
-  ListBuilder<JuzItem> _juzs;
-  ListBuilder<JuzItem> get juzs => _$this._juzs ??= new ListBuilder<JuzItem>();
-  set juzs(ListBuilder<JuzItem> juzs) => _$this._juzs = juzs;
+  ListBuilder<JuzItem>? _juzs;
+  ListBuilder<JuzItem> get juzs => _$this._juzs ??= ListBuilder<JuzItem>();
+  set juzs(ListBuilder<JuzItem>? juzs) => _$this._juzs = juzs;
 
   RootJuzItemBuilder();
 
@@ -938,28 +943,32 @@ class RootJuzItemBuilder implements Builder<RootJuzItem, RootJuzItemBuilder> {
 
   @override
   void replace(RootJuzItem other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$RootJuzItem;
   }
 
   @override
-  void update(void Function(RootJuzItemBuilder) updates) {
+  void update(void Function(RootJuzItemBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$RootJuzItem build() {
+  RootJuzItem build() => _build();
+
+  _$RootJuzItem _build() {
     _$RootJuzItem _$result;
     try {
-      _$result = _$v ?? new _$RootJuzItem._(juzs: juzs.build());
+      _$result = _$v ??
+          _$RootJuzItem._(
+            juzs: juzs.build(),
+          );
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'juzs';
         juzs.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'RootJuzItem', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(
+            r'RootJuzItem', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -976,28 +985,26 @@ class _$JuzItem extends JuzItem {
   @override
   final BuiltMap<String, String> verseMapping;
   @override
-  final Chapters chapters;
+  final Chapters? chapters;
   @override
-  final BuiltList<Aya> listAya;
+  final BuiltList<Aya>? listAya;
 
-  factory _$JuzItem([void Function(JuzItemBuilder) updates]) =>
-      (new JuzItemBuilder()..update(updates)).build();
+  factory _$JuzItem([void Function(JuzItemBuilder)? updates]) =>
+      (JuzItemBuilder()..update(updates))._build();
 
   _$JuzItem._(
-      {this.id, this.juzNumber, this.verseMapping, this.chapters, this.listAya})
-      : super._() {
-    BuiltValueNullFieldError.checkNotNull(id, 'JuzItem', 'id');
-    BuiltValueNullFieldError.checkNotNull(juzNumber, 'JuzItem', 'juzNumber');
-    BuiltValueNullFieldError.checkNotNull(
-        verseMapping, 'JuzItem', 'verseMapping');
-  }
-
+      {required this.id,
+      required this.juzNumber,
+      required this.verseMapping,
+      this.chapters,
+      this.listAya})
+      : super._();
   @override
   JuzItem rebuild(void Function(JuzItemBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  JuzItemBuilder toBuilder() => new JuzItemBuilder()..replace(this);
+  JuzItemBuilder toBuilder() => JuzItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -1012,17 +1019,19 @@ class _$JuzItem extends JuzItem {
 
   @override
   int get hashCode {
-    return $jf($jc(
-        $jc(
-            $jc($jc($jc(0, id.hashCode), juzNumber.hashCode),
-                verseMapping.hashCode),
-            chapters.hashCode),
-        listAya.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, id.hashCode);
+    _$hash = $jc(_$hash, juzNumber.hashCode);
+    _$hash = $jc(_$hash, verseMapping.hashCode);
+    _$hash = $jc(_$hash, chapters.hashCode);
+    _$hash = $jc(_$hash, listAya.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('JuzItem')
+    return (newBuiltValueToStringHelper(r'JuzItem')
           ..add('id', id)
           ..add('juzNumber', juzNumber)
           ..add('verseMapping', verseMapping)
@@ -1033,29 +1042,29 @@ class _$JuzItem extends JuzItem {
 }
 
 class JuzItemBuilder implements Builder<JuzItem, JuzItemBuilder> {
-  _$JuzItem _$v;
+  _$JuzItem? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  int _juzNumber;
-  int get juzNumber => _$this._juzNumber;
-  set juzNumber(int juzNumber) => _$this._juzNumber = juzNumber;
+  int? _juzNumber;
+  int? get juzNumber => _$this._juzNumber;
+  set juzNumber(int? juzNumber) => _$this._juzNumber = juzNumber;
 
-  MapBuilder<String, String> _verseMapping;
+  MapBuilder<String, String>? _verseMapping;
   MapBuilder<String, String> get verseMapping =>
-      _$this._verseMapping ??= new MapBuilder<String, String>();
-  set verseMapping(MapBuilder<String, String> verseMapping) =>
+      _$this._verseMapping ??= MapBuilder<String, String>();
+  set verseMapping(MapBuilder<String, String>? verseMapping) =>
       _$this._verseMapping = verseMapping;
 
-  ChaptersBuilder _chapters;
-  ChaptersBuilder get chapters => _$this._chapters ??= new ChaptersBuilder();
-  set chapters(ChaptersBuilder chapters) => _$this._chapters = chapters;
+  ChaptersBuilder? _chapters;
+  ChaptersBuilder get chapters => _$this._chapters ??= ChaptersBuilder();
+  set chapters(ChaptersBuilder? chapters) => _$this._chapters = chapters;
 
-  ListBuilder<Aya> _listAya;
-  ListBuilder<Aya> get listAya => _$this._listAya ??= new ListBuilder<Aya>();
-  set listAya(ListBuilder<Aya> listAya) => _$this._listAya = listAya;
+  ListBuilder<Aya>? _listAya;
+  ListBuilder<Aya> get listAya => _$this._listAya ??= ListBuilder<Aya>();
+  set listAya(ListBuilder<Aya>? listAya) => _$this._listAya = listAya;
 
   JuzItemBuilder();
 
@@ -1074,29 +1083,31 @@ class JuzItemBuilder implements Builder<JuzItem, JuzItemBuilder> {
 
   @override
   void replace(JuzItem other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$JuzItem;
   }
 
   @override
-  void update(void Function(JuzItemBuilder) updates) {
+  void update(void Function(JuzItemBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$JuzItem build() {
+  JuzItem build() => _build();
+
+  _$JuzItem _build() {
     _$JuzItem _$result;
     try {
       _$result = _$v ??
-          new _$JuzItem._(
-              id: BuiltValueNullFieldError.checkNotNull(id, 'JuzItem', 'id'),
-              juzNumber: BuiltValueNullFieldError.checkNotNull(
-                  juzNumber, 'JuzItem', 'juzNumber'),
-              verseMapping: verseMapping.build(),
-              chapters: _chapters?.build(),
-              listAya: _listAya?.build());
+          _$JuzItem._(
+            id: BuiltValueNullFieldError.checkNotNull(id, r'JuzItem', 'id'),
+            juzNumber: BuiltValueNullFieldError.checkNotNull(
+                juzNumber, r'JuzItem', 'juzNumber'),
+            verseMapping: verseMapping.build(),
+            chapters: _chapters?.build(),
+            listAya: _listAya?.build(),
+          );
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'verseMapping';
         verseMapping.build();
@@ -1105,8 +1116,8 @@ class JuzItemBuilder implements Builder<JuzItem, JuzItemBuilder> {
         _$failedField = 'listAya';
         _listAya?.build();
       } catch (e) {
-        throw new BuiltValueNestedFieldError(
-            'JuzItem', _$failedField, e.toString());
+        throw BuiltValueNestedFieldError(
+            r'JuzItem', _$failedField, e.toString());
       }
       rethrow;
     }
@@ -1117,18 +1128,17 @@ class JuzItemBuilder implements Builder<JuzItem, JuzItemBuilder> {
 
 class _$VerseMappingJuzItem extends VerseMappingJuzItem {
   @override
-  final int surah;
+  final int? surah;
   @override
-  final int startAya;
+  final int? startAya;
   @override
-  final int endAya;
+  final int? endAya;
 
   factory _$VerseMappingJuzItem(
-          [void Function(VerseMappingJuzItemBuilder) updates]) =>
-      (new VerseMappingJuzItemBuilder()..update(updates)).build();
+          [void Function(VerseMappingJuzItemBuilder)? updates]) =>
+      (VerseMappingJuzItemBuilder()..update(updates))._build();
 
   _$VerseMappingJuzItem._({this.surah, this.startAya, this.endAya}) : super._();
-
   @override
   VerseMappingJuzItem rebuild(
           void Function(VerseMappingJuzItemBuilder) updates) =>
@@ -1136,7 +1146,7 @@ class _$VerseMappingJuzItem extends VerseMappingJuzItem {
 
   @override
   VerseMappingJuzItemBuilder toBuilder() =>
-      new VerseMappingJuzItemBuilder()..replace(this);
+      VerseMappingJuzItemBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
@@ -1149,13 +1159,17 @@ class _$VerseMappingJuzItem extends VerseMappingJuzItem {
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, surah.hashCode), startAya.hashCode), endAya.hashCode));
+    var _$hash = 0;
+    _$hash = $jc(_$hash, surah.hashCode);
+    _$hash = $jc(_$hash, startAya.hashCode);
+    _$hash = $jc(_$hash, endAya.hashCode);
+    _$hash = $jf(_$hash);
+    return _$hash;
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('VerseMappingJuzItem')
+    return (newBuiltValueToStringHelper(r'VerseMappingJuzItem')
           ..add('surah', surah)
           ..add('startAya', startAya)
           ..add('endAya', endAya))
@@ -1165,19 +1179,19 @@ class _$VerseMappingJuzItem extends VerseMappingJuzItem {
 
 class VerseMappingJuzItemBuilder
     implements Builder<VerseMappingJuzItem, VerseMappingJuzItemBuilder> {
-  _$VerseMappingJuzItem _$v;
+  _$VerseMappingJuzItem? _$v;
 
-  int _surah;
-  int get surah => _$this._surah;
-  set surah(int surah) => _$this._surah = surah;
+  int? _surah;
+  int? get surah => _$this._surah;
+  set surah(int? surah) => _$this._surah = surah;
 
-  int _startAya;
-  int get startAya => _$this._startAya;
-  set startAya(int startAya) => _$this._startAya = startAya;
+  int? _startAya;
+  int? get startAya => _$this._startAya;
+  set startAya(int? startAya) => _$this._startAya = startAya;
 
-  int _endAya;
-  int get endAya => _$this._endAya;
-  set endAya(int endAya) => _$this._endAya = endAya;
+  int? _endAya;
+  int? get endAya => _$this._endAya;
+  set endAya(int? endAya) => _$this._endAya = endAya;
 
   VerseMappingJuzItemBuilder();
 
@@ -1194,23 +1208,27 @@ class VerseMappingJuzItemBuilder
 
   @override
   void replace(VerseMappingJuzItem other) {
-    ArgumentError.checkNotNull(other, 'other');
     _$v = other as _$VerseMappingJuzItem;
   }
 
   @override
-  void update(void Function(VerseMappingJuzItemBuilder) updates) {
+  void update(void Function(VerseMappingJuzItemBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$VerseMappingJuzItem build() {
+  VerseMappingJuzItem build() => _build();
+
+  _$VerseMappingJuzItem _build() {
     final _$result = _$v ??
-        new _$VerseMappingJuzItem._(
-            surah: surah, startAya: startAya, endAya: endAya);
+        _$VerseMappingJuzItem._(
+          surah: surah,
+          startAya: startAya,
+          endAya: endAya,
+        );
     replace(_$result);
     return _$result;
   }
 }
 
-// ignore_for_file: always_put_control_body_on_new_line,always_specify_types,annotate_overrides,avoid_annotating_with_dynamic,avoid_as,avoid_catches_without_on_clauses,avoid_returning_this,deprecated_member_use_from_same_package,lines_longer_than_80_chars,omit_local_variable_types,prefer_expression_function_bodies,sort_constructors_first,test_types_in_equals,unnecessary_const,unnecessary_new
+// ignore_for_file: deprecated_member_use_from_same_package,type=lint

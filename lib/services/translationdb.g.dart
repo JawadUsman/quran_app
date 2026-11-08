@@ -2,15 +2,18 @@
 
 part of 'translationdb.dart';
 
-// **************************************************************************
-// MoorGenerator
-// **************************************************************************
-
-// ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
+// ignore_for_file: type=lint
 abstract class _$TranslationDb extends GeneratedDatabase {
-  _$TranslationDb(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
+  _$TranslationDb(QueryExecutor e) : super(e);
+  $TranslationDbManager get managers => $TranslationDbManager(this);
   @override
-  Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
+  Iterable<TableInfo<Table, Object?>> get allTables =>
+      allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [];
+}
+
+class $TranslationDbManager {
+  final _$TranslationDb _db;
+  $TranslationDbManager(this._db);
 }

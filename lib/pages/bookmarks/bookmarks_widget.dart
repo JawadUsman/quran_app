@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:quran_app/app_widgets/shimmer_loading.dart';
@@ -9,8 +8,9 @@ import 'package:quran_app/services/appdb.dart';
 import 'bookmarks_store.dart';
 
 class BookmarksWidget extends StatefulWidget {
-  BookmarksWidget({Key key}) : super(key: key);
+  const BookmarksWidget({Key? key}) : super(key: key);
 
+  @override
   _BookmarksWidgetState createState() => _BookmarksWidgetState();
 }
 
@@ -31,7 +31,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
             'bookmarks.title',
           ),
           style: TextStyle(
-            color: Theme.of(context).textTheme.bodyText2.color,
+            color: Theme.of(context).textTheme.bodyMedium?.color,
           ),
         ),
         backgroundColor: Colors.transparent,
@@ -45,8 +45,8 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
               BuildContext context,
               AsyncSnapshot<DataState> snapshot,
               ) {
-            return WidgetSelector(
-              selectedState: snapshot.data,
+            return WidgetSelector<DataState>(
+              selectedState: snapshot.data ?? DataState.none,
               states: {
                 DataState.success: Container(
                   child: StreamBuilder<List<QuranBookmark>>(
@@ -54,9 +54,10 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                     stream: store.bookmarks,
                     builder: (
                         BuildContext context,
-                        AsyncSnapshot snapshot,
+                        AsyncSnapshot<List<QuranBookmark>> snapshot,
                         ) {
-                      if (store.bookmarks.valueOrNull.isEmpty) {
+                      var list = store.bookmarks.valueOrNull ?? [];
+                      if (list.isEmpty) {
                         return Container(
                           child: Center(
                             child: Column(
@@ -75,12 +76,12 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                       }
 
                       return ListView.builder(
-                        itemCount: store.bookmarks.valueOrNull.length,
+                        itemCount: list.length,
                         itemBuilder: (
                             BuildContext context,
                             int index,
                             ) {
-                          var item = store.bookmarks.valueOrNull[index];
+                          var item = list[index];
 
                           return ListTile(
                             dense: true,
@@ -88,7 +89,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                               store.goToQuran.execute(item);
                             },
                             title: Container(
-                              padding: EdgeInsets.only(
+                              padding: const EdgeInsets.only(
                                 left: 15,
                               ),
                               child: Row(
@@ -100,7 +101,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                                       children: <Widget>[
                                         Text(
                                           '${item.suraName} ${item.sura}:${item.aya}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                             fontSize: 18,
                                             fontFamily: 'Kedage',
                                           ),
@@ -111,7 +112,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                                   Text(
                                     intl.DateFormat(
                                       'yMMMMd',
-                                      store.localization.locale.toLanguageTag(),
+                                      store.localization.locale?.toLanguageTag(),
                                     ).format(
                                       item.insertDateTime,
                                     ),
@@ -121,7 +122,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                                 ],
                               ),
                             ),
-                            contentPadding: EdgeInsets.all(0),
+                            contentPadding: const EdgeInsets.all(0),
                             trailing: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: <Widget>[
@@ -130,11 +131,11 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                                     store.removeBookmark.execute(item);
                                   },
                                   child: Container(
-                                    margin: EdgeInsets.symmetric(
+                                    margin: const EdgeInsets.symmetric(
                                       vertical: 5,
                                       horizontal: 10,
                                     ),
-                                    child: Align(
+                                    child: const Align(
                                       alignment: Alignment.center,
                                       child: Icon(Icons.delete),
                                     ),
@@ -155,7 +156,7 @@ class _BookmarksWidgetState extends State<BookmarksWidget>
                         BuildContext context,
                         int index,
                         ) {
-                      return ListTile(
+                      return const ListTile(
                         dense: true,
                         title: Row(
                           children: <Widget>[

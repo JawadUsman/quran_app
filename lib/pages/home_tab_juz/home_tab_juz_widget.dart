@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:quran_app/app_widgets/shimmer_loading.dart';
@@ -9,8 +8,9 @@ import 'package:quran_app/models/models.dart';
 import 'home_tab_juz_store.dart';
 
 class HomeTabJuzWidget extends StatefulWidget {
-  HomeTabJuzWidget({Key key}) : super(key: key);
+  const HomeTabJuzWidget({Key? key}) : super(key: key);
 
+  @override
   _HomeTabJuzWidgetState createState() => _HomeTabJuzWidgetState();
 }
 
@@ -47,7 +47,7 @@ class _HomeTabJuzWidgetState extends State<HomeTabJuzWidget>
             AsyncSnapshot<DataState> snapshot,
             ) {
           return WidgetSelector<DataState>(
-            selectedState: snapshot.data,
+            selectedState: snapshot.data ?? DataState.none,
             states: {
               DataState(
                 enumSelector: EnumSelector.success,
@@ -62,6 +62,7 @@ class _HomeTabJuzWidgetState extends State<HomeTabJuzWidget>
                       var item = store.listJuz[index];
                       var verseMapping =
                       JuzItem.getVerseMappingJuzItem(item.verseMapping);
+                      var ayaText = item.listAya?.first.text ?? '';
                       return ListTile(
                         onTap: () {
                           store.juzItemTapped.executeIf(item);
@@ -71,27 +72,27 @@ class _HomeTabJuzWidgetState extends State<HomeTabJuzWidget>
                           children: <Widget>[
                             Text(
                               '${store.localization.getByKey('home_tab_juz.juz')} ${item.juzNumber}',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 18,
                               ),
                             ),
                             Text(
-                              '${item.chapters.nameSimple} ${verseMapping.first.surah}:${verseMapping.first.startAya}',
-                              style: TextStyle(
+                              '${item.chapters?.nameSimple ?? ''} ${verseMapping.first.surah}:${verseMapping.first.startAya}',
+                              style: const TextStyle(
                                 fontFamily: 'Kedage',
                               ),
                             ),
                           ],
                         ),
-                        trailing: Container(
+                        trailing: SizedBox(
                           width: 175,
                           child: Text(
-                            item.listAya.first.text.contains('⁕') ? item.listAya.first.text.replaceAll('⁕', '').trim() : item.listAya.first.text,
+                            ayaText.contains('⁕') ? ayaText.replaceAll('⁕', '').trim() : ayaText,
                             textDirection: TextDirection.rtl,
                             textAlign: TextAlign.right,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                               fontFamily: 'noorehira',
                             ),
@@ -110,7 +111,7 @@ class _HomeTabJuzWidgetState extends State<HomeTabJuzWidget>
                     BuildContext context,
                     int index,
                     ) {
-                  return ListTile(
+                  return const ListTile(
                     title: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
@@ -125,7 +126,7 @@ class _HomeTabJuzWidgetState extends State<HomeTabJuzWidget>
                         ),
                       ],
                     ),
-                    trailing: Container(
+                    trailing: SizedBox(
                       width: 175,
                       child: ShimmerLoading(
                         height: 20,

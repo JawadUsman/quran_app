@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/baselib/base_store.dart';
@@ -17,25 +16,25 @@ part 'bookmarks_store.g.dart';
 class BookmarksStore = _BookmarksStore with _$BookmarksStore;
 
 abstract class _BookmarksStore extends BaseStore with Store {
-  var localization = sl.get<ILocalizationService>();
-  var bookmarkProvider = sl.get<BookmarksProvider>();
-  var appServices = sl.get<AppServices>();
+  late ILocalizationService localization;
+  late BookmarksProvider bookmarkProvider;
+  late AppServices appServices;
 
   _BookmarksStore({
-    ILocalizationService localizationService,
-    BookmarksProvider bookmarksProvider,
-    AppServices appServices,
+    ILocalizationService? localizationService,
+    BookmarksProvider? bookmarksProvider,
+    AppServices? appServices,
   }) {
     this.localization =
-        localizationService ?? (localizationService = this.localization);
+        localizationService ?? sl.get<ILocalizationService>()!;
     this.bookmarkProvider =
-        bookmarksProvider ?? (bookmarksProvider = this.bookmarkProvider);
-    this.appServices = appServices ?? (appServices = this.appServices);
+        bookmarksProvider ?? sl.get<BookmarksProvider>()!;
+    this.appServices = appServices ?? sl.get<AppServices>()!;
 
     getBookmarks = RxCommand.createAsyncNoParamNoResult(() async {
       bookmarkState.add(DataState.loading);
 
-      var items = await bookmarksProvider.getItems(BookmarksRequest());
+      var items = await bookmarkProvider.getItems(BookmarksRequest());
       bookmarks.add(items);
 
       bookmarkState.add(DataState.success);
@@ -43,16 +42,17 @@ abstract class _BookmarksStore extends BaseStore with Store {
 
     removeBookmark = RxCommand.createAsyncNoResult(
       (QuranBookmark item) async {
-        var id = await bookmarksProvider.removeItem(item);
-        appServices.logger.i('Removed item id: $id');
+        var id = await bookmarkProvider.removeItem(item);
+        this.appServices.logger.i('Removed item id: $id');
 
-        var newList = (bookmarks.value..remove(item)).toList();
+        var current = bookmarks.valueOrNull ?? [];
+        var newList = (List<QuranBookmark>.from(current)..remove(item));
         bookmarks.add(newList);
       },
     );
 
     goToQuran = RxCommand.createAsyncNoResult((QuranBookmark v) async {
-      await appServices.navigatorState.pushNamed(
+      await this.appServices.navigatorState?.pushNamed(
         '/quran',
         arguments: {
           'chapter': Chapters((f) {
@@ -65,7 +65,7 @@ abstract class _BookmarksStore extends BaseStore with Store {
     });
   }
 
-  RxCommand getBookmarks;
+  late RxCommand<void, void> getBookmarks;
 
   final bookmarkState = BehaviorSubject<DataState>.seeded(
     DataState.none,
@@ -73,7 +73,7 @@ abstract class _BookmarksStore extends BaseStore with Store {
 
   final bookmarks = BehaviorSubject<List<QuranBookmark>>();
 
-  RxCommand<QuranBookmark, void> removeBookmark;
+  late RxCommand<QuranBookmark, void> removeBookmark;
 
-  RxCommand<QuranBookmark, void> goToQuran;
+  late RxCommand<QuranBookmark, void> goToQuran;
 }

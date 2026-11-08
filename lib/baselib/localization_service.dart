@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/services.dart';
 import 'package:intl/locale.dart';
 import 'package:path/path.dart' as p;
@@ -9,7 +8,7 @@ import 'package:rx_shared_preferences/rx_shared_preferences.dart';
 import '../main.dart';
 
 abstract class ILocalizationService {
-  Locale get locale;
+  Locale? get locale;
 
   Locale get neutralLocale;
 
@@ -27,20 +26,22 @@ abstract class ILocalizationService {
 }
 
 class LocalizationService extends ILocalizationService {
-  var _assetBundle = sl.get<AssetBundle>();
+  late AssetBundle _assetBundle;
 
   LocalizationService({
-    AssetBundle assetBundle,
+    AssetBundle? assetBundle,
   }) {
-    _assetBundle = assetBundle ?? _assetBundle;
+    _assetBundle = assetBundle ?? sl.get<AssetBundle>()!;
   }
 
-  Locale _locale;
-  Locale get locale => _locale;
+  Locale? _locale;
+  @override
+  Locale? get locale => _locale;
 
-  Map<String, Object> _localeResources = {};
-  Map<String, Object> _defaultResources = {};
+  final Map<String, Object> _localeResources = {};
+  final Map<String, Object> _defaultResources = {};
 
+  @override
   Future<bool> saveLanguage(LanguageModel language) async {
     return await rxPrefs
         .setString('app_locale', language.locale.toLanguageTag())
@@ -52,6 +53,7 @@ class LocalizationService extends ILocalizationService {
     );
   }
 
+  @override
   Future<LanguageModel> getSavedLanguage() async {
     var languageTag = await rxPrefs.getString('app_locale');
     var languages = getSupportedLanguages();
@@ -65,6 +67,7 @@ class LocalizationService extends ILocalizationService {
   }
 
   final _onLanguageChanged = PublishSubject<LanguageModel>();
+  @override
   Stream<LanguageModel> get onLanguageChanged => _onLanguageChanged
       .asyncExpand(
         (v) => Rx.defer(() {
@@ -73,6 +76,7 @@ class LocalizationService extends ILocalizationService {
       )
       .asBroadcastStream();
 
+  @override
   Future loadFromBundle(Locale l) async {
     _locale = l;
 
@@ -106,14 +110,16 @@ class LocalizationService extends ILocalizationService {
     }
   }
 
+  @override
   String getByKey(String key) {
-    return _localeResources[key] ?? _defaultResources[key] ?? '-';
+    return (_localeResources[key] ?? _defaultResources[key] ?? '-').toString();
   }
 
-  var _neutralLocale = Locale.parse('en-US');
+  final _neutralLocale = Locale.parse('en-US');
   @override
   Locale get neutralLocale => _neutralLocale;
 
+  @override
   List<LanguageModel> getSupportedLanguages() {
     return [
       LanguageModel()
@@ -127,9 +133,9 @@ class LocalizationService extends ILocalizationService {
 }
 
 class LanguageModel {
-  Locale locale;
+  late Locale locale;
 
-  String name;
+  late String name;
 
   @override
   bool operator ==(Object other) {

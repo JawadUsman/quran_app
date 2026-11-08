@@ -1,18 +1,24 @@
-// @dart=2.11
 import 'dart:io';
 
-import 'package:moor/moor.dart';
-import 'package:moor/ffi.dart';
+import 'package:drift/drift.dart';
+import 'package:drift/native.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 
 part 'appdb.g.dart';
 
-@UseMoor(
-  include: {
-    'moors/appdb.moor',
-  },
-)
+class QuranBookmarks extends Table {
+  IntColumn get id => integer()();
+  IntColumn get sura => integer().nullable()();
+  TextColumn get suraName => text().nullable()();
+  IntColumn get aya => integer().nullable()();
+  IntColumn get insertTime => integer().nullable()();
+
+  @override
+  Set<Column> get primaryKey => {id};
+}
+
+@DriftDatabase(tables: [QuranBookmarks])
 class AppDb extends _$AppDb {
   AppDb() : super(_openConnection());
 
@@ -24,13 +30,13 @@ LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
     final file = File(p.join(dbFolder.path, 'appdb.sqlite'));
-    return VmDatabase(file);
+    return NativeDatabase(file);
   });
 }
 
 extension QuranBookmarkExtension on QuranBookmark {
   DateTime get insertDateTime {
-    var dateTime = DateTime.fromMicrosecondsSinceEpoch(this.insertTime);
+    var dateTime = DateTime.fromMicrosecondsSinceEpoch(this.insertTime ?? 0);
     return dateTime;
   }
 }

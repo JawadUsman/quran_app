@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/baselib/command.dart';
 import 'package:quran_app/baselib/disposable.dart';
@@ -10,36 +9,36 @@ import 'package:rxdart/rxdart.dart';
 import '../../main.dart';
 
 class QuranSettingsTranslationItemStore implements Disposable {
-  var appServices = sl.get<AppServices>();
-  var quranTranslationFileProvider = sl.get<QuranTranslationFileProvider>();
+  late AppServices appServices;
+  late QuranTranslationFileProvider quranTranslationFileProvider;
 
   List<Function> disposeFunction = [];
 
   QuranSettingsTranslationItemStore(
     TranslationData translationData, {
-    AppServices appServices,
-    QuranTranslationFileProvider quranTranslationFileProvider,
+    AppServices? appServices,
+    QuranTranslationFileProvider? quranTranslationFileProvider,
   }) {
     this.translationData = translationData;
 
-    this.appServices = appServices ?? (appServices = this.appServices);
+    this.appServices = appServices ?? sl.get<AppServices>()!;
     this.quranTranslationFileProvider = quranTranslationFileProvider ??
-        (quranTranslationFileProvider = this.quranTranslationFileProvider);
+        sl.get<QuranTranslationFileProvider>()!;
 
     checkTranslationFile = RxCommand.createAsyncNoParamNoResult(() async {
       try {
-        var exists = await quranTranslationFileProvider.translationFileExists(
+        var exists = await this.quranTranslationFileProvider.translationFileExists(
           translationData.tableName,
         );
-        appServices.logger.i('Translation file exists: $exists');
+        this.appServices.logger.i('Translation file exists: $exists');
         translationFileExists.add(exists);
       } catch (e) {
-        appServices.logger.i(e);
+        this.appServices.logger.i(e);
       }
     });
 
     {
-      var dataFile = quranTranslationFileProvider.getDataFileById(
+      var dataFile = this.quranTranslationFileProvider.getDataFileById(
         translationData.id,
       );
       if (dataFile != null) {
@@ -57,54 +56,57 @@ class QuranSettingsTranslationItemStore implements Disposable {
         QueueStatusModel()..queueStatus = QueueStatus.downloading,
       );
 
-      var dataFile = quranTranslationFileProvider.queueDownload(
+      var dataFile = this.quranTranslationFileProvider.queueDownload(
         DataFile()
           ..id = translationData.id
-          ..url = translationData.uri
+          ..url = translationData.uri ?? ''
           ..tableName = translationData.tableName,
       );
       var queueStatus = await dataFile.onChangeStatus.skip(1).take(1).first;
       onChangeStatus.add(queueStatus);
       translationData.isSelected$.add(
-        translationData.isSelected$.value ?? false,
+        translationData.isSelected$.valueOrNull ?? false,
       );
       checkTranslationFile.execute();
       await checkTranslationFile.next;
     });
 
     removeTranslation = Command.parameter((t) async {
-      await quranTranslationFileProvider.removeTranslation(t.tableName);
+      if (t != null) {
+        await this.quranTranslationFileProvider.removeTranslation(t.tableName);
+      }
       checkTranslationFile.execute();
       await checkTranslationFile.next;
       translationData.isSelected$.add(false);
     });
   }
 
-  TranslationData translationData;
+  late TranslationData translationData;
 
-  RxCommand checkTranslationFile;
+  late RxCommand<void, void> checkTranslationFile;
 
   final translationFileExists = BehaviorSubject<bool>.seeded(false);
 
-  Command<QuranSettingsTranslationItemStore> downloadTranslation;
+  late Command<QuranSettingsTranslationItemStore> downloadTranslation;
 
   var onChangeStatus = BehaviorSubject<QueueStatusModel>.seeded(
     QueueStatusModel()..queueStatus = QueueStatus.notDownloaded,
   );
 
-  bool operator ==(o) =>
-      o is QuranSettingsTranslationItemStore &&
-      o.translationData == translationData;
+  @override
+  bool operator ==(Object other) =>
+      other is QuranSettingsTranslationItemStore &&
+      other.translationData == translationData;
 
   @override
   int get hashCode => translationData.hashCode;
 
   @override
   void dispose() {
-    disposeFunction.forEach((v) {
+    for (var v in disposeFunction) {
       v();
-    });
+    }
   }
 
-  Command<TranslationData> removeTranslation;
+  late Command<TranslationData> removeTranslation;
 }

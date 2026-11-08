@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/services.dart';
 import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/services/quran_provider.dart';
@@ -14,31 +13,26 @@ abstract class QuranTranslationFileProvider {
 
   DataFile queueDownload(DataFile dataFile);
 
-  DataFile getDataFileById(String id);
+  DataFile? getDataFileById(String id);
 
   Future removeTranslation(String tableName);
 }
 
 class QuranTranslationFileProviderImplementation
     implements QuranTranslationFileProvider {
-  var assetBundle = sl.get<AssetBundle>();
-  var appServices = sl.get<AppServices>();
-  var quranProvider = sl.get<QuranProvider>();
+  late AssetBundle assetBundle;
+  late AppServices appServices;
+  late QuranProvider quranProvider;
   var dio = Dio();
 
   QuranTranslationFileProviderImplementation({
-    AssetBundle assetBundle,
-    AppServices appServices,
-    QuranProvider quranProvider,
+    AssetBundle? assetBundle,
+    AppServices? appServices,
+    QuranProvider? quranProvider,
   }) {
-    this.assetBundle = assetBundle ?? (assetBundle = this.assetBundle);
-    this.appServices = appServices ?? (appServices = this.appServices);
-    this.quranProvider = quranProvider ?? (quranProvider = this.quranProvider);
-
-    // _onChangeStatus.doOnData((v) {
-    //   statuses.removeWhere((t) => t.item1 == v.item1);
-    //   statuses.add(v);
-    // }).listen(null);
+    this.assetBundle = assetBundle ?? sl.get<AssetBundle>()!;
+    this.appServices = appServices ?? sl.get<AppServices>()!;
+    this.quranProvider = quranProvider ?? sl.get<QuranProvider>()!;
 
     downloadSubject.doOnData((v) {
       if (!currentQueued.contains(v)) {
@@ -54,7 +48,7 @@ class QuranTranslationFileProviderImplementation
               options: Options(
                 responseType: ResponseType.plain,
               ));
-          var d = XmlDocument.parse(raw.data);
+          var d = XmlDocument.parse(raw.data ?? '');
           var suraElements = d.findAllElements('sura');
           var index = 0;
           var items = suraElements.expand((f) {
@@ -63,12 +57,12 @@ class QuranTranslationFileProviderImplementation
               index++;
               var i = _ItemModel()
                 ..index = index
-                ..sura = int.tryParse(f.getAttribute('index'))
-                ..aya = int.tryParse(v.getAttribute('index'))
+                ..sura = int.tryParse(f.getAttribute('index') ?? '')
+                ..aya = int.tryParse(v.getAttribute('index') ?? '')
                 ..text = v.getAttribute('text');
               return i;
             });
-          })?.toList();
+          }).toList();
           await removeTranslation(dataFile.tableName);
           await translationDb.transaction((txn) async {
             await txn.execute("""
@@ -103,7 +97,7 @@ class QuranTranslationFileProviderImplementation
           dataFile._onChangeStatus.add(
             QueueStatusModel()
               ..queueStatus = QueueStatus.error
-              ..status = e?.toString(),
+              ..status = e.toString(),
           );
         }
 
@@ -112,6 +106,7 @@ class QuranTranslationFileProviderImplementation
     }).listen(null);
   }
 
+  @override
   Future<bool> translationFileExists(String tableName) async {
     var exists = await quranProvider.isTableExists(tableName);
     return exists;
@@ -123,6 +118,7 @@ class QuranTranslationFileProviderImplementation
     return dataFile;
   }
 
+  @override
   Future removeTranslation(String tableName) async {
     await translationDb.execute(
       'DROP TABLE IF EXISTS "${tableName}"',
@@ -133,49 +129,20 @@ class QuranTranslationFileProviderImplementation
 
   List<DataFile> currentQueued = [];
 
-  DataFile getDataFileById(String id) {
-    var item = currentQueued.firstWhere(
-      (t) => t.id == id,
-      orElse: () => null,
-    );
-    return item;
+  @override
+  DataFile? getDataFileById(String id) {
+    if (currentQueued.any((t) => t.id == id)) {
+      return currentQueued.firstWhere((t) => t.id == id);
+    }
+    return null;
   }
-
-  // var _onReceiveDataFile = PublishSubject<DataFile>();
-
-  // final statuses = HashSet<Tuple2<DataFile, QueueStatus>>();
-  // final _onChangeStatus = PublishSubject<Tuple2<DataFile, QueueStatus>>();
-
-  // Stream<Tuple2<DataFile, QueueStatus>> get onChangeStatus {
-  //   return _onChangeStatus.startWithMany(statuses.toList());
-  // }
-
-  // void queueDownload(DataFile dataFile) {
-  //   _onChangeStatus.add(Tuple2(dataFile, QueueStatus.queued));
-  //   _onReceiveDataFile.add(dataFile);
-  // }
-
-  // Stream<DataFile> get onReceiveDataFile {
-  //   var o = _onReceiveDataFile.asyncExpand((v) {
-  //     return DeferStream(() {
-  //       _onChangeStatus.add(Tuple2(v, QueueStatus.downloading));
-
-  //       return Future.delayed(Duration(milliseconds: v.data))
-  //           .asStream()
-  //           .map((_) => v);
-  //     });
-  //   }).doOnData((v) {
-  //     _onChangeStatus.add(Tuple2(v, QueueStatus.downloaded));
-  //   }).asBroadcastStream();
-  //   return o;
-  // }
 }
 
 class _ItemModel {
-  int index;
-  int sura;
-  int aya;
-  String text;
+  int? index;
+  int? sura;
+  int? aya;
+  String? text;
 }
 
 enum QueueStatus {
@@ -187,19 +154,20 @@ enum QueueStatus {
 }
 
 class QueueStatusModel {
-  QueueStatus queueStatus;
-  String status;
+  late QueueStatus queueStatus;
+  String? status;
 
-  bool operator ==(o) => o is QueueStatusModel && queueStatus == o.queueStatus;
+  @override
+  bool operator ==(Object other) => other is QueueStatusModel && queueStatus == other.queueStatus;
 
   @override
   int get hashCode => queueStatus.hashCode;
 }
 
 class DataFile {
-  String id;
-  String url;
-  String tableName;
+  late String id;
+  late String url;
+  late String tableName;
 
   final _onChangeStatus = BehaviorSubject<QueueStatusModel>();
 
@@ -209,9 +177,10 @@ class DataFile {
 
   Stream<DataFile> get onReceiveDataFile => _onReceiveDataFile;
 
-  String status;
+  String? status;
 
-  bool operator ==(o) => o is DataFile && id == o.id;
+  @override
+  bool operator ==(Object other) => other is DataFile && id == other.id;
 
   @override
   int get hashCode => id.hashCode;

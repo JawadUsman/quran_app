@@ -1,21 +1,18 @@
-// @dart=2.11
-import 'package:flutter/foundation.dart';
-
 abstract class Disposable {
   void dispose();
 }
 
 class DisposableBuilder extends Disposable {
-  final Function disposeFunction;
+  final void Function()? disposeFunction;
 
   DisposableBuilder({
-    @required this.disposeFunction,
+    required this.disposeFunction,
   });
 
   @override
   void dispose() {
     if (disposeFunction != null) {
-      disposeFunction();
+      disposeFunction!();
     }
   }
 }

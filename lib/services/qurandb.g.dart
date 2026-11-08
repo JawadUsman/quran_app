@@ -2,15 +2,18 @@
 
 part of 'qurandb.dart';
 
-// **************************************************************************
-// MoorGenerator
-// **************************************************************************
-
-// ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
+// ignore_for_file: type=lint
 abstract class _$QuranDb extends GeneratedDatabase {
-  _$QuranDb(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
+  _$QuranDb(QueryExecutor e) : super(e);
+  $QuranDbManager get managers => $QuranDbManager(this);
   @override
-  Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
+  Iterable<TableInfo<Table, Object?>> get allTables =>
+      allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [];
+}
+
+class $QuranDbManager {
+  final _$QuranDb _db;
+  $QuranDbManager(this._db);
 }

@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:quran_app/app_widgets/shimmer_loading.dart';
@@ -9,8 +8,9 @@ import 'package:quran_app/pages/error/error_widget.dart';
 import 'home_tab_surah_store.dart';
 
 class HomeTabSurahWidget extends StatefulWidget {
-  HomeTabSurahWidget({Key key}) : super(key: key);
+  const HomeTabSurahWidget({Key? key}) : super(key: key);
 
+  @override
   _HomeTabSurahWidgetState createState() => _HomeTabSurahWidgetState();
 }
 
@@ -19,6 +19,7 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
         AutomaticKeepAliveClientMixin,
         BaseStateMixin<HomeTabSurahStore, HomeTabSurahWidget> {
   final _store = HomeTabSurahStore();
+  @override
   HomeTabSurahStore get store => _store;
 
   @override
@@ -37,7 +38,7 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
 
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(top: 10.0),
+        margin: const EdgeInsets.only(top: 10.0),
         child: Observer(
           builder: (BuildContext context) {
             return WidgetSelector<DataState>(
@@ -55,7 +56,7 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                       ) {
                     var item = store.chapters[index];
                     return ListTile(
-                      dense:true,
+                      dense: true,
                       leading: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
@@ -65,9 +66,9 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                               children: <Widget>[
                                 Container(
                                     child: Image(
-                                      image: AssetImage(
+                                      image: const AssetImage(
                                           'assets/images/ayah-background.png'),
-                                      color: Theme.of(context).textTheme.bodyText1.color,
+                                      color: Theme.of(context).textTheme.bodyLarge?.color,
                                       width: 44.0,
                                       height: 45.0,
                                       fit: BoxFit.fill,
@@ -77,7 +78,7 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                                       .center,
                                   child: Text(
                                     '${item.chapterNumber}',
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontSize: 12,
                                     ),
                                   ),
@@ -86,8 +87,8 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                         ],
                       ),
                       title: Text(
-                        item.nameSimple,
-                        style: TextStyle(
+                        item.nameSimple ?? '',
+                        style: const TextStyle(
                           fontSize: 20,
                           fontFamily: 'kannada',
                         ),
@@ -96,9 +97,9 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           Text(
-                            item.nameArabic,
+                            item.nameArabic ?? '',
                             textDirection: TextDirection.rtl,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 21,
                               fontFamily: 'noorehira',
                             ),
@@ -119,11 +120,11 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                       BuildContext context,
                       int index,
                       ) {
-                    return ListTile(
+                    return const ListTile(
                       leading: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Container(
+                          SizedBox(
                             height: 28,
                             width: 32,
                             child: ShimmerLoading(),
@@ -133,14 +134,14 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                       title: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: <Widget>[
-                          Container(
+                          SizedBox(
                             height: 25,
                             child: ShimmerLoading(),
                           ),
                           SizedBox(
                             height: 10,
                           ),
-                          Container(
+                          SizedBox(
                             height: 22,
                             child: ShimmerLoading(),
                           ),
@@ -149,7 +150,7 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                       trailing: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
-                          Container(
+                          SizedBox(
                             width: 50,
                             height: 28,
                             child: ShimmerLoading(),
@@ -163,7 +164,7 @@ class _HomeTabSurahWidgetState extends State<HomeTabSurahWidget>
                   enumSelector: EnumSelector.error,
                 ): Center(
                   child: MyErrorWidget(
-                    message: store.state.message,
+                    message: store.state.message ?? '',
                   ),
                 ),
               },

@@ -1,5 +1,3 @@
-// @dart=2.11
-import 'package:flutter/foundation.dart';
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/base_store.dart';
 import 'package:quran_app/baselib/localization_service.dart';
@@ -17,20 +15,21 @@ class QuranSettingsFontsizesStore = _QuranSettingsFontsizesStore
 abstract class _QuranSettingsFontsizesStore extends BaseStore
     with Store
     implements QuranSettingsStoreProvider {
-  var localization = sl.get<ILocalizationService>();
+  late ILocalizationService localization;
 
   _QuranSettingsFontsizesStore({
-    @required Map<Type, Object> parameter,
+    required Map<Type, Object> parameter,
   }) {
+    this.localization = sl.get<ILocalizationService>()!;
     _settingsItems = SettingsItem();
 
     if (parameter[QuranSettingsFontsizesStore] != null) {
-      Map<String, Object> p = parameter[QuranSettingsFontsizesStore];
-      _arabicFontSize$ = p['arabicFontSize'];
-      _translationFontSize$ = p['translationFontSize'];
+      Map<String, Object> p = parameter[QuranSettingsFontsizesStore] as Map<String, Object>;
+      _arabicFontSize$ = p['arabicFontSize'] as BehaviorSubject<double>;
+      _translationFontSize$ = p['translationFontSize'] as BehaviorSubject<double>;
     }
 
-    var ds = CompositeSubscription();
+    CompositeSubscription? ds = CompositeSubscription();
 
     ds.add(arabicFontSizeChanged$
         .doOnData((v) {
@@ -57,21 +56,21 @@ abstract class _QuranSettingsFontsizesStore extends BaseStore
         .listen(null));
 
     registerDispose(() {
-      ds.dispose();
+      ds?.dispose();
       ds = null;
     });
   }
 
-  SettingsItem _settingsItems;
+  late SettingsItem _settingsItems;
   @override
   SettingsItem get settingsItem => _settingsItems;
 
-  BehaviorSubject<double> _arabicFontSize$;
+  late BehaviorSubject<double> _arabicFontSize$;
   BehaviorSubject<double> get arabicFontSize$ => _arabicFontSize$;
 
   final arabicFontSizeChanged$ = PublishSubject<double>();
 
-  BehaviorSubject<double> _translationFontSize$;
+  late BehaviorSubject<double> _translationFontSize$;
   BehaviorSubject<double> get translationFontSize$ => _translationFontSize$;
 
   final translationFontSizeChanged$ = PublishSubject<double>();

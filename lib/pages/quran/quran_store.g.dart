@@ -1,5 +1,4 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// @dart=2.11
 
 part of 'quran_store.dart';
 
@@ -7,10 +6,11 @@ part of 'quran_store.dart';
 // StoreGenerator
 // **************************************************************************
 
-// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
+// ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$QuranStore on _QuranStore, Store {
-  final _$sourceListAyaAtom = Atom(name: '_QuranStore.sourceListAya');
+  late final _$sourceListAyaAtom =
+      Atom(name: '_QuranStore.sourceListAya', context: context);
 
   @override
   ObservableList<Aya> get sourceListAya {
@@ -25,7 +25,8 @@ mixin _$QuranStore on _QuranStore, Store {
     });
   }
 
-  final _$chaptersAtom = Atom(name: '_QuranStore.chapters');
+  late final _$chaptersAtom =
+      Atom(name: '_QuranStore.chapters', context: context);
 
   @override
   ObservableList<Chapters> get chapters {

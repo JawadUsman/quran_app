@@ -12,7 +12,7 @@ class TranslationData {
 
   late String tableName;
 
-  late String uri;
+  String? uri;
 
   late String languageCode;
 
@@ -25,7 +25,7 @@ class TranslationData {
   late TranslationType type;
 
   String get filename {
-    return type == TranslationType.builtIn ? uri : '$id.$languageCode.db';
+    return type == TranslationType.builtIn ? (uri ?? '') : '$id.$languageCode.db';
   }
 
   final _isSelected$ = BehaviorSubject<bool>(

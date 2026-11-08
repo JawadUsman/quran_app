@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/baselib/base_store.dart';
@@ -15,43 +14,51 @@ part 'quran_navigator_store.g.dart';
 class QuranNavigatorStore = _QuranNavigatorStore with _$QuranNavigatorStore;
 
 abstract class _QuranNavigatorStore extends BaseStore with Store {
-  var appServices = sl.get<AppServices>();
-  var quranProvider = sl.get<QuranProvider>();
-  var localization = sl.get<ILocalizationService>();
+  late AppServices appServices;
+  late QuranProvider quranProvider;
+  late ILocalizationService localization;
 
   _QuranNavigatorStore({
-    Map<String, Object> parameter,
-    AppServices appServices,
-    ILocalizationService localizationService,
+    Map<String, Object>? parameter,
+    AppServices? appServices,
+    ILocalizationService? localizationService,
   }) {
-    this.quranProvider = quranProvider ?? (quranProvider = this.quranProvider);
-    this.appServices = appServices ?? (appServices = this.appServices);
+    this.quranProvider = sl.get<QuranProvider>()!;
+    this.appServices = appServices ?? sl.get<AppServices>()!;
     this.localization =
-        localizationService ?? (localizationService = this.localization);
+        localizationService ?? sl.get<ILocalizationService>()!;
 
-    var _chapters = parameter['chapters'];
+    var _chapters = parameter?['chapters'] as List<Chapters>? ?? [];
     chapters.clear();
     chapters.addAll(_chapters);
 
-    initialSelectedChapter = chapters.firstWhere(
-      (t) => t == parameter['selectedChapter'],
-      orElse: () => null,
-    );
-    selectedChapter$.add(initialSelectedChapter);
+    var selChapter = parameter?['selectedChapter'];
+    if (chapters.any((t) => t == selChapter)) {
+      initialSelectedChapter = chapters.firstWhere((t) => t == selChapter);
+    } else if (chapters.isNotEmpty) {
+      initialSelectedChapter = chapters.first;
+    }
+    if (initialSelectedChapter != null) {
+      selectedChapter$.add(initialSelectedChapter!);
+    }
 
-    selectedAya = parameter['selectedAya'];
+    selectedAya = parameter?['selectedAya'] as int? ?? 1;
 
     {
       var d = selectedChapter$.listen((v) {
-        var _listAya = List.generate(v.versesCount, (v) {
+        var count = v.versesCount ?? 0;
+        var _listAya = List.generate(count, (v) {
           return ++v;
         });
         listAya.clear();
         listAya.addAll(_listAya);
 
-        var initialSelectedAya = listAya.firstWhere((t) {
-          return t == selectedAya;
-        }, orElse: () => 1);
+        var initialSelectedAya = 1;
+        if (listAya.contains(selectedAya)) {
+          initialSelectedAya = selectedAya;
+        } else if (listAya.isNotEmpty) {
+          initialSelectedAya = listAya.first;
+        }
         initialSelectedaya$.add(initialSelectedAya);
         selectedAya = initialSelectedAya;
       });
@@ -61,7 +68,7 @@ abstract class _QuranNavigatorStore extends BaseStore with Store {
     }
 
     pickSura = Command(() {
-      appServices.navigatorState.pop({
+      this.appServices.navigatorState?.pop({
         'chapter': selectedChapter$.value,
         'aya': 1,
       });
@@ -69,7 +76,7 @@ abstract class _QuranNavigatorStore extends BaseStore with Store {
     });
 
     pickAya = Command(() {
-      appServices.navigatorState.pop({
+      this.appServices.navigatorState?.pop({
         'chapter': selectedChapter$.value,
         'aya': selectedAya,
       });
@@ -86,7 +93,7 @@ abstract class _QuranNavigatorStore extends BaseStore with Store {
   ObservableList<Chapters> chapters = ObservableList();
 
   @observable
-  Chapters initialSelectedChapter;
+  Chapters? initialSelectedChapter;
 
   BehaviorSubject<Chapters> selectedChapter$ = BehaviorSubject(
     sync: true,
@@ -100,9 +107,9 @@ abstract class _QuranNavigatorStore extends BaseStore with Store {
   );
 
   @observable
-  int selectedAya;
+  int selectedAya = 1;
 
-  Command pickSura;
+  late Command pickSura;
 
-  Command pickAya;
+  late Command pickAya;
 }

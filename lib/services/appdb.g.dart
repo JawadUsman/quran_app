@@ -1,43 +1,114 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// @dart=2.11
 
 part of 'appdb.dart';
 
-// **************************************************************************
-// MoorGenerator
-// **************************************************************************
+// ignore_for_file: type=lint
+class $QuranBookmarksTable extends QuranBookmarks
+    with TableInfo<$QuranBookmarksTable, QuranBookmark> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $QuranBookmarksTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _suraMeta = const VerificationMeta('sura');
+  @override
+  late final GeneratedColumn<int> sura = GeneratedColumn<int>(
+      'sura', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _suraNameMeta =
+      const VerificationMeta('suraName');
+  @override
+  late final GeneratedColumn<String> suraName = GeneratedColumn<String>(
+      'sura_name', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _ayaMeta = const VerificationMeta('aya');
+  @override
+  late final GeneratedColumn<int> aya = GeneratedColumn<int>(
+      'aya', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _insertTimeMeta =
+      const VerificationMeta('insertTime');
+  @override
+  late final GeneratedColumn<int> insertTime = GeneratedColumn<int>(
+      'insert_time', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  @override
+  List<GeneratedColumn> get $columns => [id, sura, suraName, aya, insertTime];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'quran_bookmarks';
+  @override
+  VerificationContext validateIntegrity(Insertable<QuranBookmark> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('sura')) {
+      context.handle(
+          _suraMeta, sura.isAcceptableOrUnknown(data['sura']!, _suraMeta));
+    }
+    if (data.containsKey('sura_name')) {
+      context.handle(_suraNameMeta,
+          suraName.isAcceptableOrUnknown(data['sura_name']!, _suraNameMeta));
+    }
+    if (data.containsKey('aya')) {
+      context.handle(
+          _ayaMeta, aya.isAcceptableOrUnknown(data['aya']!, _ayaMeta));
+    }
+    if (data.containsKey('insert_time')) {
+      context.handle(
+          _insertTimeMeta,
+          insertTime.isAcceptableOrUnknown(
+              data['insert_time']!, _insertTimeMeta));
+    }
+    return context;
+  }
 
-// ignore_for_file: unnecessary_brace_in_string_interps, unnecessary_this
-class QuranBookmark extends DataClass implements Insertable<QuranBookmark> {
-  final int id;
-  final int sura;
-  final String suraName;
-  final int aya;
-  final int insertTime;
-  QuranBookmark(
-      {@required this.id, this.sura, this.suraName, this.aya, this.insertTime});
-  factory QuranBookmark.fromData(
-      Map<String, dynamic> data, GeneratedDatabase db,
-      {String prefix}) {
-    final effectivePrefix = prefix ?? '';
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  QuranBookmark map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return QuranBookmark(
-      id: const IntType().mapFromDatabaseResponse(data['${effectivePrefix}id']),
-      sura: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}sura']),
-      suraName: const StringType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}sura_name']),
-      aya: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}aya']),
-      insertTime: const IntType()
-          .mapFromDatabaseResponse(data['${effectivePrefix}insert_time']),
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      sura: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}sura']),
+      suraName: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}sura_name']),
+      aya: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}aya']),
+      insertTime: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}insert_time']),
     );
   }
+
+  @override
+  $QuranBookmarksTable createAlias(String alias) {
+    return $QuranBookmarksTable(attachedDatabase, alias);
+  }
+}
+
+class QuranBookmark extends DataClass implements Insertable<QuranBookmark> {
+  final int id;
+  final int? sura;
+  final String? suraName;
+  final int? aya;
+  final int? insertTime;
+  const QuranBookmark(
+      {required this.id, this.sura, this.suraName, this.aya, this.insertTime});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (!nullToAbsent || id != null) {
-      map['id'] = Variable<int>(id);
-    }
+    map['id'] = Variable<int>(id);
     if (!nullToAbsent || sura != null) {
       map['sura'] = Variable<int>(sura);
     }
@@ -55,7 +126,7 @@ class QuranBookmark extends DataClass implements Insertable<QuranBookmark> {
 
   QuranBookmarksCompanion toCompanion(bool nullToAbsent) {
     return QuranBookmarksCompanion(
-      id: id == null && nullToAbsent ? const Value.absent() : Value(id),
+      id: Value(id),
       sura: sura == null && nullToAbsent ? const Value.absent() : Value(sura),
       suraName: suraName == null && nullToAbsent
           ? const Value.absent()
@@ -68,37 +139,52 @@ class QuranBookmark extends DataClass implements Insertable<QuranBookmark> {
   }
 
   factory QuranBookmark.fromJson(Map<String, dynamic> json,
-      {ValueSerializer serializer}) {
-    serializer ??= moorRuntimeOptions.defaultSerializer;
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
     return QuranBookmark(
       id: serializer.fromJson<int>(json['id']),
-      sura: serializer.fromJson<int>(json['sura']),
-      suraName: serializer.fromJson<String>(json['sura_name']),
-      aya: serializer.fromJson<int>(json['aya']),
-      insertTime: serializer.fromJson<int>(json['insert_time']),
+      sura: serializer.fromJson<int?>(json['sura']),
+      suraName: serializer.fromJson<String?>(json['suraName']),
+      aya: serializer.fromJson<int?>(json['aya']),
+      insertTime: serializer.fromJson<int?>(json['insertTime']),
     );
   }
   @override
-  Map<String, dynamic> toJson({ValueSerializer serializer}) {
-    serializer ??= moorRuntimeOptions.defaultSerializer;
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
-      'sura': serializer.toJson<int>(sura),
-      'sura_name': serializer.toJson<String>(suraName),
-      'aya': serializer.toJson<int>(aya),
-      'insert_time': serializer.toJson<int>(insertTime),
+      'sura': serializer.toJson<int?>(sura),
+      'suraName': serializer.toJson<String?>(suraName),
+      'aya': serializer.toJson<int?>(aya),
+      'insertTime': serializer.toJson<int?>(insertTime),
     };
   }
 
   QuranBookmark copyWith(
-          {int id, int sura, String suraName, int aya, int insertTime}) =>
+          {int? id,
+          Value<int?> sura = const Value.absent(),
+          Value<String?> suraName = const Value.absent(),
+          Value<int?> aya = const Value.absent(),
+          Value<int?> insertTime = const Value.absent()}) =>
       QuranBookmark(
         id: id ?? this.id,
-        sura: sura ?? this.sura,
-        suraName: suraName ?? this.suraName,
-        aya: aya ?? this.aya,
-        insertTime: insertTime ?? this.insertTime,
+        sura: sura.present ? sura.value : this.sura,
+        suraName: suraName.present ? suraName.value : this.suraName,
+        aya: aya.present ? aya.value : this.aya,
+        insertTime: insertTime.present ? insertTime.value : this.insertTime,
       );
+  QuranBookmark copyWithCompanion(QuranBookmarksCompanion data) {
+    return QuranBookmark(
+      id: data.id.present ? data.id.value : this.id,
+      sura: data.sura.present ? data.sura.value : this.sura,
+      suraName: data.suraName.present ? data.suraName.value : this.suraName,
+      aya: data.aya.present ? data.aya.value : this.aya,
+      insertTime:
+          data.insertTime.present ? data.insertTime.value : this.insertTime,
+    );
+  }
+
   @override
   String toString() {
     return (StringBuffer('QuranBookmark(')
@@ -126,10 +212,10 @@ class QuranBookmark extends DataClass implements Insertable<QuranBookmark> {
 
 class QuranBookmarksCompanion extends UpdateCompanion<QuranBookmark> {
   final Value<int> id;
-  final Value<int> sura;
-  final Value<String> suraName;
-  final Value<int> aya;
-  final Value<int> insertTime;
+  final Value<int?> sura;
+  final Value<String?> suraName;
+  final Value<int?> aya;
+  final Value<int?> insertTime;
   const QuranBookmarksCompanion({
     this.id = const Value.absent(),
     this.sura = const Value.absent(),
@@ -145,11 +231,11 @@ class QuranBookmarksCompanion extends UpdateCompanion<QuranBookmark> {
     this.insertTime = const Value.absent(),
   });
   static Insertable<QuranBookmark> custom({
-    Expression<int> id,
-    Expression<int> sura,
-    Expression<String> suraName,
-    Expression<int> aya,
-    Expression<int> insertTime,
+    Expression<int>? id,
+    Expression<int>? sura,
+    Expression<String>? suraName,
+    Expression<int>? aya,
+    Expression<int>? insertTime,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
@@ -161,11 +247,11 @@ class QuranBookmarksCompanion extends UpdateCompanion<QuranBookmark> {
   }
 
   QuranBookmarksCompanion copyWith(
-      {Value<int> id,
-      Value<int> sura,
-      Value<String> suraName,
-      Value<int> aya,
-      Value<int> insertTime}) {
+      {Value<int>? id,
+      Value<int?>? sura,
+      Value<String?>? suraName,
+      Value<int?>? aya,
+      Value<int?>? insertTime}) {
     return QuranBookmarksCompanion(
       id: id ?? this.id,
       sura: sura ?? this.sura,
@@ -209,106 +295,192 @@ class QuranBookmarksCompanion extends UpdateCompanion<QuranBookmark> {
   }
 }
 
-class QuranBookmarks extends Table
-    with TableInfo<QuranBookmarks, QuranBookmark> {
-  final GeneratedDatabase _db;
-  final String _alias;
-  QuranBookmarks(this._db, [this._alias]);
-  final VerificationMeta _idMeta = const VerificationMeta('id');
-  GeneratedColumn<int> _id;
-  GeneratedColumn<int> get id =>
-      _id ??= GeneratedColumn<int>('id', aliasedName, false,
-          typeName: 'INTEGER',
-          requiredDuringInsert: false,
-          $customConstraints: '');
-  final VerificationMeta _suraMeta = const VerificationMeta('sura');
-  GeneratedColumn<int> _sura;
-  GeneratedColumn<int> get sura =>
-      _sura ??= GeneratedColumn<int>('sura', aliasedName, true,
-          typeName: 'INTEGER',
-          requiredDuringInsert: false,
-          $customConstraints: '');
-  final VerificationMeta _suraNameMeta = const VerificationMeta('suraName');
-  GeneratedColumn<String> _suraName;
-  GeneratedColumn<String> get suraName =>
-      _suraName ??= GeneratedColumn<String>('sura_name', aliasedName, true,
-          typeName: 'TEXT',
-          requiredDuringInsert: false,
-          $customConstraints: '');
-  final VerificationMeta _ayaMeta = const VerificationMeta('aya');
-  GeneratedColumn<int> _aya;
-  GeneratedColumn<int> get aya =>
-      _aya ??= GeneratedColumn<int>('aya', aliasedName, true,
-          typeName: 'INTEGER',
-          requiredDuringInsert: false,
-          $customConstraints: '');
-  final VerificationMeta _insertTimeMeta = const VerificationMeta('insertTime');
-  GeneratedColumn<int> _insertTime;
-  GeneratedColumn<int> get insertTime =>
-      _insertTime ??= GeneratedColumn<int>('insert_time', aliasedName, true,
-          typeName: 'INTEGER',
-          requiredDuringInsert: false,
-          $customConstraints: '');
-  @override
-  List<GeneratedColumn> get $columns => [id, sura, suraName, aya, insertTime];
-  @override
-  String get aliasedName => _alias ?? 'quran_bookmarks';
-  @override
-  String get actualTableName => 'quran_bookmarks';
-  @override
-  VerificationContext validateIntegrity(Insertable<QuranBookmark> instance,
-      {bool isInserting = false}) {
-    final context = VerificationContext();
-    final data = instance.toColumns(true);
-    if (data.containsKey('id')) {
-      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id'], _idMeta));
-    }
-    if (data.containsKey('sura')) {
-      context.handle(
-          _suraMeta, sura.isAcceptableOrUnknown(data['sura'], _suraMeta));
-    }
-    if (data.containsKey('sura_name')) {
-      context.handle(_suraNameMeta,
-          suraName.isAcceptableOrUnknown(data['sura_name'], _suraNameMeta));
-    }
-    if (data.containsKey('aya')) {
-      context.handle(
-          _ayaMeta, aya.isAcceptableOrUnknown(data['aya'], _ayaMeta));
-    }
-    if (data.containsKey('insert_time')) {
-      context.handle(
-          _insertTimeMeta,
-          insertTime.isAcceptableOrUnknown(
-              data['insert_time'], _insertTimeMeta));
-    }
-    return context;
-  }
-
-  @override
-  Set<GeneratedColumn> get $primaryKey => {id};
-  @override
-  QuranBookmark map(Map<String, dynamic> data, {String tablePrefix}) {
-    return QuranBookmark.fromData(data, _db,
-        prefix: tablePrefix != null ? '$tablePrefix.' : null);
-  }
-
-  @override
-  QuranBookmarks createAlias(String alias) {
-    return QuranBookmarks(_db, alias);
-  }
-
-  @override
-  List<String> get customConstraints => const ['PRIMARY KEY("id")'];
-  @override
-  bool get dontWriteConstraints => true;
-}
-
 abstract class _$AppDb extends GeneratedDatabase {
-  _$AppDb(QueryExecutor e) : super(SqlTypeSystem.defaultInstance, e);
-  QuranBookmarks _quranBookmarks;
-  QuranBookmarks get quranBookmarks => _quranBookmarks ??= QuranBookmarks(this);
+  _$AppDb(QueryExecutor e) : super(e);
+  $AppDbManager get managers => $AppDbManager(this);
+  late final $QuranBookmarksTable quranBookmarks = $QuranBookmarksTable(this);
   @override
-  Iterable<TableInfo> get allTables => allSchemaEntities.whereType<TableInfo>();
+  Iterable<TableInfo<Table, Object?>> get allTables =>
+      allSchemaEntities.whereType<TableInfo<Table, Object?>>();
   @override
   List<DatabaseSchemaEntity> get allSchemaEntities => [quranBookmarks];
+}
+
+typedef $$QuranBookmarksTableCreateCompanionBuilder = QuranBookmarksCompanion
+    Function({
+  Value<int> id,
+  Value<int?> sura,
+  Value<String?> suraName,
+  Value<int?> aya,
+  Value<int?> insertTime,
+});
+typedef $$QuranBookmarksTableUpdateCompanionBuilder = QuranBookmarksCompanion
+    Function({
+  Value<int> id,
+  Value<int?> sura,
+  Value<String?> suraName,
+  Value<int?> aya,
+  Value<int?> insertTime,
+});
+
+class $$QuranBookmarksTableFilterComposer
+    extends Composer<_$AppDb, $QuranBookmarksTable> {
+  $$QuranBookmarksTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get sura => $composableBuilder(
+      column: $table.sura, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<String> get suraName => $composableBuilder(
+      column: $table.suraName, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get aya => $composableBuilder(
+      column: $table.aya, builder: (column) => ColumnFilters(column));
+
+  ColumnFilters<int> get insertTime => $composableBuilder(
+      column: $table.insertTime, builder: (column) => ColumnFilters(column));
+}
+
+class $$QuranBookmarksTableOrderingComposer
+    extends Composer<_$AppDb, $QuranBookmarksTable> {
+  $$QuranBookmarksTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+      column: $table.id, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get sura => $composableBuilder(
+      column: $table.sura, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<String> get suraName => $composableBuilder(
+      column: $table.suraName, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get aya => $composableBuilder(
+      column: $table.aya, builder: (column) => ColumnOrderings(column));
+
+  ColumnOrderings<int> get insertTime => $composableBuilder(
+      column: $table.insertTime, builder: (column) => ColumnOrderings(column));
+}
+
+class $$QuranBookmarksTableAnnotationComposer
+    extends Composer<_$AppDb, $QuranBookmarksTable> {
+  $$QuranBookmarksTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<int> get sura =>
+      $composableBuilder(column: $table.sura, builder: (column) => column);
+
+  GeneratedColumn<String> get suraName =>
+      $composableBuilder(column: $table.suraName, builder: (column) => column);
+
+  GeneratedColumn<int> get aya =>
+      $composableBuilder(column: $table.aya, builder: (column) => column);
+
+  GeneratedColumn<int> get insertTime => $composableBuilder(
+      column: $table.insertTime, builder: (column) => column);
+}
+
+class $$QuranBookmarksTableTableManager extends RootTableManager<
+    _$AppDb,
+    $QuranBookmarksTable,
+    QuranBookmark,
+    $$QuranBookmarksTableFilterComposer,
+    $$QuranBookmarksTableOrderingComposer,
+    $$QuranBookmarksTableAnnotationComposer,
+    $$QuranBookmarksTableCreateCompanionBuilder,
+    $$QuranBookmarksTableUpdateCompanionBuilder,
+    (
+      QuranBookmark,
+      BaseReferences<_$AppDb, $QuranBookmarksTable, QuranBookmark>
+    ),
+    QuranBookmark,
+    PrefetchHooks Function()> {
+  $$QuranBookmarksTableTableManager(_$AppDb db, $QuranBookmarksTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$QuranBookmarksTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$QuranBookmarksTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$QuranBookmarksTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int?> sura = const Value.absent(),
+            Value<String?> suraName = const Value.absent(),
+            Value<int?> aya = const Value.absent(),
+            Value<int?> insertTime = const Value.absent(),
+          }) =>
+              QuranBookmarksCompanion(
+            id: id,
+            sura: sura,
+            suraName: suraName,
+            aya: aya,
+            insertTime: insertTime,
+          ),
+          createCompanionCallback: ({
+            Value<int> id = const Value.absent(),
+            Value<int?> sura = const Value.absent(),
+            Value<String?> suraName = const Value.absent(),
+            Value<int?> aya = const Value.absent(),
+            Value<int?> insertTime = const Value.absent(),
+          }) =>
+              QuranBookmarksCompanion.insert(
+            id: id,
+            sura: sura,
+            suraName: suraName,
+            aya: aya,
+            insertTime: insertTime,
+          ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (
+                    e.readTable<$QuranBookmarksTable, QuranBookmark>(table),
+                    BaseReferences<_$AppDb, $QuranBookmarksTable,
+                        QuranBookmark>(db, table, e)
+                  ))
+              .toList(),
+          prefetchHooksCallback: null,
+        ));
+}
+
+typedef $$QuranBookmarksTableProcessedTableManager = ProcessedTableManager<
+    _$AppDb,
+    $QuranBookmarksTable,
+    QuranBookmark,
+    $$QuranBookmarksTableFilterComposer,
+    $$QuranBookmarksTableOrderingComposer,
+    $$QuranBookmarksTableAnnotationComposer,
+    $$QuranBookmarksTableCreateCompanionBuilder,
+    $$QuranBookmarksTableUpdateCompanionBuilder,
+    (
+      QuranBookmark,
+      BaseReferences<_$AppDb, $QuranBookmarksTable, QuranBookmark>
+    ),
+    QuranBookmark,
+    PrefetchHooks Function()>;
+
+class $AppDbManager {
+  final _$AppDb _db;
+  $AppDbManager(this._db);
+  $$QuranBookmarksTableTableManager get quranBookmarks =>
+      $$QuranBookmarksTableTableManager(_db, _db.quranBookmarks);
 }

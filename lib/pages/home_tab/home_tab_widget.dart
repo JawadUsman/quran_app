@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:quran_app/baselib/base_state_mixin.dart';
@@ -9,16 +8,15 @@ import 'package:quran_app/pages/home_tab/home_tab_store.dart';
 import 'package:quran_app/pages/home_tab_juz/home_tab_juz_widget.dart';
 import 'package:quran_app/pages/home_tab_surah/home_tab_surah_widget.dart';
 
-import 'home_tab_store.dart';
-
 class HomeTabWidget extends StatefulWidget with BaseWidgetParameterMixin {
-  HomeTabWidget({Key key}) : super(key: key);
+  HomeTabWidget({Key? key}) : super(key: key);
 
+  @override
   _HomeTabWidgetState createState() => _HomeTabWidgetState();
 }
 
 class _HomeTabWidgetState extends State<HomeTabWidget>
-    with BaseStateMixin<HomeTabStore, HomeTabWidget>, TickerProviderStateMixin {
+    with BaseStateMixin<HomeTabStore, HomeTabWidget>, TickerProviderStateMixin, AutomaticKeepAliveClientMixin {
   final _store = HomeTabStore();
   @override
   HomeTabStore get store => _store;
@@ -26,11 +24,11 @@ class _HomeTabWidgetState extends State<HomeTabWidget>
   @override
   bool get wantKeepAlive => true;
 
-  TabController tabController;
-  PageController pageTabController;
+  late TabController tabController;
+  late PageController pageTabController;
 
-  TabController quranTabController;
-  PageController pageQuranTabController;
+  late TabController quranTabController;
+  late PageController pageQuranTabController;
   final List<Widget Function()> pagesQuranTab = [
     () => HomeTabSurahWidget(),
     () => HomeTabJuzWidget(),
@@ -70,6 +68,8 @@ class _HomeTabWidgetState extends State<HomeTabWidget>
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -89,7 +89,7 @@ class _HomeTabWidgetState extends State<HomeTabWidget>
               child: HomeTabJuzWidget(),
             ),
             Container(
-              child: BookmarksWidget(),
+              child: const BookmarksWidget(),
             ),
             Container(
               child: HelpWidget(),
@@ -107,37 +107,37 @@ class _HomeTabWidgetState extends State<HomeTabWidget>
     onTap: (int index) => setState(() => _selectedIndex = index),
     currentIndex: selectedIndex,
     type: BottomNavigationBarType.fixed,
-    backgroundColor: Color(0x86000000),
-    unselectedItemColor: Color(0x35ffffff),
-    selectedItemColor: Color(0xffffffff),
+    backgroundColor: const Color(0x86000000),
+    unselectedItemColor: const Color(0x35ffffff),
+    selectedItemColor: const Color(0xffffffff),
     selectedFontSize: 10.0,
     unselectedFontSize: 10.0,
     items: const <BottomNavigationBarItem>[
       BottomNavigationBarItem(
         icon: Padding(
           padding: EdgeInsets.all(6.0),
-          child: Icon(FontAwesomeIcons.bookOpen),
+          child: FaIcon(FontAwesomeIcons.bookOpen),
         ),
         label: "Surahs",
       ),
       BottomNavigationBarItem(
         icon: Padding(
           padding: EdgeInsets.all(6.0),
-          child: Icon(FontAwesomeIcons.chartPie),
+          child: FaIcon(FontAwesomeIcons.chartPie),
         ),
         label: "Juz",
       ),
       BottomNavigationBarItem(
         icon: Padding(
           padding: EdgeInsets.all(6.0),
-          child: Icon(FontAwesomeIcons.solidBookmark),
+          child: FaIcon(FontAwesomeIcons.solidBookmark),
         ),
         label: "Bookmarks",
       ),
       BottomNavigationBarItem(
         icon: Padding(
           padding: EdgeInsets.all(6.0),
-          child: Icon(FontAwesomeIcons.infoCircle),
+          child: FaIcon(FontAwesomeIcons.circleInfo),
         ),
         label: "About Us",
       ),

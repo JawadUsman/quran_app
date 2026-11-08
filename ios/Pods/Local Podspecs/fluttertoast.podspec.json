@@ -18,12 +18,21 @@
   "dependencies": {
     "Flutter": [
 
-    ],
-    "Toast": [
-
+    ]
+  },
+  "pod_target_xcconfig": {
+    "DEFINES_MODULE": "YES"
+  },
+  "resource_bundles": {
+    "fluttertoast_privacy": [
+      "Resources/PrivacyInfo.xcprivacy"
     ]
   },
   "platforms": {
-    "ios": "8.0"
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "visionos": null,
+    "watchos": null
   }
 }

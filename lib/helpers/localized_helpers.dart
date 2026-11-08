@@ -1,4 +1,3 @@
-// @dart=2.11
 class LocalizedHelpers {
   static final isoLangs = {
     "ab": {"name": "Abkhaz", "nativeName": "аҧсуа"},
@@ -210,9 +209,9 @@ class LocalizedHelpers {
     "za": {"name": "Zhuang, Chuang", "nativeName": "Saɯ cueŋƅ, Saw cuengh"}
   };
 
-  static String getDisplayLanguage(key) {
+  static String getDisplayLanguage(String key) {
     if (isoLangs.containsKey(key)) {
-      return isoLangs[key]['name'];
+      return isoLangs[key]!['name']!;
     } else {
       throw Exception("Language key incorrect");
     }

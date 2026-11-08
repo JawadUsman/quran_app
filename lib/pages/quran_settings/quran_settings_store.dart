@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:flutter/widgets.dart';
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/base_store.dart';
@@ -13,7 +12,7 @@ import '../../main.dart';
 part 'quran_settings_store.g.dart';
 
 class SettingsItem {
-  String name;
+  String? name;
 }
 
 abstract class QuranSettingsStoreProvider<T> {
@@ -23,14 +22,14 @@ abstract class QuranSettingsStoreProvider<T> {
 class QuranSettingsStore = _QuranSettingsStore with _$QuranSettingsStore;
 
 abstract class _QuranSettingsStore extends BaseStore with Store {
-  var localization = sl.get<ILocalizationService>();
+  late ILocalizationService localization;
 
   _QuranSettingsStore({
-    @required Map<Type, Object> parameter,
-    ILocalizationService localizationService,
+    required Map<Type, Object> parameter,
+    ILocalizationService? localizationService,
   }) {
     this.localization =
-        localizationService ?? (localizationService = this.localization);
+        localizationService ?? sl.get<ILocalizationService>()!;
     {
       {
         final store = QuranSettingsFontsizesStore(

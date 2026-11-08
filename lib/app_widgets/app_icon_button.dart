@@ -1,14 +1,13 @@
-// @dart=2.11
 import 'package:flutter/material.dart';
 
 class AppIconButton extends StatelessWidget {
   final Widget icon;
-  final Function onTap;
+  final VoidCallback? onTap;
 
   const AppIconButton({
-    Key key,
-    @required this.icon,
-    @required this.onTap,
+    Key? key,
+    required this.icon,
+    required this.onTap,
   }) : super(key: key);
 
   @override
@@ -21,7 +20,7 @@ class AppIconButton extends StatelessWidget {
         ),
       ),
       child: Container(
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           horizontal: 6,
           vertical: 6,
         ),

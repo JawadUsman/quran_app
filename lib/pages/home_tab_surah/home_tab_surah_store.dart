@@ -1,4 +1,3 @@
-// @dart=2.11
 import 'package:mobx/mobx.dart';
 import 'package:quran_app/baselib/app_services.dart';
 import 'package:quran_app/baselib/base_store.dart';
@@ -15,18 +14,18 @@ part 'home_tab_surah_store.g.dart';
 class HomeTabSurahStore = _HomeTabSurahStore with _$HomeTabSurahStore;
 
 abstract class _HomeTabSurahStore extends BaseStore with Store {
-  var _appServices = sl.get<AppServices>();
-  var _localization = sl.get<ILocalizationService>();
-  var _quranProvider = sl.get<QuranProvider>();
+  late AppServices _appServices;
+  late ILocalizationService _localization;
+  late QuranProvider _quranProvider;
 
   _HomeTabSurahStore({
-    AppServices appServices,
-    QuranProvider quranProvider,
-    ILocalizationService localizationService,
+    AppServices? appServices,
+    QuranProvider? quranProvider,
+    ILocalizationService? localizationService,
   }) {
-    _appServices = appServices ?? _appServices;
-    _quranProvider = quranProvider ?? _quranProvider;
-    _localization = localizationService ?? _localization;
+    _appServices = appServices ?? sl.get<AppServices>()!;
+    _quranProvider = quranProvider ?? sl.get<QuranProvider>()!;
+    _localization = localizationService ?? sl.get<ILocalizationService>()!;
 
     fetchSurah = Command(() async {
       try {
@@ -46,13 +45,13 @@ abstract class _HomeTabSurahStore extends BaseStore with Store {
 
         state = DataState(
           enumSelector: EnumSelector.error,
-          message: e?.toString() ?? '',
+          message: e.toString(),
         );
       }
     });
 
     goToQuran = Command.parameter((v) async {
-      await _appServices.navigatorState.pushNamed(
+      await _appServices.navigatorState?.pushNamed(
         '/quran',
         arguments: {
           'chapter': v,
@@ -64,9 +63,9 @@ abstract class _HomeTabSurahStore extends BaseStore with Store {
   @observable
   ObservableList<Chapters> chapters = ObservableList();
 
-  Command fetchSurah;
+  late Command fetchSurah;
 
-  Command<Chapters> goToQuran;
+  late Command<Chapters> goToQuran;
 
   @observable
   DataState state = DataState(

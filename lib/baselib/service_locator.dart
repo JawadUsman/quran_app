@@ -1,62 +1,60 @@
-// @dart=2.11
 class ServiceLocator {
-  var _providers = Map<String, Map<Type, _ServiceLocatorProvider<Object>>>();
+  final _providers = <String?, Map<Type, _ServiceLocatorProvider<Object>>>{};
 
-  void registerLazySingleton<T>(
+  void registerLazySingleton<T extends Object>(
     T Function() instanceBuilder, {
-    String name,
+    String? name,
   }) {
-    _setProvider(
+    _setProvider<T>(
       name: name,
       provider: _ServiceLocatorProvider.singleton(instanceBuilder),
     );
   }
 
-  void registerBuilder<T>(
+  void registerBuilder<T extends Object>(
     T Function() instanceBuilder, {
-    String name,
+    String? name,
   }) {
-    _setProvider(
+    _setProvider<T>(
       name: name,
       provider: _ServiceLocatorProvider.builder(instanceBuilder),
     );
   }
 
-  T get<T>({
-    String name,
+  T? get<T extends Object>({
+    String? name,
   }) {
     var namedProvider = _providers[name];
     if (namedProvider?.containsKey(T) == true) {
-      var provider = namedProvider[T];
-      return provider?.get();
+      var provider = namedProvider![T];
+      return provider?.get() as T?;
     } else {
       return null;
     }
   }
 
   void unregiser<T>({
-    String name,
+    String? name,
   }) {
-    _providers[name].remove(T);
+    _providers[name]?.remove(T);
   }
 
   void clear() {
     _providers.clear();
   }
 
-  void _setProvider<T>({
-    _ServiceLocatorProvider<T> provider,
-    String name,
+  void _setProvider<T extends Object>({
+    required _ServiceLocatorProvider<T> provider,
+    String? name,
   }) {
     var map = _providers.putIfAbsent(name, () {
-      var map = Map<Type, _ServiceLocatorProvider<Object>>();
-      return map;
+      return <Type, _ServiceLocatorProvider<Object>>{};
     });
     map[T] = provider;
   }
 }
 
-class _ServiceLocatorProvider<T> {
+class _ServiceLocatorProvider<T extends Object> {
   _ServiceLocatorProvider.builder(
     this.instanceBuilder,
   );
@@ -65,20 +63,17 @@ class _ServiceLocatorProvider<T> {
 
   final T Function() instanceBuilder;
   var onetime = false;
-  T object;
+  T? object;
 
-  T get() {
+  T? get() {
     if (object != null) {
       return object;
     }
-    if (onetime && instanceBuilder != null && object == null) {
+    if (onetime && object == null) {
       object = instanceBuilder();
       return object;
     }
 
-    if (instanceBuilder != null) {
-      return instanceBuilder();
-    }
-    return null;
+    return instanceBuilder();
   }
 }
